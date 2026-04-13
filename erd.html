@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sport Science Decision Lab - Entity Relationship Diagram</title>
+  <style>
+    @media print {
+      body { margin: 0; }
+      .mermaid svg { max-width: 100% !important; height: auto !important; }
+      button { display: none !important; }
+    }
+    @media screen {
+      body { background: #f4f5f7; }
+      .page { max-width: 1400px; margin: 0 auto; background: #fff;
+              box-shadow: 0 2px 16px rgba(0,0,0,0.08); border-radius: 8px; }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; color: #1a1a2e; }
+    .page { padding: 36px 48px 48px; }
+    .header { text-align: center; margin-bottom: 28px; border-bottom: 2px solid #1a1a2e; padding-bottom: 20px; }
+    .header h1 { font-size: 22px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .header p { font-size: 13px; color: #555; }
+    .header .stats { margin-top: 10px; display: flex; justify-content: center; gap: 32px; font-size: 12px; color: #333; }
+    .header .stats span { background: #e8edf3; padding: 4px 12px; border-radius: 4px; font-weight: 600; }
+    .mermaid { text-align: center; overflow-x: auto; }
+    .legend { margin-top: 24px; border-top: 1px solid #ddd; padding-top: 16px;
+              display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; font-size: 11.5px; }
+    .legend h3 { grid-column: 1 / -1; font-size: 13px; margin-bottom: 4px; }
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+    .legend-item .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .dot.core { background: #2d6a4f; }
+    .dot.practice { background: #1d3557; }
+    .dot.intervention { background: #6a040f; }
+    .dot.assessment { background: #7b2cbf; }
+    .dot.screening { background: #b5838d; }
+    .dot.injury { background: #e76f51; }
+    .dot.stats { background: #457b9d; }
+    .print-btn { position: fixed; bottom: 24px; right: 24px; padding: 10px 24px;
+                 background: #1a1a2e; color: #fff; border: none; border-radius: 6px;
+                 font-size: 14px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+    .print-btn:hover { background: #2d3a5c; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <h1>Sport Science Decision Lab — Entity Relationship Diagram</h1>
+      <p>Jacksonville University · Health &amp; Exercise Sciences · Dr. Robertson</p>
+      <div class="stats">
+        <span>35 Tables</span>
+        <span>407 Athletes</span>
+        <span>17 Sports</span>
+        <span>SQLite</span>
+        <span>Shared across HLSC 205 · EXSC 325 · EXSC 405 · HLSC 499 · HLSC 490</span>
+      </div>
+    </div>
+
+    <div class="mermaid">
+erDiagram
+
+    sports {
+        INTEGER sport_id PK
+        TEXT sport_name
+        TEXT sport_category
+        TEXT gender
+        TEXT season_type
+    }
+
+    athletes {
+        INTEGER athlete_id PK
+        INTEGER sport_id FK
+        TEXT athlete_name
+        TEXT class_year
+        TEXT athlete_rating
+        TEXT training_group
+        INTEGER years_experience
+    }
+
+    positions {
+        INTEGER position_id PK
+        INTEGER sport_id FK
+        TEXT position_code
+        TEXT position_name
+        TEXT position_category
+    }
+
+    athlete_positions {
+        INTEGER athlete_position_id PK
+        INTEGER athlete_id FK
+        INTEGER position_id FK
+        BOOLEAN is_primary
+    }
+
+    practice_sessions {
+        INTEGER session_id PK
+        INTEGER athlete_id FK
+        DATE session_date
+        TEXT session_type
+        TEXT practice_structure
+        TEXT practice_variability
+        TEXT whole_part
+        INTEGER duration_minutes
+        TEXT skill_focus
+    }
+
+    training_load {
+        INTEGER load_id PK
+        INTEGER athlete_id FK
+        DATE date
+        INTEGER session_rpe
+        INTEGER srpe_load
+        REAL acwr
+        INTEGER sleep_quality
+        INTEGER soreness_level
+        REAL readiness_score
+    }
+
+    interventions {
+        INTEGER intervention_id PK
+        INTEGER athlete_id FK
+        INTEGER session_id FK
+        TEXT skill_target
+        TEXT feedback_type
+        TEXT feedback_timing
+        TEXT cue_focus
+        TEXT sensory_channel
+    }
+
+    intervention_outcomes {
+        INTEGER outcome_id PK
+        INTEGER intervention_id FK
+        INTEGER athlete_id FK
+        REAL pre_score
+        REAL post_score
+        REAL retention_score
+        REAL transfer_score
+        REAL performance_change_pct
+    }
+
+    dual_task_assessments {
+        INTEGER dual_task_id PK
+        INTEGER athlete_id FK
+        TEXT primary_task
+        TEXT secondary_task
+        REAL single_task_score
+        REAL dual_task_score
+        REAL dual_task_cost_pct
+        REAL automaticity_index
+    }
+
+    competition_performance {
+        INTEGER competition_id PK
+        INTEGER athlete_id FK
+        TEXT competition_type
+        TEXT opponent_level
+        INTEGER pressure_level
+        TEXT skill_name
+        REAL success_rate
+        REAL performance_vs_practice_pct
+    }
+
+    movement_screenings {
+        INTEGER screening_id PK
+        INTEGER athlete_id FK
+        DATE screening_date
+        INTEGER fms_total
+        REAL ybalance_composite_l
+        REAL ybalance_composite_r
+        REAL asymmetry_index
+    }
+
+    physical_tests {
+        INTEGER test_id PK
+        INTEGER athlete_id FK
+        TEXT test_type
+        REAL test_value
+        TEXT test_unit
+    }
+
+    injuries {
+        INTEGER injury_id PK
+        INTEGER athlete_id FK
+        TEXT injury_type
+        TEXT body_part
+        TEXT severity
+        INTEGER days_missed
+    }
+
+    rehab_protocols {
+        INTEGER rehab_id PK
+        INTEGER injury_id FK
+        TEXT protocol_details
+    }
+
+    basketball_skill_assessments {
+        INTEGER assessment_id PK
+        INTEGER athlete_id FK
+        TEXT skill_name
+        REAL success_rate
+        TEXT assessment_type
+    }
+
+    baseball_skill_assessments {
+        INTEGER assessment_id PK
+        INTEGER athlete_id FK
+        TEXT skill_name
+        REAL success_rate
+        TEXT assessment_type
+    }
+
+    soccer_skill_assessments {
+        INTEGER assessment_id PK
+        INTEGER athlete_id FK
+        TEXT skill_name
+        REAL success_rate
+        TEXT assessment_type
+    }
+
+    volleyball_skill_assessments {
+        INTEGER assessment_id PK
+        INTEGER athlete_id FK
+        TEXT skill_name
+        REAL success_rate
+        TEXT assessment_type
+    }
+
+    lacrosse_skill_assessments {
+        INTEGER assessment_id PK
+        INTEGER athlete_id FK
+        TEXT skill_name
+        REAL success_rate
+        TEXT assessment_type
+    }
+
+    rowing_skill_assessments {
+        INTEGER assessment_id PK
+        INTEGER athlete_id FK
+        TEXT skill_name
+        REAL success_rate
+        TEXT assessment_type
+    }
+
+    golf_skill_assessments {
+        INTEGER assessment_id PK
+        INTEGER athlete_id FK
+        TEXT skill_name
+        REAL success_rate
+        TEXT assessment_type
+    }
+
+    track_skill_assessments {
+        INTEGER assessment_id PK
+        INTEGER athlete_id FK
+        TEXT skill_name
+        REAL success_rate
+        TEXT assessment_type
+    }
+
+    beach_volleyball_skill_assessments {
+        INTEGER assessment_id PK
+        INTEGER athlete_id FK
+        TEXT skill_name
+        REAL success_rate
+        TEXT assessment_type
+    }
+
+    basketball_stats {
+        INTEGER stat_id PK
+        INTEGER athlete_id FK
+        REAL points_per_game
+        REAL field_goal_pct
+    }
+
+    baseball_stats {
+        INTEGER stat_id PK
+        INTEGER athlete_id FK
+        REAL batting_average
+        REAL era
+    }
+
+    soccer_stats {
+        INTEGER stat_id PK
+        INTEGER athlete_id FK
+        INTEGER goals
+        REAL passing_accuracy_pct
+    }
+
+    volleyball_stats {
+        INTEGER stat_id PK
+        INTEGER athlete_id FK
+        INTEGER kills
+        REAL attack_percentage
+    }
+
+    lacrosse_stats {
+        INTEGER stat_id PK
+        INTEGER athlete_id FK
+        INTEGER goals
+        INTEGER ground_balls
+    }
+
+    rowing_stats {
+        INTEGER stat_id PK
+        INTEGER athlete_id FK
+        REAL erg_2k_time_seconds
+        REAL avg_power_watts
+    }
+
+    golf_stats {
+        INTEGER stat_id PK
+        INTEGER athlete_id FK
+        REAL handicap_index
+        REAL scoring_average
+    }
+
+    track_stats {
+        INTEGER stat_id PK
+        INTEGER athlete_id FK
+        TEXT event_specialty
+        TEXT personal_record
+    }
+
+    sports ||--o{ athletes : "has"
+    sports ||--o{ positions : "defines"
+    athletes ||--o{ athlete_positions : "plays"
+    positions ||--o{ athlete_positions : "filled_by"
+
+    athletes ||--o{ practice_sessions : "attends"
+    athletes ||--o{ training_load : "monitored"
+
+    athletes ||--o{ interventions : "receives"
+    practice_sessions ||--o{ interventions : "includes"
+    interventions ||--o{ intervention_outcomes : "produces"
+    athletes ||--o{ intervention_outcomes : "measured"
+
+    athletes ||--o{ dual_task_assessments : "tested"
+    athletes ||--o{ competition_performance : "competes"
+
+    athletes ||--o{ movement_screenings : "screened"
+    athletes ||--o{ physical_tests : "tested"
+
+    athletes ||--o{ injuries : "sustains"
+    injuries ||--o{ rehab_protocols : "treated_via"
+
+    athletes ||--o{ basketball_skill_assessments : "assessed"
+    athletes ||--o{ baseball_skill_assessments : "assessed"
+    athletes ||--o{ soccer_skill_assessments : "assessed"
+    athletes ||--o{ volleyball_skill_assessments : "assessed"
+    athletes ||--o{ lacrosse_skill_assessments : "assessed"
+    athletes ||--o{ rowing_skill_assessments : "assessed"
+    athletes ||--o{ golf_skill_assessments : "assessed"
+    athletes ||--o{ track_skill_assessments : "assessed"
+    athletes ||--o{ beach_volleyball_skill_assessments : "assessed"
+
+    athletes ||--o{ basketball_stats : "stats"
+    athletes ||--o{ baseball_stats : "stats"
+    athletes ||--o{ soccer_stats : "stats"
+    athletes ||--o{ volleyball_stats : "stats"
+    athletes ||--o{ lacrosse_stats : "stats"
+    athletes ||--o{ rowing_stats : "stats"
+    athletes ||--o{ golf_stats : "stats"
+    athletes ||--o{ track_stats : "stats"
+    </div>
+
+    <div class="legend">
+      <h3>Table Groups</h3>
+      <div class="legend-item"><div class="dot core"></div> Core: sports, athletes, positions, athlete_positions</div>
+      <div class="legend-item"><div class="dot practice"></div> Practice and Training: practice_sessions, training_load</div>
+      <div class="legend-item"><div class="dot intervention"></div> Interventions: interventions, intervention_outcomes</div>
+      <div class="legend-item"><div class="dot assessment"></div> Assessment: dual_task_assessments, competition_performance, 9 skill tables</div>
+      <div class="legend-item"><div class="dot screening"></div> Screening and Testing: movement_screenings, physical_tests</div>
+      <div class="legend-item"><div class="dot injury"></div> Injury: injuries, rehab_protocols</div>
+      <div class="legend-item"><div class="dot stats"></div> Sport Statistics: 8 sport-specific stats tables</div>
+      <div class="legend-item">All relationships are one-to-many (1:M) via athlete_id FK unless noted</div>
+    </div>
+  </div>
+
+  <button class="print-btn" onclick="window.print()">Print</button>
+  <a href="index.html" style="position:fixed;bottom:24px;left:24px;padding:10px 24px;background:#2d6a4f;color:#fff;border-radius:6px;font-size:14px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,0.2);">← Decision Lab Home</a>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'default',
+      er: {
+        diagramPadding: 20,
+        layoutDirection: 'TB',
+        minEntityWidth: 100,
+        minEntityHeight: 75,
+        entityPadding: 15,
+        useMaxWidth: true
+      },
+      themeVariables: {
+        fontSize: '12px'
+      }
+    });
+  </script>
+</body>
+</html>
