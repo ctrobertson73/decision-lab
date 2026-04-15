@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EXSC 442 — Sport Science Predictive Analytics</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #1B6B5A;
+  --green-light: #2A8F76;
+  --green-pale: #E8F0ED;
+  --gold: #D4A84B;
+  --gold-light: #F5EDD6;
+  --ink: #1a1a1a;
+  --text: #2d2d2d;
+  --muted: #6b6b6b;
+  --bg: #FAFAF8;
+  --white: #ffffff;
+  --border: #e0ddd8;
+  --shadow: 0 2px 20px rgba(0,0,0,0.06);
+  --accent-blue: #2C5F8A;
+  --accent-blue-pale: #E8EFF5;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.header {
+  background: linear-gradient(135deg, #1B6B5A 0%, #0f4a3d 100%);
+  color: white;
+  padding: 3rem 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--gold);
+}
+.header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.header .dept {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  margin-bottom: 0.5rem;
+}
+.header .course-code {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  background: rgba(255,255,255,0.15);
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+.header h1 {
+  font-family: 'Source Serif 4', serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+.header .subtitle {
+  font-size: 0.95rem;
+  font-weight: 300;
+  opacity: 0.85;
+  max-width: 620px;
+}
+
+.main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+}
+
+/* META BAR */
+.meta-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  box-shadow: var(--shadow);
+}
+.meta-item {
+  background: var(--white);
+  padding: 1rem;
+  text-align: center;
+}
+.meta-item .meta-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+.meta-item .meta-value {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+/* INTRO */
+.intro {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--text);
+  max-width: 780px;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* SECTION LABELS */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  margin-top: 2.5rem;
+}
+.section-label .s-line { flex: 1; height: 1px; background: var(--border); }
+.section-label .s-text {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* BLOCK CARD */
+.block-card {
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  margin-bottom: 1.75rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.block-header {
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.block-num {
+  flex-shrink: 0;
+  width: 48px; height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: white;
+  background: var(--green);
+}
+.block-header-text h2 {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.1rem;
+}
+.block-header-text .block-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.block-body {
+  padding: 1.5rem 1.75rem 1.75rem;
+}
+.block-body h3 {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  margin-top: 1.15rem;
+}
+.block-body h3:first-child { margin-top: 0; }
+.block-body p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-bottom: 0.65rem;
+}
+.topic-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem 1.25rem;
+}
+.topic-item {
+  font-size: 0.83rem;
+  padding: 0.3rem 0;
+  color: var(--text);
+  border-bottom: 1px solid #f0eeea;
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+.topic-item::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--green-light);
+  flex-shrink: 0;
+  position: relative;
+  top: -1px;
+}
+
+.sc-question {
+  background: var(--gold-light);
+  border-left: 3px solid var(--gold);
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #5a4a1a;
+  border-radius: 0 6px 6px 0;
+}
+
+/* FRAMEWORK BOXES */
+.fw-box {
+  border-radius: 10px;
+  padding: 1.5rem 1.75rem;
+  margin-top: 1.5rem;
+  border: 1px solid;
+}
+.fw-green { background: var(--green-pale); border-color: #c5ddd5; }
+.fw-gold { background: var(--gold-light); border-color: #e0d0a0; }
+.fw-box h3 {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--green);
+  margin-bottom: 0.75rem;
+}
+.fw-box p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-bottom: 0.6rem;
+}
+
+/* PIPELINE POSITION */
+.pipeline-position {
+  display: flex;
+  gap: 0;
+  margin: 1.25rem 0;
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 0.7rem;
+}
+.pip-step {
+  flex: 1;
+  padding: 0.55rem 0.25rem;
+  text-align: center;
+  color: white;
+  opacity: 0.5;
+}
+.pip-step.active {
+  opacity: 1;
+  box-shadow: inset 0 -3px 0 var(--gold);
+}
+.pip-step .pip-code { font-weight: 700; font-size: 0.72rem; }
+.pip-step .pip-name { font-size: 0.6rem; opacity: 0.8; }
+
+/* CAPSTONE PROJECT */
+.capstone-card {
+  background: var(--white);
+  border: 2px solid var(--green);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 1.75rem;
+}
+.capstone-header {
+  background: var(--green);
+  color: white;
+  padding: 1.25rem 1.75rem;
+}
+.capstone-header h2 {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.capstone-header .cap-sub {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-top: 0.2rem;
+}
+.capstone-body {
+  padding: 1.5rem 1.75rem 1.75rem;
+}
+.capstone-body h3 {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  margin-top: 1.15rem;
+}
+.capstone-body h3:first-child { margin-top: 0; }
+.capstone-body p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-bottom: 0.65rem;
+}
+
+.footer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem 3rem;
+  font-size: 0.73rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 700px) {
+  .meta-bar { grid-template-columns: repeat(2, 1fr); }
+  .topic-grid { grid-template-columns: 1fr; }
+  .pipeline-position { flex-direction: column; }
+  .header h1 { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+<nav style="background:#0E3D33;padding:.6rem 1rem;font-family:'DM Sans',sans-serif;font-size:.78rem;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.15);">
+<div style="max-width:960px;margin:0 auto;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;">
+<a href="index.html" style="color:#D4A84B;text-decoration:none;font-weight:700;margin-right:.75rem;font-size:.85rem;">Decision Lab</a>
+<a href="hlsc-205.html" style="color:rgba(255,255,255,.7);text-decoration:none;padding:.25rem .5rem;border-radius:4px;">205</a>
+<a href="exsc-325.html" style="color:rgba(255,255,255,.7);text-decoration:none;padding:.25rem .5rem;border-radius:4px;">325</a>
+<a href="exsc-442.html" style="color:rgba(255,255,255,.7);text-decoration:none;padding:.25rem .5rem;border-radius:4px;background:rgba(255,255,255,.15);color:#fff;font-weight:600;">442</a>
+<a href="exsc-405.html" style="color:rgba(255,255,255,.7);text-decoration:none;padding:.25rem .5rem;border-radius:4px;">405</a>
+<a href="hlsc-499.html" style="color:rgba(255,255,255,.7);text-decoration:none;padding:.25rem .5rem;border-radius:4px;">499</a>
+<a href="hlsc-490.html" style="color:rgba(255,255,255,.7);text-decoration:none;padding:.25rem .5rem;border-radius:4px;">490</a>
+</div>
+</nav>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="dept">Jacksonville University · Health & Exercise Sciences</div>
+    <div class="course-code">EXSC 442 · Advanced Statistics</div>
+    <h1>Sport Science Predictive Analytics</h1>
+    <div class="subtitle">From describing what happened to predicting what happens next and prescribing what to do about it</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="meta-bar">
+    <div class="meta-item">
+      <div class="meta-label">Professional Lens</div>
+      <div class="meta-value">Analytics Director</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Prerequisite</div>
+      <div class="meta-value">HLSC 205</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Tools</div>
+      <div class="meta-value">R · Python · JASP</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Assessment</div>
+      <div class="meta-value">Live Defense</div>
+    </div>
+  </div>
+
+  <div class="intro">
+    HLSC 205 teaches students to describe data and test hypotheses. EXSC 442 teaches them to predict outcomes, classify risk, and build the analytical systems that sport science operations actually run on. The distinction is not just methodological but professional: descriptive statistics answer "what happened?" while predictive analytics answer "what will happen next?" and "what should we do about it?" This course sits between the foundational tier and the capstone tier of the Sport Science Decision Lab, functioning as an analytical accelerator. Students who complete it arrive at HLSC 499 and HLSC 490 with a toolkit that most undergraduate programs never reach.
+  </div>
+
+  <!-- PIPELINE POSITION -->
+  <div class="pipeline-position">
+    <div class="pip-step" style="background:#3a9e8a;"><div class="pip-code">205</div><div class="pip-name">Statistics</div></div>
+    <div class="pip-step" style="background:#2d8572;"><div class="pip-code">325</div><div class="pip-name">Motor Control</div></div>
+    <div class="pip-step active" style="background:#1B6B5A;"><div class="pip-code">442</div><div class="pip-name">Predictive Analytics</div></div>
+    <div class="pip-step" style="background:#1B6B5A;"><div class="pip-code">405</div><div class="pip-name">Anatomy</div></div>
+    <div class="pip-step" style="background:#155a4b;"><div class="pip-code">499</div><div class="pip-name">Thesis</div></div>
+    <div class="pip-step" style="background:#0f4a3d;"><div class="pip-code">490</div><div class="pip-name">Practicum</div></div>
+  </div>
+
+  <div class="fw-box fw-green">
+    <h3>The Analytical Gap This Course Fills</h3>
+    <p>Modern sport science operations predict injury risk from workload patterns, forecast performance decline from accumulated fatigue, classify athletes into risk categories based on screening profiles, and build early-warning systems for overtraining. These are classification, prediction, and modeling tasks that require methods beyond the inferential statistics taught in HLSC 205. Random Forest and XGBoost are now the dominant methods in sport science injury prediction research. Mixed-effects models are increasingly recognized as essential for the longitudinal, nested data structures that characterize athlete monitoring. Bayesian approaches are emerging for small-sample sport science contexts where traditional frequentist methods lack power.</p>
+    <p>This course teaches these methods through the same Decision Cycle framework and shared sport science database used throughout the pipeline. AI tools handle the computational labor. Students own the judgment: which model to build, how to evaluate it, what the output means for a real athlete, and why a coach should trust the recommendation.</p>
+  </div>
+
+  <!-- BLOCKS -->
+  <div class="section-label">
+    <span class="s-line"></span>
+    <span class="s-text">Course Architecture — Six Method Blocks</span>
+    <span class="s-line"></span>
+  </div>
+
+  <!-- BLOCK 1 -->
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num">01</div>
+      <div class="block-header-text">
+        <h2>Logistic Regression</h2>
+        <div class="block-meta">Weeks 1–3 · From Explaining to Predicting</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>The Transition</h3>
+      <p>Students arrive from HLSC 205 knowing linear regression: continuous outcomes, coefficients that describe relationships, p-values that test hypotheses. Logistic regression is the bridge to predictive analytics. The outcome is now binary (injured / not injured, cleared / not cleared, at-risk / stable), and the output is a probability rather than a predicted value. This is the first time students build a model whose purpose is to predict rather than explain.</p>
+
+      <h3>Sport Science Application</h3>
+      <div class="sc-question">Given an athlete's workload history, sleep data, and screening scores, what is the probability they sustain a soft-tissue injury in the next 14 days?</div>
+      <p>Students build logistic models predicting injury occurrence from training load variables in the shared database. They learn that odds ratios are inherently interpretable for practitioners ("each additional boarding hour doubles the odds of..."), making logistic regression the method most naturally suited to stakeholder communication. They confront the distinction between statistical significance and predictive accuracy for the first time: a significant predictor is not necessarily a useful one.</p>
+
+      <h3>Topics</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Binary outcomes and the logit link function</div>
+        <div class="topic-item">Odds ratios and probability interpretation</div>
+        <div class="topic-item">Maximum likelihood estimation</div>
+        <div class="topic-item">Sensitivity, specificity, and the classification threshold</div>
+        <div class="topic-item">Confusion matrices (introduction)</div>
+        <div class="topic-item">ROC curves and AUC (introduction)</div>
+        <div class="topic-item">Model fit: deviance, AIC, pseudo-R²</div>
+        <div class="topic-item">Interaction terms in prediction contexts</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 2 -->
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num">02</div>
+      <div class="block-header-text">
+        <h2>Mixed-Effects Models</h2>
+        <div class="block-meta">Weeks 4–6 · Handling the Structure of Real Sport Science Data</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>The Problem</h3>
+      <p>Every dataset students will encounter in HLSC 499 and HLSC 490 violates the independence assumption that underlies standard regression. Athletes are measured repeatedly across sessions. Sessions are nested within weeks, weeks within seasons. Athletes are nested within teams and positions. Ignoring this structure inflates confidence, underestimates standard errors, and produces conclusions that don't replicate. Mixed-effects models solve this by separating what's true of the population (fixed effects) from what varies across individuals (random effects).</p>
+
+      <h3>Sport Science Application</h3>
+      <div class="sc-question">How does accumulated training load across a season affect reaction time performance, accounting for the fact that each athlete responds differently to fatigue?</div>
+      <p>Students build linear mixed-effects models on longitudinal athlete monitoring data from the shared database: repeated performance measures nested within athletes, with training load and recovery variables as predictors. They learn to specify random intercepts (athletes start at different baselines) and random slopes (athletes respond to load differently). They see that the population-level estimate answers the coaching question ("does load affect performance?") while the individual-level estimates answer the practitioner question ("how does load affect this athlete?").</p>
+
+      <h3>Topics</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Fixed vs. random effects</div>
+        <div class="topic-item">Random intercept models</div>
+        <div class="topic-item">Random slope models</div>
+        <div class="topic-item">Nested and crossed structures</div>
+        <div class="topic-item">ICC and variance partitioning</div>
+        <div class="topic-item">Model comparison: AIC, BIC, likelihood ratio</div>
+        <div class="topic-item">Generalized linear mixed models (binary outcomes)</div>
+        <div class="topic-item">Visualizing individual trajectories</div>
+      </div>
+
+      <h3>Why This Block Matters</h3>
+      <p>This is the method most sport science programs fail to teach at the undergraduate level. Students who arrive at a thesis project or an internship knowing how to handle repeated measures and nested data are operating at a level their peers from other programs cannot match. Mixed models are not exotic: they are the correct method for the data sport scientists actually collect.</p>
+    </div>
+  </div>
+
+  <!-- BLOCK 3 -->
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num">03</div>
+      <div class="block-header-text">
+        <h2>KNN and Naive Bayes Classification</h2>
+        <div class="block-meta">Weeks 7–9 · Distance-Based and Probabilistic Prediction</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>Two Ways to Classify</h3>
+      <p>Logistic regression draws a line between classes. KNN and Naive Bayes classify by entirely different logic, and understanding how they differ is the first step toward ensemble thinking. KNN asks: "which athletes in the database look most like this athlete, and what happened to them?" Naive Bayes asks: "given the base rates of injury and the conditional probabilities of each risk factor, how likely is this athlete to be injured?" Same question, different mathematics, different strengths.</p>
+
+      <h3>Sport Science Application</h3>
+      <div class="sc-question">Based on movement screening profiles, which current athletes most closely resemble athletes who sustained ACL injuries in previous seasons? And given this athlete's specific combination of risk factors, what is the posterior probability of injury?</div>
+      <p>Students classify athletes into risk tiers (Low / Moderate / High) using both methods on the same dataset. KNN requires feature scaling and k-selection, introducing students to hyperparameter tuning. Naive Bayes requires thinking about conditional independence and base rates, introducing students to probabilistic reasoning. The comparison between the two methods surfaces a core insight: spatial similarity (KNN) and probabilistic evidence (Bayes) can agree or disagree, and when they disagree, the analyst must decide which to trust for this particular question.</p>
+
+      <h3>Topics</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Distance metrics (Euclidean, Manhattan)</div>
+        <div class="topic-item">Feature scaling and normalization</div>
+        <div class="topic-item">Hyperparameter tuning (k-selection)</div>
+        <div class="topic-item">Bayes' theorem and conditional probability</div>
+        <div class="topic-item">Prior, likelihood, and posterior</div>
+        <div class="topic-item">Naive independence assumption</div>
+        <div class="topic-item">Class imbalance and its consequences</div>
+        <div class="topic-item">Comparing classifiers on the same data</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 4 -->
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num">04</div>
+      <div class="block-header-text">
+        <h2>Decision Trees, Random Forest, and XGBoost</h2>
+        <div class="block-meta">Weeks 10–11 · From Single Rules to Ensemble Intelligence</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>The Progression</h3>
+      <p>A single decision tree is the most interpretable classifier: it produces explicit rules a charge nurse or strength coach can follow ("if ACWR > 1.3 AND sleep < 6 hours, then HIGH RISK"). But single trees are unstable and prone to overfitting. Random Forest stabilizes prediction by building hundreds of trees on bootstrapped samples and aggregating their votes. XGBoost goes further, building trees sequentially to correct previous errors. This block moves from maximum interpretability to maximum predictive power, and students learn what they gain and lose at each step.</p>
+
+      <h3>Sport Science Application</h3>
+      <div class="sc-question">What combination of training load variables, sleep metrics, and screening scores best predicts non-contact soft-tissue injury in the next seven days? And can we distill the model's logic into a three-rule protocol the athletic training staff can use at morning check-in?</div>
+      <p>Students build all three models on the same injury prediction dataset. The single tree produces the clinical heuristic. The Random Forest produces the best prediction. XGBoost pushes accuracy further but at the cost of interpretability. This is the exact tradeoff students will face in professional practice: the model that's easiest to explain is not the model that's most accurate, and the analyst must navigate that tension for their stakeholder.</p>
+
+      <h3>Topics</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Information gain and Gini impurity</div>
+        <div class="topic-item">Tree pruning and complexity parameters</div>
+        <div class="topic-item">Bagging and bootstrap aggregation</div>
+        <div class="topic-item">Random Forest: out-of-bag error, variable importance</div>
+        <div class="topic-item">Gradient boosting: sequential error correction</div>
+        <div class="topic-item">XGBoost: regularization and learning rate</div>
+        <div class="topic-item">Feature importance: permutation and SHAP</div>
+        <div class="topic-item">Interpretability vs. accuracy tradeoff</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 5 -->
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num">05</div>
+      <div class="block-header-text">
+        <h2>Model Evaluation and Validation</h2>
+        <div class="block-meta">Weeks 12–13 · The Judgment Layer</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>The Meta-Skill</h3>
+      <p>Building a model is half the job. Evaluating whether it's trustworthy, useful, and safe to deploy is the other half. This block consolidates the evaluation methods introduced across Blocks 1-4 into a unified framework for model assessment. Students learn that accuracy is insufficient: a model that predicts "no injury" 95% of the time is 95% accurate in a dataset where only 5% of athletes get injured, but it's useless. The question is always: what kind of error is most dangerous, and which model minimizes that error?</p>
+
+      <h3>Sport Science Application</h3>
+      <div class="sc-question">Your Random Forest has 94% accuracy but misses 40% of actual injuries. Your logistic regression has 82% accuracy but catches 85% of injuries. Which model do you deploy, and how do you explain that choice to the Director of Sports Medicine?</div>
+      <p>Students revisit every model from Blocks 1-4, evaluating each with a consistent set of metrics and visualizations. They build ROC curves for every classifier and compare AUC values. They analyze confusion matrices through the lens of clinical consequence: a false negative (missed injury) is categorically different from a false positive (unnecessary caution). They learn cross-validation as the method that prevents the most common error in sport science research: overfitting to one season's data and producing a model that fails the next season.</p>
+
+      <h3>Topics</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Train/test splits and data leakage</div>
+        <div class="topic-item">k-fold cross-validation</div>
+        <div class="topic-item">ROC curves and AUC comparison</div>
+        <div class="topic-item">Precision, recall, F1 score</div>
+        <div class="topic-item">Class imbalance: SMOTE, undersampling</div>
+        <div class="topic-item">Calibration: does 80% confidence mean 80% right?</div>
+        <div class="topic-item">Overfitting detection and prevention</div>
+        <div class="topic-item">Clinical consequence framing: cost of errors</div>
+      </div>
+
+      <h3>The Capstone Insight</h3>
+      <p>This block delivers the insight from the PI's MABA capstone: no single method is "best" at everything. The decision tree is the most communicable. The ensemble is the most predictive. Logistic regression is the most interpretable. Mixed models handle the data structure correctly. "Best" depends on what question you're answering, who you're answering it for, and what the consequences of being wrong look like. That is analytical judgment, and it is the core competency this course trains.</p>
+    </div>
+  </div>
+
+  <!-- BLOCK 6 / CAPSTONE -->
+  <div class="capstone-card">
+    <div class="capstone-header">
+      <h2>Block 06 · The Sport Science Intelligence Brief</h2>
+      <div class="cap-sub">Weeks 14–16 · Integration Project + Live Defense</div>
+    </div>
+    <div class="capstone-body">
+      <h3>The Commission</h3>
+      <p>The JU Athletics Director has commissioned the Sport Science Analytics unit to produce an intelligence brief on a predictive question that matters to the department. Students choose a question, apply multiple methods from Blocks 1-5 to the same dataset, evaluate each model's strengths and weaknesses, and produce a convergent recommendation. The brief must answer: which method produced the best prediction, which produced the safest error distribution, which produced the most communicable clinical rule, and what does the convergence (or divergence) of all methods tell us about the answer?</p>
+
+      <h3>Deliverables</h3>
+      <p><strong>The Analysis (Colab Notebook).</strong> Full Decision Cycle structure. Minimum three methods applied to the same question. Model comparison table with consistent evaluation metrics. Visualizations that communicate findings to a non-technical audience.</p>
+      <p><strong>The Intelligence Brief (Word Document, 3-5 pages).</strong> Written for the Athletics Director. Organized by the Decision Cycle: QUERY (the question and who needs the answer), INTERPRET (what each method found and where they agree or disagree), DECIDE (the convergent recommendation), JUSTIFY (why this recommendation is robust and what its limitations are). Includes a one-page summary that could be laminated and posted in the athletic training room.</p>
+      <p><strong>The Live Defense (Week 16, final exam block).</strong> 8-10 minutes. Present the convergent finding, defend each methodological choice, explain the tradeoffs between models, and answer the AI boundary probe. The standard is unchanged: if you can't explain it, you don't own it.</p>
+
+      <h3>What Dr. Robertson Will Ask</h3>
+      <p>Every probe from the foundational courses applies, plus method-specific probes:</p>
+      <div class="topic-grid" style="margin-top:0.5rem;">
+        <div class="topic-item">Why these methods and not others for this question?</div>
+        <div class="topic-item">Which model is "best"? Define best.</div>
+        <div class="topic-item">Your Random Forest disagrees with your logistic model. Explain.</div>
+        <div class="topic-item">What happens if I deploy your tree rules without the ensemble?</div>
+        <div class="topic-item">Show me the ROC curves. Which matters more: sensitivity or specificity? Why?</div>
+        <div class="topic-item">Your model was trained on last season. Why should I trust it this season?</div>
+        <div class="topic-item">I'm the head athletic trainer. Convince me to change my protocol.</div>
+        <div class="topic-item">Where did AI help you, and where did you override it?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PEDAGOGICAL FRAMEWORK -->
+  <div class="section-label" style="margin-top:2.5rem;">
+    <span class="s-line"></span>
+    <span class="s-text">Pedagogical Framework</span>
+    <span class="s-line"></span>
+  </div>
+
+  <div class="fw-box fw-green">
+    <h3>Decision Cycle Integration</h3>
+    <p>The same four-phase cycle (Query, Interpret, Decide, Justify) governs every block. Each competency demonstration requires students to move through all four phases under questioning. The difference from HLSC 205 is that the INTERPRET and DECIDE phases now involve model selection, evaluation, and comparison rather than single-test execution. Students must justify not only what the data shows but why they chose the analytical method that produced the finding.</p>
+  </div>
+
+  <div class="fw-box fw-gold" style="margin-top:1rem;">
+    <h3>AI Integration: Same Principle, Higher Stakes</h3>
+    <p>AI tools (Claude, NotebookLM) are used throughout as labor partners. Students use AI to generate R and Python code, troubleshoot model errors, and explore alternative approaches. They are explicitly prohibited from using AI to interpret results, select models, or write recommendations. The boundary is sharper here than in HLSC 205 because the methods are more complex: a student who lets AI choose between Random Forest and XGBoost without understanding the tradeoff has surrendered the exact judgment the course exists to build. The AI boundary probe in every defense tests this directly.</p>
+  </div>
+
+  <div class="fw-box fw-green" style="margin-top:1rem;">
+    <h3>Competency-Based Assessment</h3>
+    <p>No exams. Each block concludes with a live competency demonstration where students present their analysis and defend their methodological choices under questioning. The semester project (Block 6) is the integrative capstone. The standard is identical to every course in the pipeline: demonstrate understanding in the moment, without a net. The only difference is that the methods are more powerful and the analytical judgment required is correspondingly deeper.</p>
+  </div>
+
+  <!-- WHERE THIS LEADS -->
+  <div class="section-label" style="margin-top:2.5rem;">
+    <span class="s-line"></span>
+    <span class="s-text">Where This Leads</span>
+    <span class="s-line"></span>
+  </div>
+
+  <div class="fw-box fw-green">
+    <h3>The Analytical Accelerator</h3>
+    <p>EXSC 442 is not required for the Decision Lab pipeline to function. Students can progress from the foundational tier (205, 325, 405) to the capstone tier (499, 490) using descriptive and inferential statistics alone. But students who take EXSC 442 arrive at the capstone tier with a fundamentally different analytical capacity. A 499 thesis question like "Can movement screening asymmetries predict lower extremity injury in collegiate track athletes?" becomes a real classification problem, not just a correlation. A 490 intern who can build a simple decision tree protocol for the S&C staff is operating at a level most sport science programs never reach at the undergraduate level.</p>
+    <p>The course also positions students for graduate study in sport analytics, data science, and applied statistics. The methods taught here (mixed models, ensemble trees, model evaluation) are the entry-level toolkit for master's programs in these fields. Students leave with portfolio pieces demonstrating multi-method analytical work on real sport science problems, defended live under questioning.</p>
+    <p>This course exists because sport science has moved beyond description. The field now demands prediction, classification, and prescriptive analytics. EXSC 442 teaches students to meet that demand while maintaining the same principle that governs the entire pipeline: AI handles the labor, the student owns the judgment.</p>
+  </div>
+
+</div>
+
+<div class="footer">
+  Dr. Chris Robertson · Associate Professor, Health & Exercise Sciences · Jacksonville University · Sport Science Decision Lab · EXSC 442 Course Structure Document
+</div>
+
+</body>
+</html>

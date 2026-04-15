@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HLSC 205 — Statistics for Health & Exercise Science</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#1B6B5A;--green-light:#2A8F76;--green-pale:#E8F0ED;--gold:#D4A84B;--gold-light:#F5EDD6;--ink:#1a1a1a;--text:#2d2d2d;--muted:#6b6b6b;--bg:#FAFAF8;--white:#fff;--border:#e0ddd8;--shadow:0 2px 20px rgba(0,0,0,.06)}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}.header{background:linear-gradient(135deg,#3a9e8a 0%,#2A8F76 100%);color:#fff;padding:3rem 2rem 2.5rem;position:relative;overflow:hidden}.header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--gold)}.header-inner{max-width:900px;margin:0 auto}.header .dept{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;opacity:.65;margin-bottom:.5rem}.header .course-code{font-size:.85rem;font-weight:600;letter-spacing:.08em;background:rgba(255,255,255,.15);display:inline-block;padding:.25rem .75rem;border-radius:4px;margin-bottom:.75rem}.header h1{font-family:'Source Serif 4',serif;font-size:2.1rem;font-weight:700;line-height:1.2;margin-bottom:.5rem}.header .subtitle{font-size:.95rem;font-weight:300;opacity:.85;max-width:620px}.main{max-width:900px;margin:0 auto;padding:2.5rem 2rem 4rem}.meta-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:8px;overflow:hidden;margin-bottom:2.5rem;box-shadow:var(--shadow)}.meta-item{background:var(--white);padding:1rem;text-align:center}.meta-item .meta-label{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem}.meta-item .meta-value{font-weight:600;font-size:.9rem;color:var(--ink)}.intro{font-family:'Source Serif 4',serif;font-size:1.02rem;line-height:1.75;color:var(--text);max-width:780px;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}.section-label{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;margin-top:2.5rem}.section-label .s-line{flex:1;height:1px;background:var(--border)}.section-label .s-text{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);white-space:nowrap;font-weight:600}.block-card{background:var(--white);border-radius:10px;box-shadow:var(--shadow);margin-bottom:1.75rem;overflow:hidden;border:1px solid var(--border)}.block-header{padding:1.25rem 1.75rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:1rem}.block-num{flex-shrink:0;width:48px;height:48px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;color:#fff;line-height:1.1;text-align:center}.block-header-text h2{font-family:'Source Serif 4',serif;font-size:1.15rem;font-weight:600;color:var(--ink);margin-bottom:.1rem}.block-header-text .block-meta{font-size:.8rem;color:var(--muted)}.block-body{padding:1.5rem 1.75rem 1.75rem}.block-body h3{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:.5rem;margin-top:1.15rem}.block-body h3:first-child{margin-top:0}.block-body p{font-size:.88rem;line-height:1.7;margin-bottom:.65rem}.topic-grid{display:grid;grid-template-columns:1fr 1fr;gap:.4rem 1.25rem}.topic-item{font-size:.83rem;padding:.3rem 0;color:var(--text);border-bottom:1px solid #f0eeea;display:flex;align-items:baseline;gap:.45rem}.topic-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green-light);flex-shrink:0;position:relative;top:-1px}.sc-question{background:var(--gold-light);border-left:3px solid var(--gold);padding:.75rem 1rem;margin:.75rem 0;font-size:.85rem;font-style:italic;color:#5a4a1a;border-radius:0 6px 6px 0}.fw-box{border-radius:10px;padding:1.5rem 1.75rem;margin-top:1.5rem;border:1px solid}.fw-green{background:var(--green-pale);border-color:#c5ddd5}.fw-gold{background:var(--gold-light);border-color:#e0d0a0}.fw-box h3{font-family:'Source Serif 4',serif;font-size:1.05rem;font-weight:600;color:var(--green);margin-bottom:.75rem}.fw-box p{font-size:.88rem;line-height:1.7;margin-bottom:.6rem}.pipeline-position{display:flex;gap:0;margin:1.25rem 0;border-radius:6px;overflow:hidden;font-size:.7rem}.pip-step{flex:1;padding:.55rem .25rem;text-align:center;color:#fff;opacity:.5}.pip-step.active{opacity:1;box-shadow:inset 0 -3px 0 var(--gold)}.pip-step .pip-code{font-weight:700;font-size:.72rem}.pip-step .pip-name{font-size:.6rem;opacity:.8}.capstone-card{background:var(--white);border:2px solid var(--green);border-radius:10px;overflow:hidden;margin-top:1.75rem}.capstone-header{background:var(--green);color:#fff;padding:1.25rem 1.75rem}.capstone-header h2{font-family:'Source Serif 4',serif;font-size:1.2rem;font-weight:600}.capstone-header .cap-sub{font-size:.85rem;opacity:.8;margin-top:.2rem}.capstone-body{padding:1.5rem 1.75rem 1.75rem}.capstone-body h3{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:.5rem;margin-top:1.15rem}.capstone-body h3:first-child{margin-top:0}.capstone-body p{font-size:.88rem;line-height:1.7;margin-bottom:.65rem}.comp-marker{display:inline-flex;align-items:center;gap:.4rem;background:var(--gold-light);border:1px solid #e0d0a0;padding:.3rem .7rem;border-radius:5px;font-size:.75rem;font-weight:600;color:#7a5f18;margin:.4rem 0}.footer{max-width:900px;margin:0 auto;padding:1.5rem 2rem 3rem;font-size:.73rem;color:var(--muted);border-top:1px solid var(--border)}@media(max-width:700px){.meta-bar{grid-template-columns:repeat(2,1fr)}.topic-grid{grid-template-columns:1fr}.pipeline-position{flex-direction:column}.header h1{font-size:1.5rem}}
+</style>
+</head>
+<body>
+<nav style="background:#0E3D33;padding:.6rem 1rem;font-family:'DM Sans',sans-serif;font-size:.78rem;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.15);">
+<div style="max-width:960px;margin:0 auto;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;">
+<a href="index.html" style="color:#D4A84B;text-decoration:none;font-weight:700;margin-right:.75rem;font-size:.85rem;">Decision Lab</a>
+<a href="hlsc-205.html" style="color:rgba(255,255,255,.7);text-decoration:none;padding:.25rem .5rem;border-radius:4px;background:rgba(255,255,255,.15);color:#fff;font-weight:600;">205</a>
+<a href="exsc-325.html" style="color:rgba(255,255,255,.7);text-decoration:none;padding:.25rem .5rem;border-radius:4px;">325</a>
+<a href="exsc-442.html" style="color:rgba(255,255,255,.7);text-decoration:none;padding:.25rem .5rem;border-radius:4px;">442</a>
+<a href="exsc-405.html" style="color:rgba(255,255,255,.7);text-decoration:none;padding:.25rem .5rem;border-radius:4px;">405</a>
+<a href="hlsc-499.html" style="color:rgba(255,255,255,.7);text-decoration:none;padding:.25rem .5rem;border-radius:4px;">499</a>
+<a href="hlsc-490.html" style="color:rgba(255,255,255,.7);text-decoration:none;padding:.25rem .5rem;border-radius:4px;">490</a>
+</div>
+</nav>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="dept">Jacksonville University · Health & Exercise Sciences</div>
+    <div class="course-code">HLSC 205 · Statistics for Health & Exercise Science</div>
+    <h1>Sport Science Data Analytics</h1>
+    <div class="subtitle">The analytical foundation: querying data, testing hypotheses, and defending recommendations as a sport science data analyst</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="meta-bar">
+    <div class="meta-item"><div class="meta-label">Professional Lens</div><div class="meta-value">Data Analyst</div></div>
+    <div class="meta-item"><div class="meta-label">Pipeline Position</div><div class="meta-value">Foundation</div></div>
+    <div class="meta-item"><div class="meta-label">Tools</div><div class="meta-value">Excel · Python · JASP</div></div>
+    <div class="meta-item"><div class="meta-label">Assessment</div><div class="meta-value">2 Comps + Live Defense</div></div>
+  </div>
+
+  <div class="intro">
+    This is where the Sport Science Decision Lab begins. Students encounter the shared sport science database for the first time, learning to query athlete data, select and execute statistical tests, and visualize results for stakeholder communication. Every analytical task is framed through the Decision Cycle: students do not simply run tests — they must articulate why they chose a particular analysis, what the output means in context, and what decision it supports. AI tools (Claude, NotebookLM) are introduced from day one as labor partners for code generation, data processing, and query construction. Students own the reasoning. AI handles the execution. The boundary between the two is the competency being assessed in every defense.
+  </div>
+
+  <div class="pipeline-position">
+    <div class="pip-step active" style="background:#3a9e8a;"><div class="pip-code">205</div><div class="pip-name">Statistics</div></div>
+    <div class="pip-step" style="background:#2d8572;"><div class="pip-code">325</div><div class="pip-name">Motor Control</div></div>
+    <div class="pip-step" style="background:#1B6B5A;"><div class="pip-code">442</div><div class="pip-name">Predictive Analytics</div></div>
+    <div class="pip-step" style="background:#1B6B5A;"><div class="pip-code">405</div><div class="pip-name">Anatomy</div></div>
+    <div class="pip-step" style="background:#155a4b;"><div class="pip-code">499</div><div class="pip-name">Thesis</div></div>
+    <div class="pip-step" style="background:#0f4a3d;"><div class="pip-code">490</div><div class="pip-name">Practicum</div></div>
+  </div>
+
+  <div class="section-label"><span class="s-line"></span><span class="s-text">Course Architecture — Four Units + Capstone Project</span><span class="s-line"></span></div>
+
+  <!-- UNIT 1 -->
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num" style="background:#3a9e8a;">STATS<br>01</div>
+      <div class="block-header-text">
+        <h2>Data Literacy & Descriptive Analysis</h2>
+        <div class="block-meta">Weeks 1–4 · Building the Analytical Foundation</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>The Entry Point</h3>
+      <p>Students meet the sport science database and learn to ask questions of it. This unit establishes the complete tool chain (Excel, Python via Google Colab, AI assistants) and the foundational skill of data literacy: understanding what variables you have, what they measure, how to describe their distributions, and how to communicate those descriptions visually. No inferential claims yet — students learn to see before they learn to test.</p>
+
+      <h3>Sport Science Context</h3>
+      <div class="sc-question">You've been given access to the JU Athletics performance database. Before you run a single test, what do you need to know about the data? Who are these athletes? What was measured? What does the distribution of training loads look like across the roster?</div>
+      <p>Students build their first AI-assisted SQL queries against simulated athletic performance data. They learn that the quality of every analysis downstream depends on the quality of the question asked here — and that querying is a reasoning task, not a technical one. The Decision Cycle is introduced: QUERY (what do we need to know?), INTERPRET (what does the data show us?), DECIDE (what does this mean?), JUSTIFY (why should anyone trust this summary?).</p>
+
+      <h3>Topics</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Database orientation and AI-assisted SQL querying</div>
+        <div class="topic-item">Variables, sampling, and measurement scales</div>
+        <div class="topic-item">Data collection and import (Excel + Python)</div>
+        <div class="topic-item">Central tendency (mean, median, mode)</div>
+        <div class="topic-item">Variability (SD, range, IQR)</div>
+        <div class="topic-item">Distributions and shape</div>
+        <div class="topic-item">Data visualization (histograms, boxplots, scatter)</div>
+        <div class="topic-item">Decision Cycle introduction</div>
+      </div>
+
+      <div class="comp-marker">⬥ Competency 01 — Week 4: Descriptive analysis and data literacy under questioning</div>
+    </div>
+  </div>
+
+  <!-- UNIT 2 -->
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num" style="background:#2d8572;">STATS<br>02</div>
+      <div class="block-header-text">
+        <h2>Probability & Distributions</h2>
+        <div class="block-meta">Weeks 5–7 · The Mathematical Foundations</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>Why Probability Matters</h3>
+      <p>Before students can test a hypothesis, they need to understand what makes an observation unusual. This unit builds the probability scaffolding that underlies every inferential test: what distributions describe, how probability quantifies uncertainty, and why the normal distribution is the engine behind most of the tests they'll use. The unit is condensed and rigorous — probability basics and distribution concepts are paired in single sessions to maintain momentum.</p>
+
+      <h3>Sport Science Context</h3>
+      <div class="sc-question">An athlete's ACWR is 1.45. Is that unusual? Unusual compared to what? The answer depends entirely on what distribution of ACWR values you're comparing against — and understanding that comparison is the foundation of every statistical test you'll run.</div>
+
+      <h3>Topics</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Probability basics and rules</div>
+        <div class="topic-item">Distributions: conceptual introduction</div>
+        <div class="topic-item">Normal distribution: properties and applications</div>
+        <div class="topic-item">T-distribution</div>
+        <div class="topic-item">Chi-square distribution</div>
+        <div class="topic-item">Binomial and Poisson distributions</div>
+        <div class="topic-item">Z-scores and standardization</div>
+        <div class="topic-item">Connecting distributions to real athletic data</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIT 3 -->
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num" style="background:#1B6B5A;">STATS<br>03</div>
+      <div class="block-header-text">
+        <h2>Inference Foundations</h2>
+        <div class="block-meta">Weeks 8–10 · From Data to Conclusions</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>The Reasoning Framework</h3>
+      <p>This unit bridges description and decision. Students learn the logic of statistical inference: sampling distributions, the Central Limit Theorem, confidence intervals, and hypothesis testing. JASP is introduced as a tool for running analyses with a visual, menu-driven interface, complementing the code-based work in Python. The critical distinction between statistical significance and practical significance is introduced here and will recur in every subsequent course in the pipeline.</p>
+
+      <h3>Sport Science Context</h3>
+      <div class="sc-question">You've measured vertical jump height for 25 athletes before and after a six-week plyometric program. The mean improved by 2.1 cm. Is that real improvement or just noise? How confident are you? And even if it's statistically significant, does a 2.1 cm improvement actually matter to a coach?</div>
+
+      <h3>Topics</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Sampling distributions and the Central Limit Theorem</div>
+        <div class="topic-item">Confidence intervals: construction and interpretation</div>
+        <div class="topic-item">JASP introduction for statistical analysis</div>
+        <div class="topic-item">Hypothesis testing: null, alternative, p-values</div>
+        <div class="topic-item">Type I and Type II errors</div>
+        <div class="topic-item">Effect sizes: Cohen's d, practical significance</div>
+        <div class="topic-item">Statistical vs. practical significance</div>
+        <div class="topic-item">Decision Cycle applied to hypothesis testing</div>
+      </div>
+
+      <div class="comp-marker">⬥ Competency 02 — Week 10: Probability, distributions, and inference framework under questioning</div>
+    </div>
+  </div>
+
+  <!-- UNIT 4 -->
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num" style="background:#155a4b;">STATS<br>04</div>
+      <div class="block-header-text">
+        <h2>Statistical Tests</h2>
+        <div class="block-meta">Weeks 10–12 · The Analytical Toolkit</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>One Test Per Session</h3>
+      <p>Each statistical test gets its own dedicated session. This is deliberate: rather than surveying tests in a blur, students encounter each one as a tool with a specific purpose, specific assumptions, and specific output to interpret. Every session follows the same structure: what question does this test answer, when do you use it instead of the others, what does the output mean, and how do you report it for a stakeholder? The End-of-Semester Project is launched at the end of this unit — students choose which test to use for their scouting report, and that choice is the first real Decision Cycle they own.</p>
+
+      <h3>Sport Science Context</h3>
+      <div class="sc-question">Is there a significant difference in sprint times between athletes who completed the off-season training program and those who didn't? Is position correlated with injury rate? Does vertical jump predict in-game performance? Each question demands a different test — and choosing the wrong one produces an answer to a question nobody asked.</div>
+
+      <h3>Tests (One Per Session)</h3>
+      <div class="topic-grid">
+        <div class="topic-item">t-tests: paired and independent samples</div>
+        <div class="topic-item">ANOVA: comparing multiple groups</div>
+        <div class="topic-item">Correlation: strength and direction of association</div>
+        <div class="topic-item">Regression: linear and multiple</div>
+        <div class="topic-item">Chi-square: categorical associations</div>
+        <div class="topic-item">Test selection logic: matching question to method</div>
+      </div>
+
+      <h3>The Selection Problem</h3>
+      <p>This unit is where students confront the core challenge of applied statistics: choosing the right tool. AI can execute any test instantly. The analyst's job is to know which test answers the question being asked and why the alternatives don't. That judgment — which method fits this question — is the skill that carries forward to every course in the pipeline, from the motor control interventions of EXSC 325 to the predictive models of EXSC 442 to the thesis investigations of HLSC 499.</p>
+    </div>
+  </div>
+
+  <!-- CAPSTONE -->
+  <div class="capstone-card">
+    <div class="capstone-header">
+      <h2>End-of-Semester Project · The JU Athletics Scouting Report</h2>
+      <div class="cap-sub">Weeks 13–14 (Asynchronous) + Live Defense (Final Exam Block, Nov 20)</div>
+    </div>
+    <div class="capstone-body">
+      <h3>The Commission</h3>
+      <p>JU's Athletics Director has formally commissioned the Data Analytics unit to produce a scouting report. The student is the data analyst. The director has a question about one of the varsity programs — recruiting, positional fit, performance trends, injury patterns, training load, team comparisons — and needs the answer in language she can act on. She does not read SQL. She does not read code. She reads conclusions, evidence, and recommendations.</p>
+
+      <h3>The Process</h3>
+      <p><strong>Week 13 (Commission Check-In):</strong> Submit the research question, stakeholder, statistical approach, and data plan. Dr. Robertson approves, sharpens, or returns for revision. NotebookLM consultation required before submission: students use AI to find the weakest point in their plan.</p>
+      <p><strong>Week 14 (Analysis + Report):</strong> Build the complete analysis in Google Colab, organized by Decision Cycle headers (QUERY, INTERPRET, DECIDE, JUSTIFY). Write the 1-2 page scouting report for the Athletics Director with presentation-quality visualizations embedded in the document.</p>
+      <p><strong>Final Exam Block (Live Defense):</strong> 5-8 minutes. Present directly from report and notebook. Defend every phase of the Decision Cycle under questioning, including the AI boundary probe: "Show me where you used AI and tell me exactly what you decided was wrong with its first suggestion."</p>
+
+      <h3>Defense Probes</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Why this question? Who benefits from the answer?</div>
+        <div class="topic-item">Walk me through your method. Why this test?</div>
+        <div class="topic-item">Explain this visualization to the Athletics Director.</div>
+        <div class="topic-item">Statistical vs. practical significance — which did you find?</div>
+        <div class="topic-item">State your recommendation in one sentence.</div>
+        <div class="topic-item">I'm a coach who disagrees. Convince me.</div>
+        <div class="topic-item">What's the biggest limitation of your analysis?</div>
+        <div class="topic-item">Where did you use AI, and what did you override?</div>
+      </div>
+
+      <h3>What This Proves</h3>
+      <p>A student who passes this defense has demonstrated that they can occupy the Data Analyst seat at the sport science team table. They can query data, interpret it, decide on a recommendation, and justify it under questioning. This is the analytical engine that powers everything else in the pipeline.</p>
+    </div>
+  </div>
+
+  <!-- FRAMEWORKS -->
+  <div class="section-label" style="margin-top:2.5rem;"><span class="s-line"></span><span class="s-text">Pedagogical Framework</span><span class="s-line"></span></div>
+
+  <div class="fw-box fw-green">
+    <h3>Water Pedagogy: Encounter Before Explanation</h3>
+    <p>There are no dedicated practice or review sessions. Every content session includes exploration and application — students encounter the problem before receiving the framework that names it. Competencies arrive without rehearsal. This is deliberate: the encounter-first model builds the tolerance for ambiguity that professional practice demands. A sport science data analyst doesn't get a practice round before the coach asks for the report.</p>
+  </div>
+
+  <div class="fw-box fw-gold" style="margin-top:1rem;">
+    <h3>AI Integration: From Day One</h3>
+    <p>Students have access to Claude and NotebookLM from the first session. AI tools are used to generate SQL queries, write Python code, troubleshoot errors, and explore alternative approaches. The principle is consistent and explicit: AI does the labor, the student owns the thinking. The AI boundary probe in every competency and the final defense tests this directly. If a student cannot explain what their AI-generated code does, they do not pass.</p>
+  </div>
+
+  <div class="fw-box fw-green" style="margin-top:1rem;">
+    <h3>Competency-Based, Pass/Fail Assessment</h3>
+    <p>Two in-class competencies plus the End-of-Semester Project. All pass/fail. No exams. No partial credit. Students demonstrate understanding under questioning, in the moment, without a net. C01 gates descriptive analysis. C02 gates probability and inference. The project gates the full Decision Cycle applied to a self-chosen question. The standard is the same in every course in the pipeline: if you can't explain it, you don't own it.</p>
+  </div>
+
+  <!-- WHERE THIS LEADS -->
+  <div class="section-label" style="margin-top:2.5rem;"><span class="s-line"></span><span class="s-text">Where This Leads</span><span class="s-line"></span></div>
+
+  <div class="fw-box fw-green">
+    <h3>The Analytical Engine for the Entire Pipeline</h3>
+    <p>Students who pass HLSC 205 carry forward the ability to query data, describe it, test hypotheses about it, and communicate findings to stakeholders. In EXSC 325, the question shifts from "what does the data say?" to "what should we do about it?" — the same database, the same tools, but now the output is a coaching prescription rather than a scouting report. In EXSC 442, the methods become predictive rather than inferential. In EXSC 405, the reasoning applies to clinical anatomy and injury. In HLSC 499, the data becomes real. In HLSC 490, the analysis becomes daily professional practice. What students build here — the querying habits, the Decision Cycle fluency, the AI-as-labor-partner workflow — is the foundation that every subsequent course depends on.</p>
+  </div>
+
+</div>
+
+<div class="footer">
+  Dr. Chris Robertson · Associate Professor, Health & Exercise Sciences · Jacksonville University · Sport Science Decision Lab · HLSC 205 Course Structure Document
+</div>
+
+</body>
+</html>
