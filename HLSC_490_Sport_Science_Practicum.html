@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HLSC 490 — Sport Science Practicum</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#1B6B5A;--green-light:#2A8F76;--green-pale:#E8F0ED;--gold:#D4A84B;--gold-light:#F5EDD6;--ink:#1a1a1a;--text:#2d2d2d;--muted:#6b6b6b;--bg:#FAFAF8;--white:#fff;--border:#e0ddd8;--shadow:0 2px 20px rgba(0,0,0,.06)}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}.header{background:linear-gradient(135deg,#0f4a3d 0%,#0a3a30 100%);color:#fff;padding:3rem 2rem 2.5rem;position:relative;overflow:hidden}.header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--gold)}.header-inner{max-width:900px;margin:0 auto}.header .dept{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;opacity:.65;margin-bottom:.5rem}.header .course-code{font-size:.85rem;font-weight:600;letter-spacing:.08em;background:rgba(255,255,255,.15);display:inline-block;padding:.25rem .75rem;border-radius:4px;margin-bottom:.75rem}.header h1{font-family:'Source Serif 4',serif;font-size:2.1rem;font-weight:700;line-height:1.2;margin-bottom:.5rem}.header .subtitle{font-size:.95rem;font-weight:300;opacity:.85;max-width:640px}.main{max-width:900px;margin:0 auto;padding:2.5rem 2rem 4rem}.meta-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:8px;overflow:hidden;margin-bottom:2.5rem;box-shadow:var(--shadow)}.meta-item{background:var(--white);padding:1rem;text-align:center}.meta-item .meta-label{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem}.meta-item .meta-value{font-weight:600;font-size:.9rem;color:var(--ink)}.intro{font-family:'Source Serif 4',serif;font-size:1.02rem;line-height:1.75;color:var(--text);max-width:780px;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}.section-label{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;margin-top:2.5rem}.section-label .s-line{flex:1;height:1px;background:var(--border)}.section-label .s-text{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);white-space:nowrap;font-weight:600}.block-card{background:var(--white);border-radius:10px;box-shadow:var(--shadow);margin-bottom:1.75rem;overflow:hidden;border:1px solid var(--border)}.block-header{padding:1.25rem 1.75rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:1rem}.block-num{flex-shrink:0;width:48px;height:48px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.62rem;color:#fff;line-height:1.1;text-align:center}.block-header-text h2{font-family:'Source Serif 4',serif;font-size:1.15rem;font-weight:600;color:var(--ink);margin-bottom:.1rem}.block-header-text .block-meta{font-size:.8rem;color:var(--muted)}.block-body{padding:1.5rem 1.75rem 1.75rem}.block-body h3{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:.5rem;margin-top:1.15rem}.block-body h3:first-child{margin-top:0}.block-body p{font-size:.88rem;line-height:1.7;margin-bottom:.65rem}.topic-grid{display:grid;grid-template-columns:1fr 1fr;gap:.4rem 1.25rem}.topic-item{font-size:.83rem;padding:.3rem 0;color:var(--text);border-bottom:1px solid #f0eeea;display:flex;align-items:baseline;gap:.45rem}.topic-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green-light);flex-shrink:0;position:relative;top:-1px}.sc-question{background:var(--gold-light);border-left:3px solid var(--gold);padding:.75rem 1rem;margin:.75rem 0;font-size:.85rem;font-style:italic;color:#5a4a1a;border-radius:0 6px 6px 0}.fw-box{border-radius:10px;padding:1.5rem 1.75rem;margin-top:1.5rem;border:1px solid}.fw-green{background:var(--green-pale);border-color:#c5ddd5}.fw-gold{background:var(--gold-light);border-color:#e0d0a0}.fw-box h3{font-family:'Source Serif 4',serif;font-size:1.05rem;font-weight:600;color:var(--green);margin-bottom:.75rem}.fw-box p{font-size:.88rem;line-height:1.7;margin-bottom:.6rem}.pipeline-position{display:flex;gap:0;margin:1.25rem 0;border-radius:6px;overflow:hidden;font-size:.7rem}.pip-step{flex:1;padding:.55rem .25rem;text-align:center;color:#fff;opacity:.5}.pip-step.active{opacity:1;box-shadow:inset 0 -3px 0 var(--gold)}.pip-step .pip-code{font-weight:700;font-size:.72rem}.pip-step .pip-name{font-size:.6rem;opacity:.8}
+/* MODEL CARDS */
+.model-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:1rem 0}
+.model-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:1.25rem;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+.model-card .model-label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem;font-weight:600}
+.model-card h4{font-family:'Source Serif 4',serif;font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.5rem}
+.model-card p{font-size:.82rem;line-height:1.65;margin-bottom:.4rem}
+.model-card .model-credits{font-size:.75rem;color:var(--green);font-weight:600;margin-top:.5rem}
+.model-card .model-best{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:.35rem}
+/* ROTATION TABLE */
+.rotation-strip{display:flex;gap:0;border-radius:6px;overflow:hidden;margin:1rem 0;font-size:.78rem}
+.rot-step{flex:1;padding:.7rem .5rem;text-align:center;color:#fff}
+.rot-step .rot-num{font-weight:700;font-size:.7rem;opacity:.7;margin-bottom:.15rem}
+.rot-step .rot-dept{font-weight:600;font-size:.78rem}
+.rot-step .rot-lens{font-size:.65rem;opacity:.8;font-style:italic;margin-top:.15rem}
+/* COMPETENCY TABLE */
+.comp-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.83rem}
+.comp-table th{text-align:left;padding:.5rem .75rem;background:var(--green);color:#fff;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.comp-table td{padding:.5rem .75rem;border-bottom:1px solid #f0eeea}
+.comp-table tr:last-child td{border-bottom:none}
+.footer{max-width:900px;margin:0 auto;padding:1.5rem 2rem 3rem;font-size:.73rem;color:var(--muted);border-top:1px solid var(--border)}
+@media(max-width:700px){.meta-bar{grid-template-columns:repeat(2,1fr)}.topic-grid,.model-grid{grid-template-columns:1fr}.pipeline-position,.rotation-strip{flex-direction:column}.header h1{font-size:1.5rem}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="dept">Jacksonville University · Health & Exercise Sciences</div>
+    <div class="course-code">HLSC 490 · Internship</div>
+    <h1>Sport Science Practicum</h1>
+    <div class="subtitle">Where analytical thinking becomes professional practice — real athletes, real coaches, real stakes, real operational pressure</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="meta-bar">
+    <div class="meta-item"><div class="meta-label">Professional Lens</div><div class="meta-value">Integrated Practitioner</div></div>
+    <div class="meta-item"><div class="meta-label">Prerequisites</div><div class="meta-value">205, 325, 405</div></div>
+    <div class="meta-item"><div class="meta-label">Credit Options</div><div class="meta-value">1–3 Credits</div></div>
+    <div class="meta-item"><div class="meta-label">Assessment</div><div class="meta-value">Competency-Based</div></div>
+  </div>
+
+  <div class="intro">
+    Every course before this one was preparation. HLSC 205 built the analytical engine. EXSC 325 turned data into coaching prescriptions. EXSC 405 connected anatomy to clinical reasoning. HLSC 499 proved students could design and execute independent research for real stakeholders. Now the preparation ends. In HLSC 490, students apply the full Decision Cycle framework to real athletes, real coaches, and real operational pressure as Sport Science Interns. They are not observing. They are not shadowing. They are doing the work — collecting data, running analyses, presenting findings, and making recommendations that affect actual training decisions. They leave not just with knowledge, but with demonstrated competence.
+  </div>
+
+  <div class="pipeline-position">
+    <div class="pip-step" style="background:#3a9e8a;"><div class="pip-code">205</div><div class="pip-name">Statistics</div></div>
+    <div class="pip-step" style="background:#2d8572;"><div class="pip-code">325</div><div class="pip-name">Motor Control</div></div>
+    <div class="pip-step" style="background:#1B6B5A;"><div class="pip-code">442</div><div class="pip-name">Predictive Analytics</div></div>
+    <div class="pip-step" style="background:#1B6B5A;"><div class="pip-code">405</div><div class="pip-name">Anatomy</div></div>
+    <div class="pip-step" style="background:#155a4b;"><div class="pip-code">499</div><div class="pip-name">Thesis</div></div>
+    <div class="pip-step active" style="background:#0f4a3d;"><div class="pip-code">490</div><div class="pip-name">Practicum</div></div>
+  </div>
+
+  <!-- THE STUDENT PROFILE -->
+  <div class="fw-box fw-green">
+    <h3>The Student Who Arrives</h3>
+    <p>A student completing the three-course foundational sequence arrives with a defined professional toolkit. From HLSC 205: AI-assisted SQL querying, statistical test selection and execution, data visualization, and professional AI prompting for analysis. From EXSC 325: movement screening and assessment, practice design (blocked/random, whole/part), feedback intervention design, training load monitoring (ACWR), and skill acquisition tracking. From EXSC 405: injury mechanism understanding, return-to-play protocol reasoning, biomechanical risk assessment, and rehabilitation outcome tracking. Students who also completed EXSC 442 add logistic regression, mixed-effects models, KNN, Random Forest, and model evaluation to that list.</p>
+    <p>All of this was built on simulated data. The practicum is where they prove it transfers.</p>
+  </div>
+
+  <!-- PLACEMENT MODELS -->
+  <div class="section-label"><span class="s-line"></span><span class="s-text">Four Placement Models</span><span class="s-line"></span></div>
+
+  <div class="model-grid">
+    <!-- OPTION A -->
+    <div class="model-card">
+      <div class="model-label">Option A</div>
+      <h4>Single-Sport Embedded</h4>
+      <p>Student is assigned to one varsity sport for the semester as a Sport Science Intern. They attend practices and competitions, collect and enter performance data, run queries for coaching staff, present at team meetings, and shadow athletic trainers during injury assessments. This model builds deep, sport-specific expertise and the closest professional relationships.</p>
+      <div class="model-credits">1–3 credits (45–135 hours)</div>
+      <div class="model-best">Best for: students who want depth in one program and a strong reference from a single coaching staff</div>
+    </div>
+
+    <!-- OPTION B -->
+    <div class="model-card">
+      <div class="model-label">Option B</div>
+      <h4>Rotation Model</h4>
+      <p>Student rotates through three departments (Analytics/Coaching, Strength & Conditioning, Athletic Training), applying each foundational course's professional lens in sequence. The capstone requirement is an integrated case study on 1-2 athletes seen across all three rotations — demonstrating the multi-lens reasoning the entire pipeline was designed to build.</p>
+      <div class="model-credits">3 credits (135 hours = 45 per rotation)</div>
+      <div class="model-best">Best for: students who want breadth and who completed all three foundational courses</div>
+    </div>
+
+    <!-- OPTION C -->
+    <div class="model-card">
+      <div class="model-label">Option C</div>
+      <h4>Project-Based</h4>
+      <p>Athletics poses a real research or operational question, and the student conducts the full investigation: proposal, data collection and analysis, written report, staff presentation, and recommendations document. This model mirrors the HLSC 499 thesis but with a tighter operational focus and faster turnaround — the deliverable is a decision tool, not an academic paper.</p>
+      <div class="model-credits">2–3 credits (90–135 hours)</div>
+      <div class="model-best">Best for: students with strong analytical skills (especially 442 completers) who want a portfolio-quality project</div>
+    </div>
+
+    <!-- OPTION D -->
+    <div class="model-card">
+      <div class="model-label">Option D</div>
+      <h4>Athlete Case Management</h4>
+      <p>Student is assigned 3-5 athletes to follow longitudinally for the semester. For each athlete they create three deliverables through the three professional lenses: a performance dashboard (205 lens), a motor control profile with training recommendations (325 lens), and an injury risk assessment with prevention plan (405 lens). Weekly duties include athlete check-ins, data updates, staff consultations, and progress notes.</p>
+      <div class="model-credits">2 credits (90 hours)</div>
+      <div class="model-best">Best for: students interested in athletic training or sports medicine who want longitudinal case experience</div>
+    </div>
+  </div>
+
+  <!-- ROTATION DETAIL -->
+  <div class="section-label"><span class="s-line"></span><span class="s-text">Option B Detail — The Three-Lens Rotation</span><span class="s-line"></span></div>
+
+  <div class="rotation-strip">
+    <div class="rot-step" style="background:#3a9e8a;">
+      <div class="rot-num">Rotation 1</div>
+      <div class="rot-dept">Analytics / Coaching Staff</div>
+      <div class="rot-lens">HLSC 205 Lens</div>
+    </div>
+    <div class="rot-step" style="background:#2d8572;">
+      <div class="rot-num">Rotation 2</div>
+      <div class="rot-dept">Strength & Conditioning</div>
+      <div class="rot-lens">EXSC 325 Lens</div>
+    </div>
+    <div class="rot-step" style="background:#1B6B5A;">
+      <div class="rot-num">Rotation 3</div>
+      <div class="rot-dept">Athletic Training</div>
+      <div class="rot-lens">EXSC 405 Lens</div>
+    </div>
+  </div>
+
+  <p style="font-size:.88rem;line-height:1.7;margin-bottom:1rem;">The rotation model is the structural payoff of the foundational tier. A student who has sat in all three seats at the sport science team table in simulation now rotates through all three departments in practice. Each rotation is supervised by the relevant professional (sport coach, S&C coach, head athletic trainer), and the student applies the specific course lens for that rotation. The integrated case study at the end requires pulling from all three rotations — the same multi-lens synthesis they practiced in NB5 of EXSC 325 and in the multi-table queries of EXSC 405, but now with real athletes and real supervisors reading the output.</p>
+
+  <!-- SINGLE-SPORT EMBEDDED DETAIL -->
+  <div class="section-label"><span class="s-line"></span><span class="s-text">Option A Detail — Single-Sport Semester Timeline</span><span class="s-line"></span></div>
+
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num" style="background:#0f4a3d;">16<br>WK</div>
+      <div class="block-header-text">
+        <h2>Embedded Semester Arc</h2>
+        <div class="block-meta">From orientation through synthesis — one sport, full depth</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>Weeks 1–2 · Orientation + Baseline Assessments</h3>
+      <p>Meet the coaching staff. Learn the program's culture, terminology, and operational rhythms. Enter baseline movement screening data for the roster. Establish the data collection protocols that will govern the rest of the semester. First deliverable: a clean dataset the coaching staff can reference.</p>
+
+      <h3>Weeks 3–6 · Training Load Monitoring</h3>
+      <p>Collect and enter real performance data at every practice and competition. Run ACWR calculations and produce weekly training load reports for the coaching staff. Learn to communicate load data in language the coach uses, not the language the textbook uses. Deliverable: weekly ACWR reports delivered directly to the sport coach.</p>
+
+      <h3>Weeks 7–10 · Performance Tracking</h3>
+      <p>Shift from data entry to data interpretation. Run queries against the accumulating season dataset. Build visualizations that show performance trends, positional comparisons, and individual trajectories. Present a mid-season analysis to the coaching staff — the first time the student stands in front of professionals and defends an interpretation. Deliverable: mid-season performance analysis presentation.</p>
+
+      <h3>Weeks 11–14 · Intervention Implementation</h3>
+      <p>Design and implement one motor control or performance intervention with 3-5 athletes, drawing from the feedback, practice design, and training load principles of EXSC 325. Track the intervention's effects in the database. This is the Decision Cycle operating at full speed: QUERY (what's the problem?), INTERPRET (what does the data show?), DECIDE (what intervention?), JUSTIFY (what's the theory and the evidence?). Deliverable: intervention tracking data with preliminary results.</p>
+
+      <h3>Weeks 15–16 · Synthesis</h3>
+      <p>Compile the semester's work into a comprehensive end-of-season performance report for the coaching staff. Present findings, highlight what the data revealed that wasn't obvious from watching practice, and make recommendations for the off-season. Deliverable: end-of-season performance report and exit presentation.</p>
+    </div>
+  </div>
+
+  <!-- COMPETENCY ASSESSMENT -->
+  <div class="section-label"><span class="s-line"></span><span class="s-text">Competency Assessment</span><span class="s-line"></span></div>
+
+  <div class="fw-box fw-green">
+    <h3>Five Demonstrated Competencies</h3>
+    <p>Assessment is competency-based, consistent with every course in the pipeline. Supervisors evaluate professional behavior, analytical quality, and communication effectiveness. Students produce tangible deliverables and present findings to real stakeholders. The standard remains: if you can't explain it, you don't own it.</p>
+  </div>
+
+  <table class="comp-table">
+    <tr>
+      <th style="width:35%;">Competency</th>
+      <th>Demonstration Standard</th>
+    </tr>
+    <tr>
+      <td><strong>Data Query & Analysis</strong></td>
+      <td>Generate 5+ actionable analytical reports for coaching or athletic training staff using the shared database and Decision Cycle structure</td>
+    </tr>
+    <tr>
+      <td><strong>Motor Control Application</strong></td>
+      <td>Design and implement at least one training intervention grounded in motor learning theory, with documented rationale and tracked outcomes</td>
+    </tr>
+    <tr>
+      <td><strong>Injury Risk Assessment</strong></td>
+      <td>Complete movement screening-based risk profiles for assigned athletes with evidence-based prevention recommendations</td>
+    </tr>
+    <tr>
+      <td><strong>Professional Communication</strong></td>
+      <td>Present analytical findings to coaches, athletic trainers, or S&C staff at least twice during the semester, defending recommendations under questioning</td>
+    </tr>
+    <tr>
+      <td><strong>Ethical Data Handling</strong></td>
+      <td>Maintain FERPA compliance throughout the placement. No athlete data leaves the authorized system. No identifiable information in any deliverable shared outside the athletics department</td>
+    </tr>
+  </table>
+
+  <!-- SUPERVISOR FRAMEWORK -->
+  <div class="section-label"><span class="s-line"></span><span class="s-text">Supervision & Evaluation</span><span class="s-line"></span></div>
+
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num" style="background:#155a4b;">EVAL</div>
+      <div class="block-header-text">
+        <h2>Dual Evaluation Model</h2>
+        <div class="block-meta">Faculty Advisor + Site Supervisor</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>Faculty Advisor (Dr. Robertson)</h3>
+      <p>Sets learning objectives with the student at placement start. Reviews deliverables for analytical quality and Decision Cycle adherence. Conducts mid-semester check-in and final portfolio review. Grades all academic components (reflection journal, final report, exit presentation). Ensures the practicum experience connects back to the foundational coursework rather than becoming untethered task completion.</p>
+
+      <h3>Site Supervisor (Athletics Staff)</h3>
+      <p>Provides daily operational supervision. Evaluates professional behavior, reliability, communication, and the usefulness of the student's analytical contributions to the program. Completes a formal mid-semester check-in and a final evaluation form. The supervisor evaluation is required but does not carry a letter grade — it is professional feedback that the student includes in their portfolio.</p>
+
+      <h3>Student Deliverables</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Weekly reflection journal (Decision Cycle applied to each week's work)</div>
+        <div class="topic-item">Mid-semester progress report</div>
+        <div class="topic-item">Final portfolio or comprehensive report</div>
+        <div class="topic-item">Exit presentation to athletics staff</div>
+        <div class="topic-item">Supervisor evaluation (mid-semester + final)</div>
+        <div class="topic-item">Professional behavior self-assessment</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MUTUAL VALUE -->
+  <div class="section-label"><span class="s-line"></span><span class="s-text">The Partnership Value Exchange</span><span class="s-line"></span></div>
+
+  <div class="model-grid">
+    <div class="model-card">
+      <h4>What Students Get</h4>
+      <p>Real experience for a resume. A professional network within collegiate athletics. Portfolio pieces with actual outcomes attached. Potential job or graduate assistantship references from coaches and athletic trainers who have watched them work. And a documented competency record showing they have done the job — not in a classroom exercise, not in a simulated scenario, but for real people making real decisions about real athletes.</p>
+    </div>
+    <div class="model-card">
+      <h4>What Athletics Gets</h4>
+      <p>Skilled analytical labor — students who can query the database, run reports, and produce visualizations that the staff doesn't have time to build. A fresh perspective on their own data. A pipeline of trained students who understand the program's systems and could return as graduate assistants. And a culture of data-informed practice that accumulates over semesters as each cohort builds on the previous one's work.</p>
+    </div>
+  </div>
+
+  <!-- PEDAGOGICAL FRAMEWORK -->
+  <div class="section-label" style="margin-top:2.5rem;"><span class="s-line"></span><span class="s-text">Pedagogical Framework</span><span class="s-line"></span></div>
+
+  <div class="fw-box fw-green">
+    <h3>Decision Cycle as Professional Habit</h3>
+    <p>In HLSC 205, the Decision Cycle was a learning scaffold — students used it because the assignment required it. In EXSC 325, it became the structure for coaching prescriptions. In EXSC 405, it governed clinical reasoning. In HLSC 499, students executed it independently on a real research question. Here in HLSC 490, the Decision Cycle is no longer an assignment structure. It is a professional habit. Students Query before they analyze, Interpret before they recommend, Decide with specificity, and Justify under the gaze of coaches who will implement (or reject) their recommendation. The cycle has moved from scaffolding to instinct.</p>
+  </div>
+
+  <div class="fw-box fw-gold" style="margin-top:1rem;">
+    <h3>AI in Professional Context</h3>
+    <p>Students bring their AI-as-labor-partner workflow into the placement. They use Claude and other tools to generate code, troubleshoot queries, and draft report structures — the same way a working sport science analyst would. The difference from coursework is that the output has an immediate audience with immediate consequences. A dashboard built for a coach is reviewed by that coach, not by Dr. Robertson. A training load report presented at a team meeting is questioned by professionals who care about the answer, not about the method. The AI boundary is enforced by the professional context itself: if the student can't explain what their tool produced, the coach won't trust it.</p>
+  </div>
+
+  <div class="fw-box fw-green" style="margin-top:1rem;">
+    <h3>The Simulated-to-Real Completion</h3>
+    <p>The entire pipeline was designed to make this transition feel natural rather than overwhelming. Students have worked with the same database schema, the same Decision Cycle, the same professional role structure, and the same AI tools across every foundational course. The only variable that changed was the stakes. In the practicum, the stakes are fully real — but the infrastructure is familiar. A student who built a performance dashboard in HLSC 205, designed a coaching intervention in EXSC 325, and defended a thesis for JU Athletics in HLSC 499 already knows the work. In HLSC 490, they simply do it every day.</p>
+  </div>
+
+  <!-- VISION -->
+  <div class="section-label" style="margin-top:2.5rem;"><span class="s-line"></span><span class="s-text">The Culmination</span><span class="s-line"></span></div>
+
+  <div class="fw-box fw-green">
+    <h3>Where the Pipeline Ends — and Where the Career Begins</h3>
+    <p>HLSC 490 is the final station in the Sport Science Decision Lab. Students who complete it have occupied every seat at the sport science team table: data analyst, performance coach, sports medicine clinician, applied researcher, and professional practitioner. They have queried the same data from five professional perspectives and made decisions with progressively higher stakes across their entire undergraduate career. They leave with a portfolio, a professional network, demonstrated competencies, and the one thing no classroom can provide: the experience of having done the work for someone who needed the answer.</p>
+    <p>The pipeline positions graduates for entry into sport science, athletic training, strength and conditioning, sports medicine, and healthcare data analytics roles across Florida's workforce. But more than career preparation, it has trained a specific professional capacity: the ability to encounter ambiguous data, determine what it means for a real person, defend that interpretation to a stakeholder, and accept responsibility for the recommendation. That capacity does not expire with graduation. It is the foundation of every analytical decision they will make for the rest of their career.</p>
+  </div>
+
+</div>
+
+<div class="footer">
+  Dr. Chris Robertson · Associate Professor, Health & Exercise Sciences · Jacksonville University · Sport Science Decision Lab · HLSC 490 Course Structure Document
+</div>
+
+</body>
+</html>

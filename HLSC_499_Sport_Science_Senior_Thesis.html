@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HLSC 499 — Sport Science Senior Thesis</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#1B6B5A;--green-light:#2A8F76;--green-pale:#E8F0ED;--gold:#D4A84B;--gold-light:#F5EDD6;--ink:#1a1a1a;--text:#2d2d2d;--muted:#6b6b6b;--bg:#FAFAF8;--white:#fff;--border:#e0ddd8;--shadow:0 2px 20px rgba(0,0,0,.06)}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}.header{background:linear-gradient(135deg,#155a4b 0%,#0f4a3d 100%);color:#fff;padding:3rem 2rem 2.5rem;position:relative;overflow:hidden}.header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--gold)}.header-inner{max-width:900px;margin:0 auto}.header .dept{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;opacity:.65;margin-bottom:.5rem}.header .course-code{font-size:.85rem;font-weight:600;letter-spacing:.08em;background:rgba(255,255,255,.15);display:inline-block;padding:.25rem .75rem;border-radius:4px;margin-bottom:.75rem}.header h1{font-family:'Source Serif 4',serif;font-size:2.1rem;font-weight:700;line-height:1.2;margin-bottom:.5rem}.header .subtitle{font-size:.95rem;font-weight:300;opacity:.85;max-width:640px}.main{max-width:900px;margin:0 auto;padding:2.5rem 2rem 4rem}.meta-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:8px;overflow:hidden;margin-bottom:2.5rem;box-shadow:var(--shadow)}.meta-item{background:var(--white);padding:1rem;text-align:center}.meta-item .meta-label{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem}.meta-item .meta-value{font-weight:600;font-size:.9rem;color:var(--ink)}.intro{font-family:'Source Serif 4',serif;font-size:1.02rem;line-height:1.75;color:var(--text);max-width:780px;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}.section-label{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;margin-top:2.5rem}.section-label .s-line{flex:1;height:1px;background:var(--border)}.section-label .s-text{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);white-space:nowrap;font-weight:600}.block-card{background:var(--white);border-radius:10px;box-shadow:var(--shadow);margin-bottom:1.75rem;overflow:hidden;border:1px solid var(--border)}.block-header{padding:1.25rem 1.75rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:1rem}.block-num{flex-shrink:0;width:48px;height:48px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.62rem;color:#fff;line-height:1.1;text-align:center}.block-header-text h2{font-family:'Source Serif 4',serif;font-size:1.15rem;font-weight:600;color:var(--ink);margin-bottom:.1rem}.block-header-text .block-meta{font-size:.8rem;color:var(--muted)}.block-body{padding:1.5rem 1.75rem 1.75rem}.block-body h3{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:.5rem;margin-top:1.15rem}.block-body h3:first-child{margin-top:0}.block-body p{font-size:.88rem;line-height:1.7;margin-bottom:.65rem}.topic-grid{display:grid;grid-template-columns:1fr 1fr;gap:.4rem 1.25rem}.topic-item{font-size:.83rem;padding:.3rem 0;color:var(--text);border-bottom:1px solid #f0eeea;display:flex;align-items:baseline;gap:.45rem}.topic-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green-light);flex-shrink:0;position:relative;top:-1px}.sc-question{background:var(--gold-light);border-left:3px solid var(--gold);padding:.75rem 1rem;margin:.75rem 0;font-size:.85rem;font-style:italic;color:#5a4a1a;border-radius:0 6px 6px 0}.fw-box{border-radius:10px;padding:1.5rem 1.75rem;margin-top:1.5rem;border:1px solid}.fw-green{background:var(--green-pale);border-color:#c5ddd5}.fw-gold{background:var(--gold-light);border-color:#e0d0a0}.fw-box h3{font-family:'Source Serif 4',serif;font-size:1.05rem;font-weight:600;color:var(--green);margin-bottom:.75rem}.fw-box p{font-size:.88rem;line-height:1.7;margin-bottom:.6rem}.pipeline-position{display:flex;gap:0;margin:1.25rem 0;border-radius:6px;overflow:hidden;font-size:.7rem}.pip-step{flex:1;padding:.55rem .25rem;text-align:center;color:#fff;opacity:.5}.pip-step.active{opacity:1;box-shadow:inset 0 -3px 0 var(--gold)}.pip-step .pip-code{font-weight:700;font-size:.72rem}.pip-step .pip-name{font-size:.6rem;opacity:.8}
+/* MILESTONE STRIP */
+.ms-strip{display:flex;gap:0;margin:1.25rem 0;border-radius:6px;overflow:hidden;font-size:.72rem}
+.ms-step{flex:1;padding:.6rem .3rem;text-align:center;color:#fff;border-right:1px solid rgba(255,255,255,.15)}
+.ms-step:last-child{border-right:none}
+.ms-step .ms-wk{font-weight:700;font-size:.6rem;opacity:.65;margin-bottom:.1rem}
+.ms-step .ms-name{font-weight:600;font-size:.68rem;line-height:1.3}
+/* DUAL TIMELINE */
+.timeline-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1rem 0}
+.timeline-col{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:1.25rem;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+.timeline-col h4{font-family:'Source Serif 4',serif;font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:.15rem}
+.timeline-col .tl-sub{font-size:.75rem;color:var(--muted);margin-bottom:.75rem}
+.tl-row{display:flex;gap:.5rem;padding:.35rem 0;border-bottom:1px solid #f5f3ef;font-size:.8rem;align-items:baseline}
+.tl-row:last-child{border-bottom:none}
+.tl-wk{font-weight:700;color:var(--green);min-width:2.5rem;flex-shrink:0;font-size:.75rem}
+.tl-item{color:var(--text)}
+/* BRIDGE TABLE */
+.bridge-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.82rem}
+.bridge-table td{padding:.45rem .75rem;border-bottom:1px solid #f0eeea;vertical-align:top}
+.bridge-table .bt-sim{color:var(--muted)}
+.bridge-table .bt-arrow{text-align:center;color:var(--green);font-weight:600;width:2rem}
+.bridge-table .bt-real{color:var(--ink);font-weight:500}
+.bridge-table tr:first-child td{border-top:2px solid var(--green);padding-top:.6rem}
+/* EXAMPLE Q TABLE */
+.eq-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.82rem}
+.eq-table th{text-align:left;padding:.5rem .75rem;background:var(--green);color:#fff;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.eq-table td{padding:.45rem .75rem;border-bottom:1px solid #f0eeea}
+.capstone-card{background:var(--white);border:2px solid var(--green);border-radius:10px;overflow:hidden;margin-top:1.75rem}.capstone-header{background:var(--green);color:#fff;padding:1.25rem 1.75rem}.capstone-header h2{font-family:'Source Serif 4',serif;font-size:1.2rem;font-weight:600}.capstone-header .cap-sub{font-size:.85rem;opacity:.8;margin-top:.2rem}.capstone-body{padding:1.5rem 1.75rem 1.75rem}.capstone-body h3{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:.5rem;margin-top:1.15rem}.capstone-body h3:first-child{margin-top:0}.capstone-body p{font-size:.88rem;line-height:1.7;margin-bottom:.65rem}
+.footer{max-width:900px;margin:0 auto;padding:1.5rem 2rem 3rem;font-size:.73rem;color:var(--muted);border-top:1px solid var(--border)}
+@media(max-width:700px){.meta-bar{grid-template-columns:repeat(2,1fr)}.topic-grid,.timeline-grid{grid-template-columns:1fr}.pipeline-position,.ms-strip{flex-direction:column}.header h1{font-size:1.5rem}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="dept">Jacksonville University · Health & Exercise Sciences</div>
+    <div class="course-code">HLSC 499WSR · Senior Seminar</div>
+    <h1>Sport Science Senior Thesis</h1>
+    <div class="subtitle">Independent research, real stakeholders, and the transition from simulated data to authentic sport science investigation</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="meta-bar">
+    <div class="meta-item"><div class="meta-label">Professional Lens</div><div class="meta-value">Sport Scientist</div></div>
+    <div class="meta-item"><div class="meta-label">Format Options</div><div class="meta-value">8-Week or 16-Week</div></div>
+    <div class="meta-item"><div class="meta-label">Delivery</div><div class="meta-value">Fully Online + Defense</div></div>
+    <div class="meta-item"><div class="meta-label">W / S / R</div><div class="meta-value">Intensive Designations</div></div>
+  </div>
+
+  <div class="intro">
+    Every course before this one used simulated data. The queries were real, the statistical tests were real, the motor control theories were real, and the clinical anatomy was real. But the athletes were simulated, the coaches were hypothetical, and the stakes were academic. In HLSC 499, all three become authentic. Students develop, refine, and defend an argumentative senior thesis in sport science. The thesis advances a clear, defensible claim supported by evidence, reasoning, and engagement with alternative viewpoints. It is not a summary of existing research, but a position the student develops and defends. With the JU Athletics research partnership, that position is grounded in real institutional data and answers a question a real stakeholder wants answered.
+  </div>
+
+  <div class="pipeline-position">
+    <div class="pip-step" style="background:#3a9e8a;"><div class="pip-code">205</div><div class="pip-name">Statistics</div></div>
+    <div class="pip-step" style="background:#2d8572;"><div class="pip-code">325</div><div class="pip-name">Motor Control</div></div>
+    <div class="pip-step" style="background:#1B6B5A;"><div class="pip-code">442</div><div class="pip-name">Predictive Analytics</div></div>
+    <div class="pip-step" style="background:#1B6B5A;"><div class="pip-code">405</div><div class="pip-name">Anatomy</div></div>
+    <div class="pip-step active" style="background:#155a4b;"><div class="pip-code">499</div><div class="pip-name">Thesis</div></div>
+    <div class="pip-step" style="background:#0f4a3d;"><div class="pip-code">490</div><div class="pip-name">Practicum</div></div>
+  </div>
+
+  <!-- COURSE IDENTITY -->
+  <div class="fw-box fw-green">
+    <h3>Two Formats, One Standard</h3>
+    <p>HLSC 499 is offered in both 16-week and 8-week formats. The 16-week version allows expansive development with room for iteration and revision at each milestone. The 8-week version compresses the same intellectual arc into half the time: every phase tightens, the tolerance for false starts disappears, and the proposal-to-defense trajectory demands that students arrive with a clear question and move decisively. In Fall 2026, the course runs as two consecutive 8-week sections, creating the possibility that a first-cohort student's preliminary findings could shape a second-cohort student's follow-up question, building a cumulative research agenda within a single semester.</p>
+    <p>Both formats produce the same deliverable, maintain the same competency standard, and follow the same milestone sequence. The thesis is an argumentative document. The defense is a live demonstration of reasoning. The standard is unchanged across formats: if you can't explain it, you don't own it.</p>
+  </div>
+
+  <!-- MILESTONE SEQUENCE -->
+  <div class="section-label"><span class="s-line"></span><span class="s-text">Thesis Milestone Sequence</span><span class="s-line"></span></div>
+
+  <div class="ms-strip">
+    <div class="ms-step" style="background:#3a9e8a;"><div class="ms-name">Thesis Question</div></div>
+    <div class="ms-step" style="background:#349680;"><div class="ms-name">Prospectus</div></div>
+    <div class="ms-step" style="background:#2d8572;"><div class="ms-name">Literature Review</div></div>
+    <div class="ms-step" style="background:#267564;"><div class="ms-name">Outline</div></div>
+    <div class="ms-step" style="background:#1F6556;"><div class="ms-name">Introduction</div></div>
+    <div class="ms-step" style="background:#1B6B5A;"><div class="ms-name">Arguments</div></div>
+    <div class="ms-step" style="background:#155a4b;"><div class="ms-name">Conclusion</div></div>
+    <div class="ms-step" style="background:#0f4a3d;"><div class="ms-name">Final Thesis</div></div>
+  </div>
+
+  <p style="font-size:.88rem;line-height:1.7;margin-bottom:.5rem;">Each milestone builds on the previous one. There are no standalone assignments — every submission is a layer added to a single evolving thesis project. Each milestone requires both a written submission and a screen-recorded explanation demonstrating the student's reasoning: why this question, why this evidence, why this argument, how the thinking has changed since the last milestone. The screen recordings are the primary evidence of understanding. The written work supports evaluation but is not assessed independently of demonstrated reasoning.</p>
+
+  <!-- DUAL TIMELINES -->
+  <div class="section-label"><span class="s-line"></span><span class="s-text">Timeline Comparison — 16-Week vs. 8-Week</span><span class="s-line"></span></div>
+
+  <div class="timeline-grid">
+    <div class="timeline-col">
+      <h4>16-Week Format</h4>
+      <div class="tl-sub">Spring / Summer · Full development cycle</div>
+      <div class="tl-row"><span class="tl-wk">Wk 2</span><span class="tl-item">Thesis Question</span></div>
+      <div class="tl-row"><span class="tl-wk">Wk 4</span><span class="tl-item">Thesis Prospectus</span></div>
+      <div class="tl-row"><span class="tl-wk">Wk 6</span><span class="tl-item">Annotated Literature Review</span></div>
+      <div class="tl-row"><span class="tl-wk">Wk 8</span><span class="tl-item">Thesis Outline</span></div>
+      <div class="tl-row"><span class="tl-wk">Wk 11</span><span class="tl-item">Introduction Draft</span></div>
+      <div class="tl-row"><span class="tl-wk">Wk 13</span><span class="tl-item">Arguments Draft</span></div>
+      <div class="tl-row"><span class="tl-wk">Wk 15</span><span class="tl-item">Conclusion Draft</span></div>
+      <div class="tl-row"><span class="tl-wk">Wk 16</span><span class="tl-item">Final Thesis + Defense</span></div>
+    </div>
+    <div class="timeline-col">
+      <h4>8-Week Format</h4>
+      <div class="tl-sub">Fall 2026 (two sections) · Compressed cycle</div>
+      <div class="tl-row"><span class="tl-wk">Wk 1</span><span class="tl-item">Thesis Question</span></div>
+      <div class="tl-row"><span class="tl-wk">Wk 2</span><span class="tl-item">Thesis Prospectus</span></div>
+      <div class="tl-row"><span class="tl-wk">Wk 3</span><span class="tl-item">Annotated Literature Review</span></div>
+      <div class="tl-row"><span class="tl-wk">Wk 4</span><span class="tl-item">Thesis Outline</span></div>
+      <div class="tl-row"><span class="tl-wk">Wk 5</span><span class="tl-item">Introduction Draft</span></div>
+      <div class="tl-row"><span class="tl-wk">Wk 6</span><span class="tl-item">Arguments Draft</span></div>
+      <div class="tl-row"><span class="tl-wk">Wk 7</span><span class="tl-item">Conclusion Draft</span></div>
+      <div class="tl-row"><span class="tl-wk">Wk 8</span><span class="tl-item">Final Thesis + Defense</span></div>
+    </div>
+  </div>
+
+  <p style="font-size:.85rem;line-height:1.7;color:var(--muted);margin-top:.5rem;">The 8-week format produces one milestone per week with no gaps. Students must arrive with a question already forming — the course refines it, it doesn't discover it. The 16-week format provides breathing room for iteration, deeper literature engagement, and more revision cycles between the arguments draft and the final document.</p>
+
+  <!-- MILESTONE DETAILS -->
+  <div class="section-label"><span class="s-line"></span><span class="s-text">Milestone Architecture</span><span class="s-line"></span></div>
+
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num" style="background:#3a9e8a;">01–02</div>
+      <div class="block-header-text">
+        <h2>Question & Prospectus</h2>
+        <div class="block-meta">Establishing the Argument</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>The Thesis Question</h3>
+      <p>Students formulate a research question grounded in the health and exercise sciences literature. The question must be argumentative: it proposes a position that can be supported or challenged with evidence, not a topic to be summarized. The screen-recorded explanation requires the student to articulate why this question matters, who the answer serves, and what makes it defensible rather than merely interesting.</p>
+
+      <h3>The Prospectus</h3>
+      <p>The prospectus expands the question into a preliminary argument structure: the claim, the anticipated evidence, the methodology (if empirical), and the strongest counterargument the student expects to confront. This is where weak projects are caught. A prospectus that cannot name the counter-position is not ready to proceed.</p>
+
+      <h3>Athletics Partnership Layer</h3>
+      <div class="sc-question">With the JU Athletics research partnership, students may select from 3-5 research questions submitted by Athletics staff (S&C, Athletic Training, Coaching, Sports Performance). These are questions the staff genuinely wants answered. Students who choose an Athletics question work with real institutional data and produce a dual deliverable: the academic thesis and a practitioner-facing executive summary delivered to the staff who posed the question.</div>
+    </div>
+  </div>
+
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num" style="background:#2d8572;">03–04</div>
+      <div class="block-header-text">
+        <h2>Literature Review & Outline</h2>
+        <div class="block-meta">Building the Evidence Base</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>Annotated Literature Review</h3>
+      <p>Students synthesize peer-reviewed sources to support their thesis claim. The annotations are not summaries — each source entry must explain how the source supports, challenges, or qualifies the student's argument. NotebookLM serves as the primary workspace for organizing sources, developing connections between readings, and tracking how the student's position evolves as they encounter new evidence. The screen-recorded explanation requires the student to walk through their strongest sources and explain how the literature shaped (or changed) their original claim.</p>
+
+      <h3>Thesis Outline</h3>
+      <p>The outline maps the argument's logical structure: the claim, the supporting arguments in sequence, the evidence for each, and the counterargument section. The outline is the skeleton that the remaining milestones will flesh out. Students whose outlines lack a clear argumentative arc are directed to revise before proceeding to drafting.</p>
+
+      <h3>For Athletics Projects</h3>
+      <p>Students working on Athletics questions connect their literature review to the motor control, sport science, and injury prevention research that contextualizes their specific investigation. The literature review for a question like "Does pre-season training load predict in-season injury rates?" would draw from ACWR research, dose-response training load literature, and injury epidemiology — domains the student has already encountered in EXSC 325 and EXSC 405.</p>
+    </div>
+  </div>
+
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num" style="background:#1B6B5A;">05–07</div>
+      <div class="block-header-text">
+        <h2>Introduction, Arguments, & Conclusion Drafts</h2>
+        <div class="block-meta">Constructing and Defending the Argument</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>The Drafting Sequence</h3>
+      <p>Three sequential drafts build the thesis document section by section. Each draft requires a screen-recorded explanation in which the student demonstrates their reasoning, responds to feedback from the previous milestone, and explains how their argument has evolved. The emphasis is on visible thinking: how did the evidence change your position? What did you discover in the data that you didn't expect? Where is the argument weakest, and what would strengthen it?</p>
+
+      <h3>Introduction Draft</h3>
+      <p>Establishes the research question, its significance, and the thesis claim. For Athletics projects, the introduction names the stakeholder, the operational context, and why this question matters to the program.</p>
+
+      <h3>Arguments Draft</h3>
+      <p>The substantive core. Each argument is presented with supporting evidence, connected back to the literature, and tested against counterarguments. For empirical Athletics projects, this section includes the methodology, the data analysis (using the statistical toolkit from HLSC 205 and, where applicable, EXSC 442), and the interpretation of findings. This is the highest-weighted milestone (175 points) because it contains the reasoning that the defense will probe.</p>
+
+      <h3>Conclusion Draft</h3>
+      <p>Synthesizes the argument, acknowledges limitations, and articulates what the findings mean for practice. For Athletics projects, the conclusion feeds directly into the executive summary — the 2-3 page practitioner document written in language a coach can act on.</p>
+    </div>
+  </div>
+
+  <!-- THE SIMULATED-TO-REAL BRIDGE -->
+  <div class="section-label"><span class="s-line"></span><span class="s-text">The Simulated-to-Real Bridge</span><span class="s-line"></span></div>
+
+  <div class="fw-box fw-green">
+    <h3>Same Schema, Same Skills, Real Stakes</h3>
+    <p>Students who completed the foundational courses arrive at 499 having already worked with the sport science database schema in simulated form. The querying skills, statistical methods, and Decision Cycle reasoning are identical. Only the data is real. This transition is the structural payoff of the entire pipeline.</p>
+  </div>
+
+  <table class="bridge-table">
+    <tr>
+      <td class="bt-sim">407 simulated athletes</td>
+      <td class="bt-arrow">→</td>
+      <td class="bt-real">Actual JU athletes</td>
+    </tr>
+    <tr>
+      <td class="bt-sim">Generated performance data</td>
+      <td class="bt-arrow">→</td>
+      <td class="bt-real">Real performance records</td>
+    </tr>
+    <tr>
+      <td class="bt-sim">Practice intervention scenarios</td>
+      <td class="bt-arrow">→</td>
+      <td class="bt-real">Actual training data</td>
+    </tr>
+    <tr>
+      <td class="bt-sim">Hypothetical injury cases</td>
+      <td class="bt-arrow">→</td>
+      <td class="bt-real">Real injury tracking</td>
+    </tr>
+    <tr>
+      <td class="bt-sim">Scouting report for simulated AD</td>
+      <td class="bt-arrow">→</td>
+      <td class="bt-real">Executive summary for actual coaching staff</td>
+    </tr>
+  </table>
+
+  <!-- ATHLETICS RESEARCH QUESTIONS -->
+  <div class="section-label"><span class="s-line"></span><span class="s-text">Athletics Research Partnership</span><span class="s-line"></span></div>
+
+  <div class="fw-box fw-gold">
+    <h3>Real Questions from Real Staff</h3>
+    <p>Each year, JU Athletics departments submit 3-5 research questions they genuinely want answered. Students select or are matched to projects based on interest and prior coursework strengths. These are not hypothetical exercises — they are questions staff members need resolved to inform their practice. Students who take on Athletics projects produce two deliverables: the academic thesis and a 2-3 page executive summary written for coaches and practitioners.</p>
+  </div>
+
+  <table class="eq-table">
+    <tr>
+      <th>Department</th>
+      <th>Example Research Question</th>
+      <th>Primary Course Lens</th>
+    </tr>
+    <tr>
+      <td>Strength & Conditioning</td>
+      <td>Does our pre-season training load predict in-season injury rates?</td>
+      <td>325 + 405</td>
+    </tr>
+    <tr>
+      <td>Basketball Coaching</td>
+      <td>Which practice structure produces better free throw retention?</td>
+      <td>325</td>
+    </tr>
+    <tr>
+      <td>Athletic Training</td>
+      <td>Can movement screening asymmetries identify at-risk athletes?</td>
+      <td>405 + 325</td>
+    </tr>
+    <tr>
+      <td>Sports Performance</td>
+      <td>What factors predict performance decline in conference play?</td>
+      <td>205 + 325</td>
+    </tr>
+    <tr>
+      <td>Rowing</td>
+      <td>Is there an optimal ACWR range for our athletes' erg improvements?</td>
+      <td>325 + 205</td>
+    </tr>
+  </table>
+
+  <p style="font-size:.85rem;line-height:1.7;color:var(--muted);margin-top:.75rem;">Each question maps to one or more foundational course lenses. Students draw on the specific analytical skills from those courses to design and execute their investigation. A student answering the training load question uses the ACWR monitoring skills from EXSC 325 and the injury tracking analysis from EXSC 405. A student answering the practice structure question designs the study using the contextual interference and retention testing frameworks from EXSC 325. The foundational courses didn't just prepare students for this moment — they gave them the specific tools for the specific questions.</p>
+
+  <!-- DEFENSE -->
+  <div class="capstone-card">
+    <div class="capstone-header">
+      <h2>The Thesis Defense</h2>
+      <div class="cap-sub">Final milestone · Public defense + Athletics staff presentation (for partnership projects)</div>
+    </div>
+    <div class="capstone-body">
+      <h3>For All Students</h3>
+      <p>The final thesis document is submitted with a screen-recorded explanation of the complete argument. The defense is the culminating assessment: the student presents their thesis, defends their claim under questioning, and demonstrates that they own every element of the argument — the question, the evidence, the reasoning, and the limitations. The competency standard is the same one that has governed every course in the pipeline: demonstrated understanding, in the moment, without a net.</p>
+
+      <h3>For Athletics Partnership Students</h3>
+      <p>The defense has two audiences. The academic defense is presented to a faculty panel. The Athletics presentation is delivered to the coaching, athletic training, or S&C staff who posed the question. The executive summary is the deliverable for the second audience: 2-3 pages, written in language the staff can act on, with the key finding, the recommendation, and the limitations stated plainly. This dual-audience requirement trains the exact translation skill sport science employers need: the ability to speak both the academic and practitioner languages fluently.</p>
+
+      <h3>Defense Probes</h3>
+      <div class="topic-grid">
+        <div class="topic-item">What is your thesis claim in one sentence?</div>
+        <div class="topic-item">What is the strongest evidence against your position?</div>
+        <div class="topic-item">How did your argument change from prospectus to final draft?</div>
+        <div class="topic-item">Walk me through your methodology. Why this approach?</div>
+        <div class="topic-item">If the data had shown the opposite, what would you argue?</div>
+        <div class="topic-item">Explain your finding to the coaching staff in two sentences.</div>
+        <div class="topic-item">What's the biggest limitation, and what would you do differently?</div>
+        <div class="topic-item">Where did AI support your thinking, and where did you override it?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PEDAGOGICAL FRAMEWORK -->
+  <div class="section-label" style="margin-top:2.5rem;"><span class="s-line"></span><span class="s-text">Pedagogical Framework</span><span class="s-line"></span></div>
+
+  <div class="fw-box fw-green">
+    <h3>Visible Thinking Over Polished Products</h3>
+    <p>The course evaluates demonstrated reasoning, not document quality. Screen-recorded explanations accompany every milestone, requiring students to articulate why they made specific choices and how their thinking evolved. The recordings surface the intellectual process that a written document alone cannot reveal: the hesitation, the revision, the moment a student realizes their original claim doesn't hold. This is competency-based assessment applied to the research process itself — students don't just submit arguments, they explain how they built them.</p>
+  </div>
+
+  <div class="fw-box fw-gold" style="margin-top:1rem;">
+    <h3>NotebookLM as Research Workspace</h3>
+    <p>NotebookLM serves as the primary workspace for organizing sources, developing arguments, and tracking revisions throughout the semester. Students upload their scholarly sources, use NotebookLM to identify connections between readings, test their arguments against the evidence, and surface weaknesses they haven't noticed. The AI functions as a Socratic thinking partner calibrated to push toward argumentative reasoning rather than content generation. NotebookLM content supports learning and revision but is not evaluated independently — the student's demonstrated understanding in the screen recordings and defense is what counts.</p>
+  </div>
+
+  <div class="fw-box fw-green" style="margin-top:1rem;">
+    <h3>IRB and Data Ethics</h3>
+    <p>Athletics partnership projects involve real athlete data and require ethical oversight. Two pathways are available: retrospective analysis of existing de-identified data (likely exempt or expedited IRB review) and prospective data collection requiring full IRB review. The recommendation is to design most projects as retrospective analyses to streamline IRB and ensure completion within the semester. Students learn the IRB process regardless of pathway — navigating ethical review is itself a professional competency that graduates will encounter in any research or clinical setting.</p>
+  </div>
+
+  <!-- WHERE THIS LEADS -->
+  <div class="section-label" style="margin-top:2.5rem;"><span class="s-line"></span><span class="s-text">What Students Leave With</span><span class="s-line"></span></div>
+
+  <div class="fw-box fw-green">
+    <h3>Portfolio, Network, Publication Potential</h3>
+    <p>Students leave HLSC 499 with a portfolio piece demonstrating real institutional impact: a defended thesis, an executive summary delivered to Athletics staff, and a research project with potential for conference presentation at ACSM regional meetings or NSCA state conferences. Athletics partnership students have professional references from coaching and training staff who have received and acted on their work. The thesis demonstrates that the student can formulate a question, build an evidence-based argument, execute an analysis, defend it under questioning, and translate it for a non-academic audience. That is the complete skill set of an applied sport scientist — and it was built across the entire Decision Lab pipeline, one course at a time.</p>
+    <p>In HLSC 490, this research capacity becomes daily professional practice. The thesis project proves the student can do the work once, independently, with guidance. The practicum proves they can do it every day, under operational pressure, for someone who needs the answer by practice time.</p>
+  </div>
+
+</div>
+
+<div class="footer">
+  Dr. Chris Robertson · Associate Professor, Health & Exercise Sciences · Jacksonville University · Sport Science Decision Lab · HLSC 499 Course Structure Document
+</div>
+
+</body>
+</html>

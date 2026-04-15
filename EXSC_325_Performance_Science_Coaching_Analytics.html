@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EXSC 325 — Motor Control</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#1B6B5A;--green-light:#2A8F76;--green-pale:#E8F0ED;--gold:#D4A84B;--gold-light:#F5EDD6;--ink:#1a1a1a;--text:#2d2d2d;--muted:#6b6b6b;--bg:#FAFAF8;--white:#fff;--border:#e0ddd8;--shadow:0 2px 20px rgba(0,0,0,.06)}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}.header{background:linear-gradient(135deg,#2d8572 0%,#1B6B5A 100%);color:#fff;padding:3rem 2rem 2.5rem;position:relative;overflow:hidden}.header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--gold)}.header-inner{max-width:900px;margin:0 auto}.header .dept{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;opacity:.65;margin-bottom:.5rem}.header .course-code{font-size:.85rem;font-weight:600;letter-spacing:.08em;background:rgba(255,255,255,.15);display:inline-block;padding:.25rem .75rem;border-radius:4px;margin-bottom:.75rem}.header h1{font-family:'Source Serif 4',serif;font-size:2.1rem;font-weight:700;line-height:1.2;margin-bottom:.5rem}.header .subtitle{font-size:.95rem;font-weight:300;opacity:.85;max-width:620px}.main{max-width:900px;margin:0 auto;padding:2.5rem 2rem 4rem}.meta-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:8px;overflow:hidden;margin-bottom:2.5rem;box-shadow:var(--shadow)}.meta-item{background:var(--white);padding:1rem;text-align:center}.meta-item .meta-label{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem}.meta-item .meta-value{font-weight:600;font-size:.9rem;color:var(--ink)}.intro{font-family:'Source Serif 4',serif;font-size:1.02rem;line-height:1.75;color:var(--text);max-width:780px;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}.section-label{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;margin-top:2.5rem}.section-label .s-line{flex:1;height:1px;background:var(--border)}.section-label .s-text{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);white-space:nowrap;font-weight:600}.block-card{background:var(--white);border-radius:10px;box-shadow:var(--shadow);margin-bottom:1.75rem;overflow:hidden;border:1px solid var(--border)}.block-header{padding:1.25rem 1.75rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:1rem}.block-num{flex-shrink:0;width:48px;height:48px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.62rem;color:#fff;line-height:1.1;text-align:center}.block-header-text h2{font-family:'Source Serif 4',serif;font-size:1.15rem;font-weight:600;color:var(--ink);margin-bottom:.1rem}.block-header-text .block-meta{font-size:.8rem;color:var(--muted)}.block-body{padding:1.5rem 1.75rem 1.75rem}.block-body h3{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:.5rem;margin-top:1.15rem}.block-body h3:first-child{margin-top:0}.block-body p{font-size:.88rem;line-height:1.7;margin-bottom:.65rem}.topic-grid{display:grid;grid-template-columns:1fr 1fr;gap:.4rem 1.25rem}.topic-item{font-size:.83rem;padding:.3rem 0;color:var(--text);border-bottom:1px solid #f0eeea;display:flex;align-items:baseline;gap:.45rem}.topic-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green-light);flex-shrink:0;position:relative;top:-1px}.sc-question{background:var(--gold-light);border-left:3px solid var(--gold);padding:.75rem 1rem;margin:.75rem 0;font-size:.85rem;font-style:italic;color:#5a4a1a;border-radius:0 6px 6px 0}.fw-box{border-radius:10px;padding:1.5rem 1.75rem;margin-top:1.5rem;border:1px solid}.fw-green{background:var(--green-pale);border-color:#c5ddd5}.fw-gold{background:var(--gold-light);border-color:#e0d0a0}.fw-box h3{font-family:'Source Serif 4',serif;font-size:1.05rem;font-weight:600;color:var(--green);margin-bottom:.75rem}.fw-box p{font-size:.88rem;line-height:1.7;margin-bottom:.6rem}.pipeline-position{display:flex;gap:0;margin:1.25rem 0;border-radius:6px;overflow:hidden;font-size:.7rem}.pip-step{flex:1;padding:.55rem .25rem;text-align:center;color:#fff;opacity:.5}.pip-step.active{opacity:1;box-shadow:inset 0 -3px 0 var(--gold)}.pip-step .pip-code{font-weight:700;font-size:.72rem}.pip-step .pip-name{font-size:.6rem;opacity:.8}.capstone-card{background:var(--white);border:2px solid var(--green);border-radius:10px;overflow:hidden;margin-top:1.75rem}.capstone-header{background:var(--green);color:#fff;padding:1.25rem 1.75rem}.capstone-header h2{font-family:'Source Serif 4',serif;font-size:1.2rem;font-weight:600}.capstone-header .cap-sub{font-size:.85rem;opacity:.8;margin-top:.2rem}.capstone-body{padding:1.5rem 1.75rem 1.75rem}.capstone-body h3{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:.5rem;margin-top:1.15rem}.capstone-body h3:first-child{margin-top:0}.capstone-body p{font-size:.88rem;line-height:1.7;margin-bottom:.65rem}.comp-marker{display:inline-flex;align-items:center;gap:.4rem;background:var(--gold-light);border:1px solid #e0d0a0;padding:.3rem .7rem;border-radius:5px;font-size:.75rem;font-weight:600;color:#7a5f18;margin:.4rem 0}.footer{max-width:900px;margin:0 auto;padding:1.5rem 2rem 3rem;font-size:.73rem;color:var(--muted);border-top:1px solid var(--border)}@media(max-width:700px){.meta-bar{grid-template-columns:repeat(2,1fr)}.topic-grid{grid-template-columns:1fr}.pipeline-position{flex-direction:column}.header h1{font-size:1.5rem}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="dept">Jacksonville University · Health & Exercise Sciences</div>
+    <div class="course-code">EXSC 325 · Motor Control</div>
+    <h1>Performance Science & Coaching Analytics</h1>
+    <div class="subtitle">Turning athlete data into practice prescriptions grounded in motor learning theory</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="meta-bar">
+    <div class="meta-item"><div class="meta-label">Professional Lens</div><div class="meta-value">Performance Coach</div></div>
+    <div class="meta-item"><div class="meta-label">Prerequisite</div><div class="meta-value">HLSC 205</div></div>
+    <div class="meta-item"><div class="meta-label">Tools</div><div class="meta-value">SQL · Excel · Python · AI</div></div>
+    <div class="meta-item"><div class="meta-label">Assessment</div><div class="meta-value">2 Comps + Live Defense</div></div>
+  </div>
+
+  <div class="intro">
+    HLSC 205 teaches students to ask "what does the data say?" EXSC 325 teaches them to ask "what should we do about it?" Students engage the same sport science database through the lens of a performance coach, using motor control and motor learning principles to design, evaluate, and justify training decisions. The analytical skills from 205 become the input; the motor control theory built across this semester becomes the interpretive lens; and the output is a coaching prescription that a head coach can act on at tomorrow's practice. Every recommendation must be grounded in both data and theory — students cannot prescribe a training change without querying the evidence and naming the motor learning principle that supports it.
+  </div>
+
+  <div class="pipeline-position">
+    <div class="pip-step" style="background:#3a9e8a;"><div class="pip-code">205</div><div class="pip-name">Statistics</div></div>
+    <div class="pip-step active" style="background:#2d8572;"><div class="pip-code">325</div><div class="pip-name">Motor Control</div></div>
+    <div class="pip-step" style="background:#1B6B5A;"><div class="pip-code">442</div><div class="pip-name">Predictive Analytics</div></div>
+    <div class="pip-step" style="background:#1B6B5A;"><div class="pip-code">405</div><div class="pip-name">Anatomy</div></div>
+    <div class="pip-step" style="background:#155a4b;"><div class="pip-code">499</div><div class="pip-name">Thesis</div></div>
+    <div class="pip-step" style="background:#0f4a3d;"><div class="pip-code">490</div><div class="pip-name">Practicum</div></div>
+  </div>
+
+  <div class="section-label"><span class="s-line"></span><span class="s-text">Course Architecture — Five Notebooks + Capstone Project</span><span class="s-line"></span></div>
+
+  <!-- NB 1 -->
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num" style="background:#3a9e8a;">MC<br>01</div>
+      <div class="block-header-text">
+        <h2>Athlete Profiling & Baseline Data</h2>
+        <div class="block-meta">Weeks 1–2 · Who Is This Athlete?</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>The Starting Point</h3>
+      <p>Before a performance coach can prescribe anything, they need to know who they're working with. This notebook teaches students to build an athlete profile from the database: movement screening scores, proprioceptive baselines, feedback control characteristics, and the athlete's position within their team's roster. Students encounter the database again from HLSC 205, but now the question isn't "what does the data describe?" — it's "what does this data tell me about how this athlete moves and learns?"</p>
+
+      <h3>Sport Science Context</h3>
+      <div class="sc-question">You've been assigned a volleyball outside hitter. Her FMS score is 14, her Y-Balance composite is 94%, and her movement screening flagged a right-side asymmetry. Before you design anything, what does this profile tell you about her motor control system?</div>
+
+      <h3>Topics</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Movement screening foundations (FMS, Y-Balance)</div>
+        <div class="topic-item">Proprioception and feedback control systems</div>
+        <div class="topic-item">Database querying for athlete profiles</div>
+        <div class="topic-item">Baseline assessment and roster context</div>
+        <div class="topic-item">Athlete profile synthesis</div>
+        <div class="topic-item">First queries against the shared sport science database</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NB 2 -->
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num" style="background:#2d8572;">MC<br>02</div>
+      <div class="block-header-text">
+        <h2>Tracking Skill Acquisition</h2>
+        <div class="block-meta">Weeks 3–5 · How Do Athletes Learn?</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>The Learning Science</h3>
+      <p>Athletes don't improve linearly. They plateau, regress, break through, and consolidate. This notebook gives students the theoretical frameworks to understand those patterns and the data tools to track them. Fitts and Posner's stages of motor learning provide the classification scheme. Power law learning curves provide the mathematical shape. Variability analysis reveals whether an athlete's inconsistency is noise (bad) or exploration (good, depending on the stage). Python is introduced here as the analytical tool for longitudinal tracking.</p>
+
+      <h3>Sport Science Context</h3>
+      <div class="sc-question">A basketball player's free throw percentage has been flat at 68% for six weeks despite daily practice. Is she plateaued, stuck in the associative stage, or has the practice structure stopped challenging her motor system? The data can tell you — if you know what to look for.</div>
+
+      <h3>Topics</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Stages of motor learning (Fitts & Posner)</div>
+        <div class="topic-item">Neural basis of learning and consolidation</div>
+        <div class="topic-item">Learning curves, plateaus, and power law</div>
+        <div class="topic-item">Python introduction for longitudinal tracking</div>
+        <div class="topic-item">Variability analysis: noise vs. exploration</div>
+        <div class="topic-item">Stage classification from performance data</div>
+      </div>
+
+      <div class="comp-marker">⬥ Competency 01 — Week 5: Athlete profiling and skill acquisition analysis under questioning</div>
+    </div>
+  </div>
+
+  <!-- NB 3 -->
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num" style="background:#1B6B5A;">MC<br>03</div>
+      <div class="block-header-text">
+        <h2>Practice Design & Training Load</h2>
+        <div class="block-meta">Weeks 5–7 · How Should We Train?</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>The Design Problem</h3>
+      <p>This is where motor control theory becomes coaching prescription. Students learn that how you structure practice matters as much as what you practice: blocked practice looks productive but produces fragile skills; random practice looks messy but builds durable transfer. The Challenge Point Framework provides the optimization principle: the difficulty of the practice environment should match the learner's skill level. And training load monitoring (ACWR) provides the safety constraint: push too hard and you break the athlete, push too little and you waste their time.</p>
+
+      <h3>Sport Science Context</h3>
+      <div class="sc-question">A soccer midfielder's ACWR is 1.35 and climbing. Her coach wants to add a new set-piece routine to practice. The Challenge Point Framework says she's ready for complexity. The load data says she's approaching the danger zone. You have to make a recommendation the coach can act on — what do you prescribe, and what's the motor learning rationale?</div>
+
+      <h3>Topics</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Practice structure: blocked vs. random</div>
+        <div class="topic-item">Contextual interference effect</div>
+        <div class="topic-item">Challenge Point Framework</div>
+        <div class="topic-item">Training load monitoring and ACWR</div>
+        <div class="topic-item">Neural fatigue and recovery</div>
+        <div class="topic-item">Fitts' Law and speed-accuracy tradeoffs</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NB 4 -->
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num" style="background:#155a4b;">MC<br>04</div>
+      <div class="block-header-text">
+        <h2>Feedback & Intervention Tracking</h2>
+        <div class="block-meta">Weeks 7–9 · How Do We Guide Improvement?</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>The Intervention Science</h3>
+      <p>The most common coaching instinct — give more feedback, more often, more specifically — is wrong for most stages of learning. This notebook builds the evidence base for how, when, and what kind of feedback actually produces durable skill change. External attentional focus cues outperform internal cues. Faded feedback schedules outperform constant feedback. The guidance hypothesis explains why: feedback that's too frequent becomes a crutch the motor system leans on rather than a signal it internalizes. Students design feedback interventions, track their effectiveness in the database, and learn to prescribe changes based on data rather than intuition.</p>
+
+      <h3>Sport Science Context</h3>
+      <div class="sc-question">A pitching coach has been giving detailed mechanical feedback after every throw. The pitcher's form looks great during practice but falls apart in games. The data shows a classic guidance dependency pattern. How do you restructure the feedback schedule without the coach feeling like you're telling them to stop coaching?</div>
+
+      <h3>Topics</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Attentional focus: internal vs. external cues</div>
+        <div class="topic-item">Sensory integration and feedback channels</div>
+        <div class="topic-item">Knowledge of results vs. knowledge of performance</div>
+        <div class="topic-item">Guidance hypothesis and faded feedback</div>
+        <div class="topic-item">Feedback effectiveness analysis from data</div>
+        <div class="topic-item">Intervention design and prescription</div>
+      </div>
+
+      <div class="comp-marker">⬥ Competency 02 — Week 9: Practice design and feedback intervention under questioning</div>
+    </div>
+  </div>
+
+  <!-- NB 5 -->
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num" style="background:#0f4a3d;">MC<br>05</div>
+      <div class="block-header-text">
+        <h2>Integrated Performance Monitoring</h2>
+        <div class="block-meta">Weeks 10–12 · The Whole Athlete</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>The Integration Challenge</h3>
+      <p>Real performance coaching doesn't happen in isolated domains. An athlete's transfer problem might be caused by a practice structure issue (NB3), a feedback dependency (NB4), a load spike (NB3), or a stage mismatch (NB2) — or some combination. This final notebook synthesizes every framework into integrated case analysis. Students query across the full database — screening data, learning curves, load history, feedback records, and competition performance — to build comprehensive athlete assessments that pull from all four prior notebooks.</p>
+
+      <h3>Sport Science Context</h3>
+      <div class="sc-question">A track sprinter's 200m times have regressed 0.3 seconds over the past month despite consistent training. Is this fatigue (check ACWR), a technique breakdown under pressure (check dual-task data), a plateau requiring practice restructuring (check learning curve shape), or loss of automaticity from too much conscious attention (check reinvestment indicators)? The answer requires pulling from every notebook in this course.</div>
+
+      <h3>Topics</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Transfer and retention testing</div>
+        <div class="topic-item">Automaticity and dual-task assessment</div>
+        <div class="topic-item">Performance under pressure and reinvestment</div>
+        <div class="topic-item">Multi-table database synthesis</div>
+        <div class="topic-item">Comprehensive case studies</div>
+        <div class="topic-item">Performance-learning paradox</div>
+      </div>
+
+      <h3>The Key Insight</h3>
+      <p>The performance-learning paradox is the organizing concept of this notebook and the deepest motor control insight students take forward: what looks like good performance in practice (high accuracy, low variability) often predicts poor learning (fragile skills, no transfer). And what looks like poor performance in practice (errors, variability, struggle) often predicts durable learning. A coach who doesn't understand this paradox will design practice that looks productive but isn't. A performance coach who does understand it can explain to a skeptical head coach why the messy practice is actually working — and back it up with data.</p>
+    </div>
+  </div>
+
+  <!-- CAPSTONE -->
+  <div class="capstone-card">
+    <div class="capstone-header">
+      <h2>End-of-Semester Project · The Coaching Consultation</h2>
+      <div class="cap-sub">Weeks 13–14 (Asynchronous) + Live Defense (Final Exam Block, Nov 23)</div>
+    </div>
+    <div class="capstone-body">
+      <h3>The Commission</h3>
+      <p>A JU head coach has formally commissioned the Sport Science Performance unit to produce a motor control consultation for one of their athletes. The student is the performance coach. The coach has a struggling athlete — a skill that isn't transferring, a fragile movement breaking under pressure, a practice plan that should be working but isn't — and needs a recommendation they can act on by next week. The coach understands sport. The coach does not read variability indices, ACWR, dual-task cost, or Fitts' Law. The coach reads recommendations, evidence, and rationale.</p>
+
+      <h3>The Process</h3>
+      <p><strong>Week 13 (Commission Check-In):</strong> Submit the athlete, research question, motor control lens, and data plan. The athlete must not have been analyzed in a previous class session. NotebookLM consultation required: students use AI to identify the weakest point in their approach and the mismatch they might not be seeing.</p>
+      <p><strong>Week 14 (Analysis + Report):</strong> Build the complete analysis in Google Colab with Decision Cycle headers. Produce a 1-2 page coaching consultation with at least two visualizations showing the athlete in context (against teammates or their own history). The coach should be able to understand the finding from the visuals alone.</p>
+      <p><strong>Final Exam Block (Live Defense):</strong> 5-8 minutes. Present directly from report and notebook. Defend every phase of the Decision Cycle including theory-to-data connections and the AI boundary probe.</p>
+
+      <h3>Defense Probes</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Why this athlete? What made their data worth investigating?</div>
+        <div class="topic-item">What motor control concept is this finding an example of?</div>
+        <div class="topic-item">Explain this visualization as if you're talking to the head coach.</div>
+        <div class="topic-item">State your recommendation in one sentence.</div>
+        <div class="topic-item">I'm the coach. I disagree because it doesn't look game-like. Convince me.</div>
+        <div class="topic-item">Explain the performance-learning paradox as it applies here.</div>
+        <div class="topic-item">If this didn't work by Friday, what's your first move?</div>
+        <div class="topic-item">Where did you use AI, and what did you override?</div>
+      </div>
+
+      <h3>What This Proves</h3>
+      <p>A student who passes this defense has demonstrated that they can occupy the Performance Coach seat at the sport science team table. They can profile an athlete, identify a motor control problem in the data, design an evidence-based intervention, and defend that prescription to the coach who has to implement it. The question has shifted from "what does the data say?" (the 205 seat) to "what should we do about it?" — same database, same Decision Cycle, different professional judgment.</p>
+    </div>
+  </div>
+
+  <!-- FRAMEWORKS -->
+  <div class="section-label" style="margin-top:2.5rem;"><span class="s-line"></span><span class="s-text">Pedagogical Framework</span><span class="s-line"></span></div>
+
+  <div class="fw-box fw-green">
+    <h3>The Notebook Structure</h3>
+    <p>The course is organized into five notebooks rather than traditional units. Each notebook is a self-contained analytical environment in the shared database — students build queries, run analyses, and interpret findings within the notebook's thematic frame. The notebooks accumulate: by NB5, students are pulling from all five data domains simultaneously. This structure mirrors how a performance coach actually works: the athlete's screening data, learning history, training load, feedback response, and competition performance all exist in the same system, and the coach has to synthesize across all of them to make a recommendation.</p>
+  </div>
+
+  <div class="fw-box fw-gold" style="margin-top:1rem;">
+    <h3>Theory-to-Data-to-Prescription</h3>
+    <p>Every session in this course follows a three-part logic: name the motor control theory, show the data pattern it predicts, and prescribe the coaching action it supports. Students cannot recommend a practice change without citing the theory behind it and the data that confirms it applies to this athlete. This structure is what separates a performance coach from someone who just runs drills — and it's the structure the Decision Cycle enforces in every competency and in the final defense.</p>
+  </div>
+
+  <div class="fw-box fw-green" style="margin-top:1rem;">
+    <h3>Water Pedagogy and Competency Gates</h3>
+    <p>No practice sessions, no review days. Content sessions run directly into competency days. C01 gates athlete profiling and skill acquisition (NB1-2). C02 gates practice design and feedback (NB3-4). The project integrates all five notebooks. The encounter-first model means students explore motor control phenomena in the data before receiving the theoretical name for what they've found. A student who discovers a learning curve plateau in the data before hearing the term "power law" owns that concept differently than one who memorized it from a textbook.</p>
+  </div>
+
+  <!-- WHERE THIS LEADS -->
+  <div class="section-label" style="margin-top:2.5rem;"><span class="s-line"></span><span class="s-text">Where This Leads</span><span class="s-line"></span></div>
+
+  <div class="fw-box fw-green">
+    <h3>From Prescription to Risk Management</h3>
+    <p>In HLSC 205, students learned to describe data and test hypotheses. Here in EXSC 325, they learned to turn data into coaching prescriptions grounded in motor learning theory. The question shifts again in EXSC 405: from optimizing performance to managing risk. Same athletes, same database, but now the consequences of a wrong decision involve injury, rehabilitation, and return-to-play. Students who've occupied both the Data Analyst seat (205) and the Performance Coach seat (325) arrive at the Clinical Anatomist seat (405) understanding that the sport science team table has multiple perspectives, and that no single lens captures the whole picture.</p>
+    <p>In EXSC 442, the motor control data from this course becomes the input for predictive models: can training load patterns predict injury? Can variability trends classify an athlete's readiness? In HLSC 499, the coaching consultation becomes a real research project for JU Athletics. In HLSC 490, the performance coach role becomes daily professional practice. The theory-to-data-to-prescription logic built here is the analytical habit that every subsequent course depends on.</p>
+  </div>
+
+</div>
+
+<div class="footer">
+  Dr. Chris Robertson · Associate Professor, Health & Exercise Sciences · Jacksonville University · Sport Science Decision Lab · EXSC 325 Course Structure Document
+</div>
+
+</body>
+</html>

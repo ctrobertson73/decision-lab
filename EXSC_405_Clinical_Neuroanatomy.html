@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EXSC 405 — Clinical Neuroanatomy</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#1B6B5A;--green-light:#2A8F76;--green-pale:#E8F0ED;--gold:#D4A84B;--gold-light:#F5EDD6;--ink:#1a1a1a;--text:#2d2d2d;--muted:#6b6b6b;--bg:#FAFAF8;--white:#fff;--border:#e0ddd8;--shadow:0 2px 20px rgba(0,0,0,.06)}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}.header{background:linear-gradient(135deg,#1B6B5A 0%,#155a4b 100%);color:#fff;padding:3rem 2rem 2.5rem;position:relative;overflow:hidden}.header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--gold)}.header-inner{max-width:900px;margin:0 auto}.header .dept{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;opacity:.65;margin-bottom:.5rem}.header .course-code{font-size:.85rem;font-weight:600;letter-spacing:.08em;background:rgba(255,255,255,.15);display:inline-block;padding:.25rem .75rem;border-radius:4px;margin-bottom:.75rem}.header h1{font-family:'Source Serif 4',serif;font-size:2.1rem;font-weight:700;line-height:1.2;margin-bottom:.5rem}.header .subtitle{font-size:.95rem;font-weight:300;opacity:.85;max-width:640px}.main{max-width:900px;margin:0 auto;padding:2.5rem 2rem 4rem}.meta-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:8px;overflow:hidden;margin-bottom:2.5rem;box-shadow:var(--shadow)}.meta-item{background:var(--white);padding:1rem;text-align:center}.meta-item .meta-label{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem}.meta-item .meta-value{font-weight:600;font-size:.9rem;color:var(--ink)}.intro{font-family:'Source Serif 4',serif;font-size:1.02rem;line-height:1.75;color:var(--text);max-width:780px;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}.section-label{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;margin-top:2.5rem}.section-label .s-line{flex:1;height:1px;background:var(--border)}.section-label .s-text{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);white-space:nowrap;font-weight:600}.block-card{background:var(--white);border-radius:10px;box-shadow:var(--shadow);margin-bottom:1.75rem;overflow:hidden;border:1px solid var(--border)}.block-header{padding:1.25rem 1.75rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:1rem}.block-num{flex-shrink:0;width:48px;height:48px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.62rem;color:#fff;line-height:1.1;text-align:center}.block-header-text h2{font-family:'Source Serif 4',serif;font-size:1.15rem;font-weight:600;color:var(--ink);margin-bottom:.1rem}.block-header-text .block-meta{font-size:.8rem;color:var(--muted)}.block-body{padding:1.5rem 1.75rem 1.75rem}.block-body h3{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:.5rem;margin-top:1.15rem}.block-body h3:first-child{margin-top:0}.block-body p{font-size:.88rem;line-height:1.7;margin-bottom:.65rem}.topic-grid{display:grid;grid-template-columns:1fr 1fr;gap:.4rem 1.25rem}.topic-item{font-size:.83rem;padding:.3rem 0;color:var(--text);border-bottom:1px solid #f0eeea;display:flex;align-items:baseline;gap:.45rem}.topic-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green-light);flex-shrink:0;position:relative;top:-1px}.sc-question{background:var(--gold-light);border-left:3px solid var(--gold);padding:.75rem 1rem;margin:.75rem 0;font-size:.85rem;font-style:italic;color:#5a4a1a;border-radius:0 6px 6px 0}.fw-box{border-radius:10px;padding:1.5rem 1.75rem;margin-top:1.5rem;border:1px solid}.fw-green{background:var(--green-pale);border-color:#c5ddd5}.fw-gold{background:var(--gold-light);border-color:#e0d0a0}.fw-box h3{font-family:'Source Serif 4',serif;font-size:1.05rem;font-weight:600;color:var(--green);margin-bottom:.75rem}.fw-box p{font-size:.88rem;line-height:1.7;margin-bottom:.6rem}.pipeline-position{display:flex;gap:0;margin:1.25rem 0;border-radius:6px;overflow:hidden;font-size:.7rem}.pip-step{flex:1;padding:.55rem .25rem;text-align:center;color:#fff;opacity:.5}.pip-step.active{opacity:1;box-shadow:inset 0 -3px 0 var(--gold)}.pip-step .pip-code{font-weight:700;font-size:.72rem}.pip-step .pip-name{font-size:.6rem;opacity:.8}.comp-marker{display:inline-flex;align-items:center;gap:.4rem;background:var(--gold-light);border:1px solid #e0d0a0;padding:.3rem .7rem;border-radius:5px;font-size:.75rem;font-weight:600;color:#7a5f18;margin:.4rem 0}.capstone-card{background:var(--white);border:2px solid var(--green);border-radius:10px;overflow:hidden;margin-top:1.75rem}.capstone-header{background:var(--green);color:#fff;padding:1.25rem 1.75rem}.capstone-header h2{font-family:'Source Serif 4',serif;font-size:1.2rem;font-weight:600}.capstone-header .cap-sub{font-size:.85rem;opacity:.8;margin-top:.2rem}.capstone-body{padding:1.5rem 1.75rem 1.75rem}.capstone-body h3{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:.5rem;margin-top:1.15rem}.capstone-body h3:first-child{margin-top:0}.capstone-body p{font-size:.88rem;line-height:1.7;margin-bottom:.65rem}
+/* REASONING CHAIN */
+.reasoning-chain{display:flex;gap:0;margin:1.25rem 0;border-radius:6px;overflow:hidden;font-size:.72rem}
+.rc-step{flex:1;padding:.65rem .4rem;text-align:center;color:#fff;border-right:1px solid rgba(255,255,255,.15)}
+.rc-step:last-child{border-right:none}
+.rc-step .rc-label{font-weight:700;font-size:.78rem}
+.rc-step .rc-desc{font-size:.62rem;opacity:.8;margin-top:.15rem;line-height:1.3}
+.footer{max-width:900px;margin:0 auto;padding:1.5rem 2rem 3rem;font-size:.73rem;color:var(--muted);border-top:1px solid var(--border)}@media(max-width:700px){.meta-bar{grid-template-columns:repeat(2,1fr)}.topic-grid{grid-template-columns:1fr}.pipeline-position,.reasoning-chain{flex-direction:column}.header h1{font-size:1.5rem}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="dept">Jacksonville University · Health & Exercise Sciences</div>
+    <div class="course-code">EXSC 405 / 505 · Advanced Human Anatomy</div>
+    <h1>Clinical Neuroanatomy</h1>
+    <div class="subtitle">The highest-stakes reasoning in the foundational tier — connecting anatomical structures to clinical deficits on the Anatomage table</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="meta-bar">
+    <div class="meta-item"><div class="meta-label">Professional Lens</div><div class="meta-value">Sports Trainer / Clinical Anatomist</div></div>
+    <div class="meta-item"><div class="meta-label">Pipeline Position</div><div class="meta-value">Foundational (Highest Stakes)</div></div>
+    <div class="meta-item"><div class="meta-label">Tools</div><div class="meta-value">Anatomage · Blumenfeld · AI Tutor</div></div>
+    <div class="meta-item"><div class="meta-label">Assessment</div><div class="meta-value">2 Comps + Live Defense</div></div>
+  </div>
+
+  <div class="intro">
+    In HLSC 205, a wrong answer means an inaccurate scouting report. In EXSC 325, it means a flawed practice prescription. In EXSC 405, a wrong answer means a missed injury mechanism, an athlete sent back to play who shouldn't be, a sideline decision that costs someone their season or their health. This course takes the same structural reasoning students have practiced across the pipeline — query the evidence, interpret what you find, decide on the answer, justify it under questioning — and applies it to the human nervous system through sports medicine scenarios. Students don't memorize anatomy. They solve cases: a soccer player who heads the ball and can't walk straight, a gymnast with sudden arm weakness after a neck hyperextension, a basketball player who takes an elbow to the temple and starts slurring. They trace the anatomy on the Anatomage virtual dissection table, predict deficits from the structures they see, and defend their clinical reasoning as the sports medicine professional who has to make the call on the sideline.
+  </div>
+
+  <div class="pipeline-position">
+    <div class="pip-step" style="background:#3a9e8a;"><div class="pip-code">205</div><div class="pip-name">Statistics</div></div>
+    <div class="pip-step" style="background:#2d8572;"><div class="pip-code">325</div><div class="pip-name">Motor Control</div></div>
+    <div class="pip-step" style="background:#1B6B5A;"><div class="pip-code">442</div><div class="pip-name">Predictive Analytics</div></div>
+    <div class="pip-step active" style="background:#1B6B5A;"><div class="pip-code">405</div><div class="pip-name">Anatomy</div></div>
+    <div class="pip-step" style="background:#155a4b;"><div class="pip-code">499</div><div class="pip-name">Thesis</div></div>
+    <div class="pip-step" style="background:#0f4a3d;"><div class="pip-code">490</div><div class="pip-name">Practicum</div></div>
+  </div>
+
+  <!-- CLINICAL REASONING CHAIN -->
+  <div class="fw-box fw-green">
+    <h3>The Clinical Reasoning Logic</h3>
+    <p>Every case in this course follows the same reasoning chain, which is the Decision Cycle adapted for clinical neuroanatomy in sports medicine contexts. An athlete arrives with symptoms from an injury mechanism. The student localizes the lesion, traces the damaged pathways on the Anatomage table, predicts the deficits the anatomy would produce, and defends that localization against an alternative explanation. Students practice this chain from Week 1 until it becomes the default way they approach every case on the table and off it.</p>
+  </div>
+
+  <div class="reasoning-chain">
+    <div class="rc-step" style="background:#3a9e8a;"><div class="rc-label">Mechanism</div><div class="rc-desc">What happened to the athlete?</div></div>
+    <div class="rc-step" style="background:#2d8572;"><div class="rc-label">Localize</div><div class="rc-desc">Where is the lesion?</div></div>
+    <div class="rc-step" style="background:#1B6B5A;"><div class="rc-label">Trace</div><div class="rc-desc">Which pathways are damaged?</div></div>
+    <div class="rc-step" style="background:#155a4b;"><div class="rc-label">Predict</div><div class="rc-desc">What deficits should we see?</div></div>
+    <div class="rc-step" style="background:#0f4a3d;"><div class="rc-label">Defend</div><div class="rc-desc">Why this call and not another?</div></div>
+  </div>
+
+  <!-- UNITS -->
+  <div class="section-label"><span class="s-line"></span><span class="s-text">Course Architecture — Four Units + Capstone Project</span><span class="s-line"></span></div>
+
+  <!-- UNIT 1 -->
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num" style="background:#3a9e8a;">NA<br>01</div>
+      <div class="block-header-text">
+        <h2>Foundations, Spinal Cord & Major Pathways</h2>
+        <div class="block-meta">Weeks 1–4 · The Anatomy Gate</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>The Entry Point</h3>
+      <p>Students meet the Anatomage table and learn to think in pathways rather than parts. Traditional anatomy courses teach structures as isolated facts. This course teaches them as components of functional circuits: a sensory pathway that begins in a receptor and terminates in the cortex, a motor pathway that begins in the cortex and terminates at a muscle, and a lesion that interrupts the circuit at a specific point and produces a predictable set of deficits. The AI Tutor Notebook is introduced alongside the Anatomage table from day one as a reasoning partner for pathway tracing and case analysis.</p>
+
+      <h3>Clinical Context</h3>
+      <div class="sc-question">A gymnast lands short on a vault dismount and hyperextends her neck. She has full strength in her legs but can't grip with either hand, and she's reporting burning pain down both arms with no sensation in her fingers. The athletic trainer on the mat needs to know: is this a spinal cord injury, and if so, which syndrome? You're looking at a cross-section of the cervical spinal cord on the Anatomage table. Where is the damage, and why are her hands affected but not her legs?</div>
+      <p>This is a central cord syndrome presentation — the classic sports mechanism. The anatomy explains why: the corticospinal tract is somatotopically organized, with the hand fibers medially located and therefore most vulnerable to a central lesion. Students who understand the spatial organization of the cord can predict the clinical picture from the anatomy rather than memorizing syndrome names. Every case in Unit 1 follows a sports injury mechanism: the collision, the fall, the hyperextension, the stinger.</p>
+
+      <h3>Topics</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Neuroanatomy foundations and Anatomage orientation</div>
+        <div class="topic-item">First clinical case (reasoning chain introduction)</div>
+        <div class="topic-item">Spinal cord anatomy and organization</div>
+        <div class="topic-item">Sensory pathways: DCML and spinothalamic</div>
+        <div class="topic-item">Motor pathways: corticospinal and extrapyramidal</div>
+        <div class="topic-item">Spinal cord syndromes (Brown-Sequard, central cord)</div>
+        <div class="topic-item">Peripheral nerve anatomy</div>
+        <div class="topic-item">Structure-to-deficit mapping on the table</div>
+      </div>
+
+      <div class="comp-marker">⬥ Competency 01 — Week 4: Trace a pathway origin to termination, predict a spinal cord syndrome, name cranial nerve deficits</div>
+
+      <h3>What C01 Proves</h3>
+      <p>This is the anatomy gate. Students must demonstrate that they can trace a pathway from origin to termination on the Anatomage table, predict the clinical deficit that would result from a lesion at a specific point, and name the affected structures. Without this foundation, the brainstem and deep structure reasoning of the next units is inaccessible. The gate is deliberate: the rest of the course builds on pathway-tracing fluency.</p>
+    </div>
+  </div>
+
+  <!-- UNIT 2 -->
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num" style="background:#2d8572;">NA<br>02</div>
+      <div class="block-header-text">
+        <h2>Brainstem, Cranial Nerves & Cerebellum</h2>
+        <div class="block-meta">Weeks 5–7 · Where Pathways Converge</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>The Complexity Increase</h3>
+      <p>The spinal cord is a highway with predictable lanes. The brainstem is a dense interchange where every major pathway passes through a small space alongside cranial nerve nuclei, vascular territories, and ascending/descending tracts. A small lesion here can produce a complex, asymmetric clinical picture that requires the student to reason through multiple pathways simultaneously. This is where the course becomes genuinely difficult, and where the reasoning chain earns its value.</p>
+
+      <h3>Clinical Context</h3>
+      <div class="sc-question">A 22-year-old lacrosse player takes a hard check to the neck during a game. He finishes the quarter but in the locker room reports difficulty swallowing, a hoarse voice, dizziness, and numbness on the left side of his face. The athletic trainer tests sensation: pain and temperature are gone on the left face and the right body. The ipsilateral face / contralateral body pattern — that's a lateral medulla signature. On the Anatomage table, show me which structures are damaged and trace each pathway that produces each deficit, structure by structure.</div>
+      <p>This is Wallenberg syndrome, the signature case of the course. A vertebral artery dissection from cervical trauma is a recognized sports mechanism, and the resulting lateral medullary infarct produces one of the most instructive deficit patterns in neuroanatomy. Students work through it structure by structure on the Anatomage table, mapping each damaged nucleus and tract to the specific deficit it produces. The case teaches the method: every clinical finding has an anatomical address. By the end of Unit 2, students can apply this same structure-by-structure logic to any brainstem presentation they encounter on the sideline or in the training room.</p>
+
+      <h3>Topics</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Brainstem organization: medulla, pons, midbrain</div>
+        <div class="topic-item">Cranial nerves I–VI: anatomy and clinical testing</div>
+        <div class="topic-item">Cranial nerves VII–XII: anatomy and clinical testing</div>
+        <div class="topic-item">Brainstem vascular territories</div>
+        <div class="topic-item">Wallenberg syndrome (structure-by-structure)</div>
+        <div class="topic-item">Brainstem stroke syndromes</div>
+        <div class="topic-item">Cerebellum anatomy and function</div>
+        <div class="topic-item">Cerebellar ataxias</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIT 3 -->
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num" style="background:#1B6B5A;">NA<br>03</div>
+      <div class="block-header-text">
+        <h2>Deep Structures — Basal Ganglia & Thalamus</h2>
+        <div class="block-meta">Weeks 8–11 · Circuits, Not Just Structures</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>From Pathways to Circuits</h3>
+      <p>The basal ganglia and thalamus don't fit the pathway model cleanly. They are circuit structures: loops that modulate movement, filter sensation, and regulate behavior through excitatory and inhibitory interactions. Students shift from linear pathway tracing to circuit reasoning, understanding that the basal ganglia disorders (Parkinson's, Huntington's) result from imbalances in circuit dynamics, not from severed tracts. The thalamus introduces a different challenge: it is the relay station for nearly everything, and a lesion here can produce deficits that mimic damage almost anywhere else in the nervous system.</p>
+
+      <h3>Clinical Context</h3>
+      <div class="sc-question">A collegiate swimmer who had a minor stroke during a training session six weeks ago has been cleared to return to activity. Her motor function recovered fully. But she now reports excruciating burning pain across her entire right side — it fires when the water hits her skin, when someone brushes past her in the locker room, even when she puts on her warm-ups. No weakness. No numbness to touch. Just pain where there shouldn't be any. On the Anatomage table, show me the thalamic nucleus involved and explain why destroying a relay station for pain processing produces more pain, not less.</div>
+      <p>This is Dejerine-Roussy (thalamic pain) syndrome. The paradox — that lesioning the pain relay produces amplified pain — requires students to reason through the inhibitory circuitry to explain it. They must understand the thalamus not as a passive relay but as an active gatekeeper. For a sports medicine professional, recognizing this presentation matters because the athlete looks neurologically intact on a standard motor and sensory screen. The pain is the deficit, and understanding why requires anatomy the standard sideline evaluation doesn't test for.</p>
+
+      <h3>Topics</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Basal ganglia circuit anatomy (direct and indirect)</div>
+        <div class="topic-item">Basal ganglia disorders: Parkinson's, Huntington's</div>
+        <div class="topic-item">Thalamic nuclei and functional organization</div>
+        <div class="topic-item">Thalamic syndromes: VPL, Dejerine-Roussy</div>
+        <div class="topic-item">Hypothalamus and autonomic regulation</div>
+        <div class="topic-item">Limbic system and behavioral neuroscience</div>
+        <div class="topic-item">Circuit reasoning vs. pathway reasoning</div>
+        <div class="topic-item">Differential diagnosis across deep structures</div>
+      </div>
+
+      <div class="comp-marker">⬥ Competency 02 — Week 11: Localize a lesion in brainstem or deep structures, predict deficits structure-by-structure, defend against an alternative localization</div>
+
+      <h3>What C02 Proves</h3>
+      <p>This is the clinical reasoning gate. C01 tested whether students could trace anatomy. C02 tests whether they can think with anatomy: given a clinical presentation, localize the lesion, predict every deficit the anatomy would produce, and defend that localization against a competing hypothesis. A student who passes C02 has demonstrated the clinical reasoning pattern that governs every case in the rest of the course and in the final project.</p>
+    </div>
+  </div>
+
+  <!-- UNIT 4 -->
+  <div class="block-card">
+    <div class="block-header">
+      <div class="block-num" style="background:#155a4b;">NA<br>04</div>
+      <div class="block-header-text">
+        <h2>Cerebral Cortex & Integrated Cases</h2>
+        <div class="block-meta">Week 12 · The Launch Pad</div>
+      </div>
+    </div>
+    <div class="block-body">
+      <h3>Into Unfamiliar Territory</h3>
+      <p>Unit 4 is the shortest by design. Two sessions cover the cerebral cortex (vascular territories, MCA/ACA/PCA stroke patterns), language and lateralization, and the project launch. The brevity is deliberate: by Week 12, students have the reasoning chain, the pathway-tracing fluency, and the clinical localization skills from Units 1-3. The cortex is where they extend those skills into new territory on their own. The End-of-Semester Project requires students to choose a neuroanatomy case they did not study in class. Unit 4 gives them the cortical anatomy to make that choice, and then steps back to let them work.</p>
+
+      <h3>Topics</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Cerebral cortex functional anatomy</div>
+        <div class="topic-item">Vascular territories: MCA, ACA, PCA</div>
+        <div class="topic-item">Cortical stroke syndromes</div>
+        <div class="topic-item">Language and lateralization (Broca's, Wernicke's)</div>
+        <div class="topic-item">Integration across all four neuroanatomy units</div>
+        <div class="topic-item">Project launch: case selection begins</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPSTONE PROJECT -->
+  <div class="capstone-card">
+    <div class="capstone-header">
+      <h2>End-of-Semester Project · The Clinical Case Brief</h2>
+      <div class="cap-sub">Weeks 13–14 (Asynchronous) + Live Defense (Apr 28, 2:00–4:30 PM)</div>
+    </div>
+    <div class="capstone-body">
+      <h3>The Commission</h3>
+      <p>A referring physician has formally requested an anatomical consultation for a patient presenting with a neurological deficit. The student is the clinical anatomy consultant. The physician understands medicine but needs the neuroanatomical explanation: where the lesion is, which pathways are affected, why each symptom maps to a specific structure, and how to explain it to the patient's family. The case must involve a condition the student did not study in class — something beyond Wallenberg, the basal ganglia disorders, and the thalamic syndromes worked through together. This is the integration gate: everything from Weeks 1-11 is in play, applied to unfamiliar anatomy.</p>
+
+      <h3>From Sideline to Consultation</h3>
+      <p>The in-class sessions live in sports medicine: every case begins with an athlete, an injury mechanism, and an athletic trainer making a sideline decision. The capstone project broadens the lens. Students step from the sports medicine context into a clinical consultation role, demonstrating that the structure-to-deficit reasoning they built through athletic cases transfers to any neuroanatomical presentation. The method is the same. The anatomy is the same. The professional context expands.</p>
+
+      <h3>The Process</h3>
+      <p><strong>Week 13 (Commission Check-In):</strong> Submit the case description, the condition, a preliminary pathway identification, the source(s), and the referring physician's specific question. Tutor Notebook consultation required: students ask the AI to walk through the anatomy, identify missing pathways, and challenge the preliminary localization.</p>
+      <p><strong>Week 14 (Analysis + Brief):</strong> Trace the anatomy on the Anatomage table. Produce minimum three annotated screenshots (lesion site, pathways affected, structures damaged) labeled with the Pen Tool. Write a 2-page clinical case brief organized by the Decision Cycle: QUERY (the presentation), INTERPRET (the localization and pathway analysis), DECIDE (clinical testing and diagnosis), JUSTIFY (why this localization, the differential, and a family explanation).</p>
+      <p><strong>Final Exam Block (Live Defense):</strong> 5-8 minutes. Present directly from the brief and Anatomage screenshots. Defend the localization under questioning.</p>
+
+      <h3>The Family Explanation</h3>
+      <div class="sc-question">The hardest paragraph in the brief and the deepest test of understanding. If you can explain what's happening in a patient's brain in words their mother can understand, you own the anatomy. If you can't simplify it, you don't own it.</div>
+
+      <h3>Defense Probes</h3>
+      <div class="topic-grid">
+        <div class="topic-item">Show me on the Anatomage where the lesion is.</div>
+        <div class="topic-item">Trace the affected pathway from origin to termination.</div>
+        <div class="topic-item">The patient has loss on opposite sides. Why? Walk me through the crossing.</div>
+        <div class="topic-item">How would you test for this deficit on clinical exam?</div>
+        <div class="topic-item">If the lesion were on the other side, what changes?</div>
+        <div class="topic-item">How is this similar to and different from Wallenberg?</div>
+        <div class="topic-item">I'm the patient's mother. Explain what's happening.</div>
+        <div class="topic-item">Where did you use AI, and what did you override?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PEDAGOGICAL FRAMEWORK -->
+  <div class="section-label" style="margin-top:2.5rem;"><span class="s-line"></span><span class="s-text">Pedagogical Framework</span><span class="s-line"></span></div>
+
+  <div class="fw-box fw-green">
+    <h3>The Anatomage Table as Clinical Reasoning Tool</h3>
+    <p>The Anatomage table is not a visualization aid. It is the clinical reasoning instrument. Students don't study anatomy on the table and then reason about it elsewhere. They reason on the table: tracing pathways through the actual three-dimensional structures, placing lesions, predicting which structures are damaged, and verifying their predictions against a sports medicine case. Every in-class session is anchored by an athletic injury scenario — a soccer player's posterior fossa bleed, a gymnast's cervical cord injury, a lacrosse player's vertebral artery dissection — and the Anatomage table is where students find the anatomy that explains the symptoms the athletic trainer sees on the sideline. JU's investment in this technology is leveraged here not for anatomical display but for the structure-to-deficit reasoning that athletic trainers and sports medicine clinicians use every day.</p>
+  </div>
+
+  <div class="fw-box fw-gold" style="margin-top:1rem;">
+    <h3>The Tutor Notebook: AI as Reasoning Partner</h3>
+    <p>The AI Tutor Notebook is calibrated differently here than in other courses. In HLSC 205, AI generates code. In EXSC 325, AI helps interpret data. In EXSC 405, the Tutor walks students through anatomy, identifies pathways they might be missing, and challenges their preliminary localizations. Students are expected to consult the Tutor before every check-in and before writing the brief. They are not allowed to let the Tutor localize for them. The boundary is sharp: if the Tutor identifies a pathway the student missed, the student's next step is to verify it on the Anatomage table and in Blumenfeld, not to copy it into the brief.</p>
+  </div>
+
+  <div class="fw-box fw-green" style="margin-top:1rem;">
+    <h3>Water Pedagogy and Competency Gates</h3>
+    <p>No practice sessions, no review days. Every content session includes Case Drop (encounter the clinical problem), Explorations (trace the anatomy on the table), and Consolidation (name what you found). The rehearsal is built into the daily work. C01 is the anatomy gate: pathway tracing and spinal cord syndromes. C02 is the clinical reasoning gate: lesion localization and structure-by-structure deficit prediction in the brainstem and deep structures. The project is the integration gate: a self-chosen case requiring extension into unfamiliar territory.</p>
+  </div>
+
+  <!-- WHERE THIS LEADS -->
+  <div class="section-label" style="margin-top:2.5rem;"><span class="s-line"></span><span class="s-text">Where This Leads</span><span class="s-line"></span></div>
+
+  <div class="fw-box fw-green">
+    <h3>The Third Seat — And the Completion of the Foundational Tier</h3>
+    <p>This is the third and final station in the foundational tier of the Sport Science Decision Lab. In HLSC 205, students occupied the Data Analyst seat: querying data, running tests, defending recommendations. In EXSC 325, they occupied the Performance Coach seat: turning data into practice prescriptions grounded in motor learning theory. Here in EXSC 405, they occupy the Sports Trainer / Clinical Anatomist seat: connecting anatomical knowledge to clinical presentations, localizing lesions, and explaining the consequences to physicians and families.</p>
+    <p>Students who have completed all three foundational courses have sat in every seat at the sport science team table. They have reasoned through the same Decision Cycle from three different professional perspectives and made decisions with progressively higher stakes. The sports medicine cases in this course — the sideline decisions, the injury mechanism reasoning, the return-to-play logic — connect directly to the injury tracking and biomechanical risk assessment that students will encounter in the real Athletics data of HLSC 499 and the professional practice of HLSC 490.</p>
+    <p>What students learn in this course — localizing a lesion from an injury mechanism, predicting deficits from anatomy, defending their reasoning under questioning, and explaining it to an athlete's family — is the same move they will make in every clinical encounter for the rest of their career. The soccer player who can't walk straight, the gymnast who can't grip, the lacrosse player who can't swallow: these are the cases that teach the method. The body is the same. The framework is the same. Only the stakes will change.</p>
+  </div>
+
+</div>
+
+<div class="footer">
+  Dr. Chris Robertson · Associate Professor, Health & Exercise Sciences · Jacksonville University · Sport Science Decision Lab · EXSC 405 Course Structure Document
+</div>
+
+</body>
+</html>
