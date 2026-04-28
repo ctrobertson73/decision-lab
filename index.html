@@ -273,6 +273,7 @@ const COURSES = [
       deliverable:'Scouting Report + Live Defense',
     },
     meta:[
+      {label:'Professional Lens', value:'Data Analyst'},
       {label:'Tools',          value:'Excel · Python · JASP'},
       {label:'Pipeline Slot',  value:'Foundation · Week 1'},
       {label:'Assessment',     value:'2 Comps + Live Defense'},
@@ -330,7 +331,7 @@ const COURSES = [
     tier:'found',
     tierLabel:'Foundational',
     role:'Performance Coach',
-    roleFull:'Performance Coach',
+    roleFull:'Performance Coach / Skill Acquisition Specialist',
     coreQuestion:'What should we do about it?',
     stakeholders:'Athletes and coaching staff who need training prescriptions.',
     position:1,
@@ -390,8 +391,8 @@ const COURSES = [
     tagline:'Sport Science Predictive Analytics',
     tier:'accel',
     tierLabel:'Analytical Accelerator',
-    role:'Analytics Director',
-    roleFull:'Analytics Director',
+    role:'Sport Performance Analyst',
+    roleFull:'Sport Performance Analyst / Analytics Director track',
     coreQuestion:'What is likely to happen, and what should we build to anticipate it?',
     stakeholders:'Operational leaders making forward-looking decisions.',
     position:2,
@@ -403,7 +404,7 @@ const COURSES = [
       deliverable:'Intelligence Brief + Live Defense',
     },
     meta:[
-      {label:'Professional Lens', value:'Analytics Director'},
+      {label:'Professional Lens', value:'Sport Performance Analyst'},
       {label:'Pipeline Slot',     value:'Accelerator · Optional'},
       {label:'Methods',           value:'6 method blocks'},
       {label:'Capacity',          value:'Prediction + Classification'},
@@ -435,7 +436,7 @@ const COURSES = [
       query:    'Define the prediction or classification task precisely — what is being predicted, for whom, and with what operational tolerance?',
       interpret:'Fit, diagnose, and compare models. Read beyond accuracy: calibration, fairness across positions, and failure modes.',
       decide:   'Recommend a single model (or a convergent call across methods) and an operational threshold.',
-      justify:  'Defend the model choice, the evaluation protocol, and the deployment readiness — against a skeptical analytics director.',
+      justify:  'Defend the model choice, the evaluation protocol, and the deployment readiness — against a skeptical performance analyst.',
     },
   },
 
@@ -447,8 +448,8 @@ const COURSES = [
     tagline:'Sports Medicine & Clinical Reasoning',
     tier:'clin',
     tierLabel:'Clinical',
-    role:'Sports Medicine Clinician',
-    roleFull:'Sports Medicine Clinician',
+    role:'Athletic Trainer',
+    roleFull:'Athletic Trainer / Clinical Reasoner',
     coreQuestion:'What\'s injured, why does it matter, and when can this athlete return?',
     stakeholders:'Athletes, medical staff, and coaches making return-to-play decisions.',
     position:3,
@@ -460,7 +461,7 @@ const COURSES = [
       deliverable:'Clinical Case Brief + Live Defense',
     },
     meta:[
-      {label:'Professional Lens', value:'Sports Trainer / Clinician'},
+      {label:'Professional Lens', value:'Athletic Trainer'},
       {label:'Instrument',        value:'Anatomage Table'},
       {label:'Reasoning',         value:'Structure → Deficit'},
       {label:'Pipeline Slot',     value:'Clinical Tier'},
@@ -516,7 +517,7 @@ const COURSES = [
       deliverable:'Thesis + Executive Summary + Live Defense',
     },
     meta:[
-      {label:'Professional Lens', value:'Sport Scientist'},
+      {label:'Professional Lens', value:'Applied Researcher'},
       {label:'Formats',           value:'16-wk or 8-wk'},
       {label:'Delivery',          value:'Online + Defense'},
       {label:'Designations',      value:'W · S · R'},
@@ -579,7 +580,7 @@ const COURSES = [
       deliverable:'Portfolio + Exit Presentation',
     },
     meta:[
-      {label:'Professional Lens', value:'Integrated Practitioner'},
+      {label:'Professional Lens', value:'Sport Science Practitioner'},
       {label:'Prerequisites',     value:'205, 325, 405'},
       {label:'Credits',           value:'1–3'},
       {label:'Assessment',        value:'Competency-Based'},
@@ -1128,6 +1129,13 @@ const BriefPage = ({onNav}) => {
           <SectionHead n="01" label="What the Lab is"/>
 
           <p className="brief-lead">
+            It addresses a problem sport science employers have named directly: health and exercise
+            sciences graduates enter the workforce able to perform technical analyses but unable to
+            close the gap between analytical output and confident, defensible recommendations. Call
+            it the <strong>data–decision gap</strong>. The Decision Lab exists to close it.
+          </p>
+
+          <p className="brief-body">
             The Sport Science Decision Lab is an operational framework for training professional
             judgment in sport and health science contexts. It replaces traditional lecture-and-exam
             architecture with a competency-based practice: students develop live decision-making under
@@ -1194,10 +1202,25 @@ const BriefPage = ({onNav}) => {
             arrived.
           </DefinitionRow>
 
-          <p className="brief-body" style={{marginTop:'2rem'}}>
+          <p className="brief-body" style={{marginTop:'2rem', marginBottom:'1.25rem'}}>
             Six professional role titles scaffold the progression across courses. Students inhabit
             recognizable professional identities rather than moving through content as passive learners.
           </p>
+
+          <div className="brief-roles-table">
+            <div className="brief-roles-row brief-roles-head">
+              <div>Course</div>
+              <div>Short label</div>
+              <div>Full professional seat</div>
+            </div>
+            {(window.COURSES || []).slice().sort((a,b)=>a.position-b.position).map(c=>(
+              <div className="brief-roles-row" key={c.id}>
+                <div className="brief-roles-code">{c.code}</div>
+                <div className="brief-roles-short">{c.role}</div>
+                <div className="brief-roles-full">{c.roleFull || c.role}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -1480,6 +1503,46 @@ const BriefPage = ({onNav}) => {
           background:linear-gradient(transparent 62%, rgba(212,168,75,.35) 62%);
         }
 
+        /* Roles reference table */
+        .brief-roles-table {
+          margin:1rem 0 .5rem;
+          border-top:1.5px solid rgba(11,20,16,.4);
+          border-bottom:1.5px solid rgba(11,20,16,.4);
+        }
+        .brief-roles-row {
+          display:grid;
+          grid-template-columns: 88px minmax(0,1.1fr) minmax(0,2fr);
+          gap:1.25rem;
+          padding:.75rem 0;
+          border-bottom:1px solid rgba(11,20,16,.1);
+          align-items:baseline;
+        }
+        .brief-roles-row:last-child { border-bottom:none; }
+        .brief-roles-head {
+          font-family:'JetBrains Mono',monospace;
+          font-size:.6rem; letter-spacing:.2em; text-transform:uppercase;
+          color:#374149; font-weight:600;
+          border-bottom:1.5px solid rgba(11,20,16,.4);
+        }
+        .brief-roles-code {
+          font-family:'JetBrains Mono',monospace;
+          font-size:.78rem; letter-spacing:.06em;
+          color:#1B6B5A; font-weight:700;
+        }
+        .brief-roles-short {
+          font-family:'Source Serif 4',serif;
+          font-size:1rem; font-weight:600; color:#0B1410;
+        }
+        .brief-roles-full {
+          font-family:'Source Serif 4',serif;
+          font-size:.95rem; color:#374149; font-style:italic;
+        }
+        @media(max-width:680px){
+          .brief-roles-row { grid-template-columns:72px 1fr; gap:.5rem 1rem; padding:.65rem 0; }
+          .brief-roles-row .brief-roles-full { grid-column:2 / 3; font-size:.85rem; }
+          .brief-roles-head .brief-roles-full { display:none; }
+        }
+
         .brief-cycle-inline {
           display:inline-flex; align-items:center; flex-wrap:wrap;
           gap:.5rem .65rem;
@@ -1644,6 +1707,16 @@ const BriefPage = ({onNav}) => {
             break-inside:avoid;
             border-color:#bbb !important;
           }
+          .brief-roles-table {
+            page-break-inside:avoid;
+            break-inside:avoid;
+            border-color:#000 !important;
+          }
+          .brief-roles-row { border-color:#bbb !important; }
+          .brief-roles-head { border-color:#000 !important; color:#000 !important; }
+          .brief-roles-code { color:#000 !important; }
+          .brief-roles-short { color:#000 !important; }
+          .brief-roles-full { color:#444 !important; }
           .brief-lead {
             page-break-after:avoid;
             break-after:avoid;
@@ -1888,6 +1961,18 @@ const HeroPanel = ({onNav}) => {
               Decision Intelligence. Six courses. One framework.
               A practitioner-scholar pipeline built on a single architectural principle —
               same data, same reasoning, same professional roles. Only the stakes escalate.
+            </div>
+
+            <div style={{
+              fontSize:'1rem', lineHeight:1.6, color:'rgba(243,241,234,.72)',
+              maxWidth:560, marginBottom:'1.5rem', fontWeight:300,
+              borderLeft:'2px solid rgba(212,168,75,.45)',
+              paddingLeft:'1rem',
+            }}>
+              Health and exercise sciences graduates enter the workforce able to perform technical
+              analyses but unable to close the gap between analytical output and confident, defensible
+              recommendations. Call it the <strong style={{color:'#D4A84B', fontWeight:600}}>data–decision gap</strong>.
+              The Decision Lab exists to close it.
             </div>
 
             <div style={{
@@ -2472,8 +2557,19 @@ const CourseHero = ({course, onNav}) => {
             <div style={{
               fontSize:'1.05rem', color:'rgba(243,241,234,.7)',
               fontStyle:'italic', fontFamily:'Source Serif 4,serif',
-              marginBottom:'1.5rem',
+              marginBottom:'1.1rem',
             }}>{course.tagline}</div>
+
+            <div style={{
+              fontFamily:'JetBrains Mono,monospace', fontSize:'.7rem',
+              letterSpacing:'.18em', textTransform:'uppercase',
+              color:'#D4A84B', marginBottom:'1.5rem',
+              paddingBottom:'.9rem', borderBottom:'1px solid rgba(212,168,75,.18)',
+              display:'flex', flexWrap:'wrap', gap:'.5rem .9rem', alignItems:'baseline',
+            }}>
+              <span style={{color:'rgba(243,241,234,.5)', fontWeight:500}}>Professional seat ◆</span>
+              <span style={{color:'#F3F1EA'}}>{course.roleFull || course.role}</span>
+            </div>
 
             <p style={{fontFamily:'Source Serif 4,serif', fontSize:'1.02rem', lineHeight:1.6, color:'rgba(243,241,234,.82)', maxWidth:640}}>
               {course.intro}
@@ -2912,6 +3008,12 @@ const AboutPage = ({onNav}) => {
                   <div>
                     <div style={{fontSize:'.7rem', color:'rgba(243,241,234,.55)', fontFamily:'JetBrains Mono,monospace', letterSpacing:'.14em', marginBottom:'.25rem'}}>INSTITUTION</div>
                     <div style={{fontSize:'.9rem', fontFamily:'Source Serif 4,serif', color:'rgba(243,241,234,.88)'}}>{B.contact.inst}</div>
+                  </div>
+                  <div style={{borderTop:'1px solid rgba(212,168,75,.18)', paddingTop:'.85rem', marginTop:'.25rem'}}>
+                    <div style={{fontSize:'.7rem', color:'rgba(243,241,234,.55)', fontFamily:'JetBrains Mono,monospace', letterSpacing:'.14em', marginBottom:'.35rem'}}>CITE THE LAB</div>
+                    <div style={{fontSize:'.85rem', fontFamily:'Source Serif 4,serif', color:'rgba(243,241,234,.82)', lineHeight:1.5}}>
+                      Robertson, C. (2026). <em>The Sport Science Decision Lab.</em> Jacksonville University.
+                    </div>
                   </div>
                 </div>
               </div>
