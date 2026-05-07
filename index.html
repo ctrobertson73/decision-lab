@@ -194,7 +194,7 @@
 // Sport Science Decision Lab — content data
 
 const DECISION_CYCLE = [
-  {id:'theorize',  label:'THEORIZE',  prompt:'What is your mental model?',     desc:'Commit to a model of how the system works before evidence is fully in. AI cannot do this for the student — delegate it and you inherit a position you cannot defend.', aiResist:true},
+  {id:'theorize',  label:'THEORIZE',  prompt:'What is your mental model — and whose problem is it?',     desc:'Two axes the student must own before evidence comes in. First: a working model of how the system operates. Second: a model of the stakeholder — what they care about, what counts as a useful answer, what they will do with it. AI cannot author either. Delegate them and you inherit a position you cannot defend.', aiResist:true},
   {id:'query',     label:'QUERY',     prompt:'What fits the question?',        desc:'Translate the model into a concrete question, the data needed, and the method that fits. The first phase where AI assistance becomes substantial.', aiResist:false},
   {id:'interpret', label:'INTERPRET', prompt:'What does the output mean?',     desc:'Read the result against the mental model. AI translates output and surfaces limits — the student tests whether the result confirms or contradicts the prior.', aiResist:false},
   {id:'decide',    label:'DECIDE',    prompt:'What is the recommendation?',    desc:'Move from understanding to action. Commit. Name the alternatives. State the trade-off explicitly. AI can weigh — only the student can choose.', aiResist:false},
@@ -241,7 +241,17 @@ const PRACTITIONER_NETWORK = [
   { name:'Matthew Hawkey, PhD', role:'Clinical Assistant Professor · Sport Analytics',
     contribution:'Reframed JUSTIFY as one of two phases AI cannot compress, and clarified that the Lab\'s outputs should be forward-looking decision tools, not retrospective dashboards.' },
   { name:'Seth Partnow', role:'Author, The Midrange Theory · Former Director of Basketball Research, Milwaukee Bucks',
-    contribution:'Identified that the four-phase cycle was implicitly assuming a precondition — the mental model students bring to the work. THEORIZE was added in April 2026 as a result.' },
+    contribution:'Pressed on what the four-phase cycle was assuming but not naming. The conversation surfaced two preconditions students were carrying implicitly — a model of the system, and a model of the stakeholder. THEORIZE was promoted to a named first phase, defined on both axes, in April 2026.' },
+];
+
+// Transdisciplinary framing — multi → inter → trans
+const TRANSDISCIPLINARY = [
+  { mode:'Multidisciplinary', sub:'Subjects taught side by side',
+    body:'Students take statistics, motor control, and neuroanatomy. Each course owns its own database, its own vocabulary, its own assessment. Integration is left to the student — and rarely happens.' },
+  { mode:'Interdisciplinary', sub:'Subjects in conversation',
+    body:'Courses reference each other. A motor-control case might cite a statistical method. The connection is acknowledged, but the architecture stays separate — the student still translates across worlds in their own head.' },
+  { mode:'Transdisciplinary', sub:'A single practitioner identity',
+    body:'One database. One Decision Cycle. One progression of professional roles. The student does not graduate having taken six courses — they graduate as a practitioner whose reasoning is shaped by all six at once.', emphasis:true },
 ];
 
 const TIERS = [
@@ -615,7 +625,7 @@ const BIO = {
   name:'Chris Robertson, PhD',
   title:'Associate Professor · Neurophysiologist',
   subtitle:'Founder, Sport Science Decision Lab',
-  blurb:`A practitioner-scholar building a single architectural principle into six courses: students should encounter the same data, the same reasoning framework, and the same professional role structure across every course in the sequence. Only the stakes change.`,
+  blurb:`A practitioner-scholar building a single architectural principle into six courses: students should encounter the same data, the same reasoning framework, and the same professional role structure across every course in the sequence. The intent is transdisciplinary — students graduate as practitioners whose reasoning is shaped by all six courses at once, not as graduates who took them in sequence. Only the stakes change.`,
   pedagogy:{
     headline:'Water, not mountain.',
     body:`The mountain professor fills students with knowledge from above. The water professor creates conditions, holds space, and lets competency emerge from the student's own engagement with the material. Drawn from Chapter Eight of the Tao Te Ching, this is the stance within each Decision Lab course — no traditional lectures, no exams, competency demonstrated live under questioning. Water is how each session is held. The Lab is the architecture across them.`,
@@ -646,7 +656,7 @@ const BIO = {
 
 Object.assign(window,{
   DECISION_CYCLE, TIERS, COURSES, BIO,
-  OPERATING_PRINCIPLES, STATION_TRANSITIONS, PRACTITIONER_NETWORK,
+  OPERATING_PRINCIPLES, STATION_TRANSITIONS, PRACTITIONER_NETWORK, TRANSDISCIPLINARY,
 });
 
 })();
@@ -1074,18 +1084,21 @@ const BriefPage = ({onNav}) => {
           <div className="brief-meta-bar">
             <a onClick={()=>onNav('landing')} style={{cursor:'pointer'}}>◆ DECISION LAB</a>
             <span className="sep">/</span>
-            <span className="gold">THE BRIEF · v4</span>
+            <span className="gold">THE BRIEF · v5</span>
             <span style={{marginLeft:'auto'}} className="hide-print">
-              <button className="brief-btn-download" onClick={print}>
-                <span>↓</span> Download / Print
-              </button>
+              <a className="brief-btn-download"
+                 href="assets/Decision-Lab-Course-Progression.pdf"
+                 download="Decision-Lab-Course-Progression.pdf"
+                 target="_blank" rel="noopener">
+                <span>↓</span> Course Progression PDF
+              </a>
             </span>
           </div>
 
           {/* document masthead */}
           <div className="brief-doc-header">
             <div className="brief-doc-id">
-              <div className="code">DOC · SSDL-BRIEF-04</div>
+              <div className="code">DOC · SSDL-BRIEF-05</div>
               <div className="rule"></div>
               <div className="issued">Jacksonville University · Health &amp; Exercise Sciences</div>
             </div>
@@ -1106,7 +1119,8 @@ const BriefPage = ({onNav}) => {
             {[
               {n:'01', label:'What the Lab is',           anchor:'what'},
               {n:'02', label:'What the Lab teaches',      anchor:'teaches'},
-              {n:'03', label:'What makes the Lab distinctive', anchor:'distinctive'},
+              {n:'03', label:'From multidisciplinary to transdisciplinary', anchor:'transdisciplinary'},
+              {n:'04', label:'What makes the Lab distinctive', anchor:'distinctive'},
             ].map(t=>(
               <a key={t.n} href={`#/brief`} onClick={(e)=>{
                 e.preventDefault();
@@ -1180,19 +1194,21 @@ const BriefPage = ({onNav}) => {
               <span style={{color:'#1B6B5A'}}>JUSTIFY</span>
             </span>
             <div style={{marginTop:'.85rem'}}>
-              Students <strong>theorize</strong> — committing to a mental model of how the system works before
-              evidence is fully in. They <em>query</em> the information that fits the model, <em>interpret</em> what
-              it tells them and what it misses, and <em>decide</em> under uncertainty. They <strong>justify</strong> by
-              naming both the purpose of their intervention and its trade-off, defending the
-              recommendation under questioning.
+              Students <strong>theorize</strong> on two axes before evidence is in. They commit to a working
+              model of how the system operates — the athlete, the program, the injury mechanism — and they
+              commit to a model of <em>the stakeholder</em>: what counts as useful, what they will do with the
+              answer, what tradeoff they can accept. They <em>query</em> the information that fits the model,
+              <em> interpret</em> what it tells them and what it misses, and <em>decide</em> under uncertainty.
+              They <strong>justify</strong> by naming both the purpose of their intervention and its trade-off,
+              defending the recommendation under questioning.
             </div>
             <div style={{marginTop:'.85rem'}}>
               The cycle has two AI-resistant ends and three AI-assisted middle phases.
-              <strong> THEORIZE</strong> is the competency AI cannot inherit — reasoning before evidence is
-              the student's mental model, not a delegated artifact. <strong>JUSTIFY</strong> is the competency
-              that does not compress — defending a call to a veteran coach, a worried parent, or a
-              stakeholder with a different answer. The middle three (QUERY, INTERPRET, DECIDE) are
-              where AI now does most of the labor.
+              <strong> THEORIZE</strong> is the competency AI cannot inherit — a model of the system and a
+              model of the stakeholder are positions the student must own, not artifacts they can
+              delegate. <strong>JUSTIFY</strong> is the competency that does not compress — defending a call
+              to a veteran coach, a worried parent, or a stakeholder with a different answer. The middle
+              three (QUERY, INTERPRET, DECIDE) are where AI now does most of the labor.
             </div>
           </DefinitionRow>
 
@@ -1231,11 +1247,51 @@ const BriefPage = ({onNav}) => {
       />
 
       {/* ============================================================ */}
-      {/* SECTION 03                                                   */}
+      {/* SECTION 03 — transdisciplinary                              */}
+      {/* ============================================================ */}
+      <section className="brief-section" id="brief-transdisciplinary">
+        <div className="brief-wrap-narrow">
+          <SectionHead n="03" label="From multidisciplinary to transdisciplinary"/>
+
+          <p className="brief-lead">
+            The Lab is not a sequence of related courses. It is a single transdisciplinary architecture
+            — one database, one Decision Cycle, one progression of professional roles — designed to
+            produce a practitioner identity, not a transcript.
+          </p>
+
+          <div className="brief-trans-grid">
+            {(window.TRANSDISCIPLINARY || []).map((t,i)=>(
+              <div className={`brief-trans-card ${t.emphasis ? 'emphasis' : ''}`} key={t.mode}>
+                <div className="brief-trans-num">{String(i+1).padStart(2,'0')}</div>
+                <div className="brief-trans-mode">{t.mode}</div>
+                <div className="brief-trans-sub">{t.sub}</div>
+                <p className="brief-trans-body">{t.body}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="brief-body" style={{marginTop:'2rem'}}>
+            Most undergraduate sport-science programs operate multidisciplinarily by default and gesture
+            toward interdisciplinarity in capstones. The Decision Lab is engineered transdisciplinarily
+            from the foundation up: the same database from week one of HLSC 205 through the practicum
+            in HLSC 490, the same five-phase cycle in every assignment, the same six professional seats
+            building toward an integrated practitioner identity at exit.
+          </p>
+
+          <p className="brief-body">
+            The Decision Cycle is the integration mechanism. It is the one cognitive object every course
+            shares — the connective tissue that makes the architecture transdisciplinary rather than
+            merely sequenced.
+          </p>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* SECTION 04                                                   */}
       {/* ============================================================ */}
       <section className="brief-section" id="brief-distinctive">
         <div className="brief-wrap-narrow">
-          <SectionHead n="03" label="What makes the Lab distinctive"/>
+          <SectionHead n="04" label="What makes the Lab distinctive"/>
 
           <p className="brief-lead">
             Most undergraduate sport and health science programs teach content and hope judgment
@@ -1259,9 +1315,10 @@ const BriefPage = ({onNav}) => {
           <div className="brief-closing">
             <div className="brief-closing-eyebrow">The graduate outcome</div>
             <p>
-              Students do not graduate knowing more facts. They graduate able to <strong>commit to a
-              mental model, read situations, formulate genuine questions, reason under uncertainty,
-              and defend their reasoning to someone who pushes back.</strong>
+              Students do not graduate having taken six courses. They graduate as <strong>transdisciplinary
+              practitioners</strong> — able to commit to a mental model of both system and stakeholder,
+              read situations, formulate genuine questions, reason under uncertainty, and defend their
+              reasoning to someone who pushes back.
             </p>
           </div>
         </div>
@@ -1287,7 +1344,7 @@ const BriefPage = ({onNav}) => {
             </div>
             <div className="colophon-doc">
               <div className="label">DOCUMENT</div>
-              <div>SSDL-BRIEF-04</div>
+              <div>SSDL-BRIEF-05</div>
               <div className="label" style={{marginTop:'.75rem'}}>CITE AS</div>
               <div className="cite">Robertson, C. (2026). <em>The Sport Science Decision Lab.</em> Jacksonville University.</div>
             </div>
@@ -1295,9 +1352,13 @@ const BriefPage = ({onNav}) => {
 
           <div className="colophon-actions hide-print">
             <CtaRow>
-              <button className="btn btn-primary btn-arrow" onClick={print}>
-                Download / Print Brief
-              </button>
+              <a className="btn btn-primary btn-arrow"
+                 href="assets/Decision-Lab-Course-Progression.pdf"
+                 download="Decision-Lab-Course-Progression.pdf"
+                 target="_blank" rel="noopener"
+                 style={{textDecoration:'none', display:'inline-flex', alignItems:'center'}}>
+                Download Course Progression PDF
+              </a>
               <button className="btn" style={{background:'transparent', color:'#0E3D33', border:'1px solid #0E3D33'}} onClick={()=>onNav('landing')}>
                 Back to pipeline
               </button>
@@ -1348,6 +1409,7 @@ const BriefPage = ({onNav}) => {
           font-size:.62rem; letter-spacing:.18em;
           padding:.45rem .7rem; border-radius:4px;
           cursor:pointer; transition:all .15s;
+          text-decoration:none; display:inline-flex; align-items:center; gap:.4rem;
         }
         .brief-btn-download:hover { background:#D4A84B; color:#0E3D33; }
 
@@ -1553,6 +1615,57 @@ const BriefPage = ({onNav}) => {
         }
         .brief-cycle-inline .arr { color:#D4A84B; font-weight:400; }
 
+        /* Transdisciplinary progression */
+        .brief-trans-grid {
+          display:grid; gap:1rem;
+          margin:2rem 0 1rem;
+          grid-template-columns:repeat(3, 1fr);
+        }
+        @media (max-width: 720px) {
+          .brief-trans-grid { grid-template-columns:1fr; }
+        }
+        .brief-trans-card {
+          border:1px solid rgba(11,20,16,.18);
+          border-top:3px solid rgba(11,20,16,.4);
+          padding:1.1rem 1.1rem 1.25rem;
+          background:rgba(255,255,255,.5);
+          position:relative;
+          display:flex; flex-direction:column;
+        }
+        .brief-trans-card.emphasis {
+          background:#0E3D33; color:#F3F1EA;
+          border-color:#0E3D33; border-top-color:#D4A84B;
+        }
+        .brief-trans-num {
+          font-family:'JetBrains Mono',monospace;
+          font-size:.6rem; letter-spacing:.22em;
+          color:rgba(11,20,16,.45);
+          margin-bottom:.6rem;
+        }
+        .brief-trans-card.emphasis .brief-trans-num { color:rgba(212,168,75,.85); }
+        .brief-trans-mode {
+          font-family:'Source Serif 4',serif;
+          font-size:1.18rem; font-weight:500;
+          letter-spacing:-.01em;
+          line-height:1.15;
+        }
+        .brief-trans-card.emphasis .brief-trans-mode { color:#D4A84B; }
+        .brief-trans-sub {
+          font-family:'JetBrains Mono',monospace;
+          font-size:.7rem; letter-spacing:.05em;
+          color:rgba(11,20,16,.55);
+          margin-top:.3rem;
+          font-style:italic;
+        }
+        .brief-trans-card.emphasis .brief-trans-sub { color:rgba(243,241,234,.7); }
+        .brief-trans-body {
+          font-family:'Source Serif 4',serif;
+          font-size:.95rem; line-height:1.55;
+          margin-top:.85rem;
+          color:rgba(11,20,16,.78);
+        }
+        .brief-trans-card.emphasis .brief-trans-body { color:rgba(243,241,234,.92); }
+
         /* Closing emphasis block */
         .brief-closing {
           margin-top:2.5rem;
@@ -1717,6 +1830,26 @@ const BriefPage = ({onNav}) => {
           .brief-roles-code { color:#000 !important; }
           .brief-roles-short { color:#000 !important; }
           .brief-roles-full { color:#444 !important; }
+          .brief-trans-grid {
+            grid-template-columns:repeat(3, 1fr) !important;
+            page-break-inside:avoid; break-inside:avoid;
+          }
+          .brief-trans-card {
+            background:#fff !important; color:#000 !important;
+            border-color:#999 !important; border-top-color:#000 !important;
+            page-break-inside:avoid; break-inside:avoid;
+          }
+          .brief-trans-card.emphasis {
+            background:#fff !important; color:#000 !important;
+            border:2px solid #000 !important;
+          }
+          .brief-trans-num { color:#666 !important; }
+          .brief-trans-mode { color:#000 !important; }
+          .brief-trans-card.emphasis .brief-trans-mode { color:#000 !important; }
+          .brief-trans-sub { color:#666 !important; }
+          .brief-trans-card.emphasis .brief-trans-sub { color:#444 !important; }
+          .brief-trans-body { color:#222 !important; }
+          .brief-trans-card.emphasis .brief-trans-body { color:#000 !important; }
           .brief-lead {
             page-break-after:avoid;
             break-after:avoid;
@@ -2089,7 +2222,7 @@ const WhatIsDI = () => (
             ['Not a tool', 'A professional capacity'],
             ['Not a method', 'A reasoning architecture'],
             ['Not automation', 'Judgment under questioning'],
-            ['Not classroom theory', 'Real data, real stakeholders'],
+            ['Not multidisciplinary', 'Transdisciplinary by design'],
           ].map((p,i)=>(
             <div key={i} style={{padding:'.4rem 0'}}>
               <div style={{fontFamily:'JetBrains Mono,monospace', fontSize:'.6rem', letterSpacing:'.16em', textTransform:'uppercase', color:'#8A6D20'}}>{p[0]}</div>
@@ -2231,8 +2364,9 @@ const DCExplainer = () => {
           <div>
             <p style={{fontSize:'1rem', lineHeight:1.7, marginBottom:'1.25rem', maxWidth:540, fontFamily:'Source Serif 4,serif'}}>
               <strong style={{color:'#0E3D33'}}>THEORIZE</strong> at the front and <strong style={{color:'#0E3D33'}}>JUSTIFY</strong> at the back are
-              the phases AI cannot do for the student. Both require taking a position — Theorize before evidence is in;
-              Justify under live stakeholder pressure. The middle three phases (Query, Interpret, Decide) are increasingly
+              the phases AI cannot do for the student. <em>Theorize</em> demands two preconditions before evidence arrives — a working
+              model of the system <em>and</em> a model of the stakeholder. <em>Justify</em> demands holding ground in front of someone who
+              wants a different answer. The middle three phases (Query, Interpret, Decide) are increasingly
               AI-assisted, and the partnership between student and AI does that work well together.
             </p>
             <p style={{fontSize:'.9rem', lineHeight:1.65, marginBottom:'1.5rem', maxWidth:540, color:'#374149'}}>
@@ -2497,7 +2631,7 @@ const Landing = ({onNav}) => (
     <Pipeline onNav={onNav}/>
     <TransitionsSection onNav={onNav}/>
     <PullQuote
-      text="The same question runs through every course: can you explain your reasoning? The content changes. The professional lens changes. The stakes change. The question does not."
+      text="The same question runs through every course: can you explain your reasoning? The content changes. The professional lens changes. The stakes change. The question does not. The result is a transdisciplinary practitioner, not a transcript."
       attr="The Lab thesis"
       dark
     />
@@ -3182,6 +3316,8 @@ const App = () => {
 ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
 
 })();
+
+
 
 </script>
 
