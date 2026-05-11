@@ -189,478 +189,6 @@
 
 <script type="text/babel">
 
-// ======== src/data.jsx ========
-(function(){
-// Sport Science Decision Lab — content data
-
-const DECISION_CYCLE = [
-  {id:'theorize',  label:'THEORIZE',  prompt:'What is your mental model — and whose problem is it?',     desc:'Two axes the student must own before evidence comes in. First: a working model of how the system operates. Second: a model of the stakeholder — what they care about, what counts as a useful answer, what they will do with it. AI cannot author either. Delegate them and you inherit a position you cannot defend.', aiResist:true},
-  {id:'query',     label:'QUERY',     prompt:'What fits the question?',        desc:'Translate the model into a concrete question, the data needed, and the method that fits. The first phase where AI assistance becomes substantial.', aiResist:false},
-  {id:'interpret', label:'INTERPRET', prompt:'What does the output mean?',     desc:'Read the result against the mental model. AI translates output and surfaces limits — the student tests whether the result confirms or contradicts the prior.', aiResist:false},
-  {id:'decide',    label:'DECIDE',    prompt:'What is the recommendation?',    desc:'Move from understanding to action. Commit. Name the alternatives. State the trade-off explicitly. AI can weigh — only the student can choose.', aiResist:false},
-  {id:'justify',   label:'JUSTIFY',   prompt:'Why this, and what did it cost?',desc:'Defend the recommendation in language the stakeholder can act on, and hold ground when they push back. AI cannot defend live. This is where the practitioner lives.', aiResist:true},
-];
-
-// Operating principles — explicit, numbered, used in landing + brief.
-const OPERATING_PRINCIPLES = [
-  { n:'01', headline:'AI can assist. Only you can think.',
-    body:'Every course treats AI as a labor partner. Every course requires the student to own the reasoning at both ends of the cycle — the model coming in, and the defense going out.' },
-  { n:'02', headline:'The only variable is the stakes.',
-    body:'The database, the Decision Cycle, the role structure, and the reasoning demand are constants across all six courses. What changes is how real the consequences become.' },
-  { n:'03', headline:'Competency is demonstrated, not declared.',
-    body:'Every course ends in live demonstration under questioning. Written outputs support the defense. They do not replace it.' },
-  { n:'04', headline:'Stakeholder communication is the primary output.',
-    body:'The student\'s job is not to produce analysis. The job is to produce a decision recommendation a non-technical stakeholder can act on. This is the point of the entire pipeline.' },
-  { n:'05', headline:'Prepared, not planned.',
-    body:'Practitioners cannot script the situations they will face. What they carry in is a trained way of reading them. The Decision Cycle is the operational expression of preparedness, run as a cycle.' },
-];
-
-// Cognitive shifts between courses
-const STATION_TRANSITIONS = [
-  { from:'205', to:'325', fromLabel:'Statistics', toLabel:'Motor Control',
-    fromQ:'"What does the data say?"', toQ:'"What should we do about it?"',
-    note:'The analytical question becomes a coaching decision. Same data, new responsibility. The data didn\'t change. The authority did.' },
-  { from:'325', to:'442', fromLabel:'Motor Control', toLabel:'Predictive Analytics',
-    fromQ:'Descriptive & inferential reasoning', toQ:'Predictive & probabilistic reasoning',
-    note:'From explaining what happened to forecasting what will happen. Students stop consuming decision support and start building it.' },
-  { from:'442', to:'405', fromLabel:'Predictive Analytics', toLabel:'Neuroanatomy',
-    fromQ:'Optimization', toQ:'Risk management',
-    note:'The same athletes prepared for peak performance now present with injury mechanisms. Stakes shift from winning to not losing the athlete.' },
-  { from:'405', to:'499', fromLabel:'Neuroanatomy', toLabel:'Senior Thesis',
-    fromQ:'Simulated data, imagined stakeholders', toQ:'Real data, real stakeholders',
-    note:'The biggest transition in the pipeline. Database, stakeholders, and consequences all become authentic at the same time.' },
-  { from:'499', to:'490', fromLabel:'Senior Thesis', toLabel:'Practicum',
-    fromQ:'Structured research', toQ:'Operational practice',
-    note:'From answering one question well to functioning in an environment that produces many questions per day under professional supervision.' },
-];
-
-// Practitioner network — sharpens the Lab in real time
-const PRACTITIONER_NETWORK = [
-  { name:'Jack Burns & STA Soccer', role:'ECNL Boys academy · Coach Competency Framework',
-    contribution:'Shaped the Lab\'s session design vocabulary and justify-competency rubric. The phrase "prepared, not planned" entered through this collaboration.' },
-  { name:'Matthew Hawkey, PhD', role:'Clinical Assistant Professor · Sport Analytics',
-    contribution:'Reframed JUSTIFY as one of two phases AI cannot compress, and clarified that the Lab\'s outputs should be forward-looking decision tools, not retrospective dashboards.' },
-  { name:'Seth Partnow', role:'Author, The Midrange Theory · Former Director of Basketball Research, Milwaukee Bucks',
-    contribution:'Pressed on what the four-phase cycle was assuming but not naming. The conversation surfaced two preconditions students were carrying implicitly — a model of the system, and a model of the stakeholder. THEORIZE was promoted to a named first phase, defined on both axes, in April 2026.' },
-];
-
-// Transdisciplinary framing — multi → inter → trans
-const TRANSDISCIPLINARY = [
-  { mode:'Multidisciplinary', sub:'Subjects taught side by side',
-    body:'Students take statistics, motor control, and neuroanatomy. Each course owns its own database, its own vocabulary, its own assessment. Integration is left to the student — and rarely happens.' },
-  { mode:'Interdisciplinary', sub:'Subjects in conversation',
-    body:'Courses reference each other. A motor-control case might cite a statistical method. The connection is acknowledged, but the architecture stays separate — the student still translates across worlds in their own head.' },
-  { mode:'Transdisciplinary', sub:'A single practitioner identity',
-    body:'One database. One Decision Cycle. One progression of professional roles. The student does not graduate having taken six courses — they graduate as a practitioner whose reasoning is shaped by all six at once.', emphasis:true },
-];
-
-const TIERS = [
-  {id:'found',  label:'Foundational',           hint:'Simulated data, structured reasoning'},
-  {id:'accel',  label:'Analytical Accelerator', hint:'Predictive methods & machine learning'},
-  {id:'clin',   label:'Clinical',               hint:'Highest-stakes foundational reasoning'},
-  {id:'cap',    label:'Capstone',               hint:'Real data, real stakeholders, real stakes'},
-];
-
-const COURSES = [
-  {
-    id:'hlsc-205',
-    code:'HLSC 205',
-    title:'Statistics for Health & Exercise Science',
-    shortTitle:'Statistics',
-    tagline:'Sport Science Data Analytics',
-    tier:'found',
-    tierLabel:'Foundational',
-    role:'Data Analyst',
-    roleFull:'Sport Scientist / Data Analyst',
-    coreQuestion:'What does the data say?',
-    stakeholders:'Coaches and training staff asking for descriptive and inferential findings.',
-    position:0,
-    architecture:'4 units + capstone',
-    architectureType:'Units',
-    capstone:{
-      name:'The JU Athletics Scouting Report',
-      brief:'Commissioned by the Athletics Director. Pick a varsity program, query the database, select and defend the right test, and deliver a 1–2 page scouting report with presentation-quality visualizations. Defended live in the final exam block under stakeholder-style questioning.',
-      deliverable:'Scouting Report + Live Defense',
-    },
-    meta:[
-      {label:'Professional Lens', value:'Data Analyst'},
-      {label:'Tools',          value:'Excel · Python · JASP'},
-      {label:'Pipeline Slot',  value:'Foundation · Week 1'},
-      {label:'Assessment',     value:'2 Comps + Live Defense'},
-      {label:'AI Integration', value:'Day One'},
-    ],
-    intro:`This is where the Decision Lab begins. Students encounter the shared sport science database for the first time — learning to query athlete data, select and execute statistical tests, and visualize results for stakeholders. Every analytical task is framed through the Decision Cycle: students do not simply run tests, they must articulate why they chose a particular analysis, what it means in context, and what decision it supports. AI tools enter on day one as labor partners. Students own the reasoning. AI handles the execution. The boundary between the two is the competency being assessed.`,
-    escalation:`This is the entry point — the baseline every other course in the pipeline assumes. A student who can't query the database, describe it, and run the right test can't occupy any of the professional seats downstream.`,
-    blocks:[
-      {
-        tag:'STATS 01', weeks:'Wk 1–4', title:'Data Literacy & Descriptive Analysis',
-        sub:'Building the analytical foundation',
-        body:'Students meet the sport science database and learn to ask questions of it. The full tool chain (Excel, Python via Colab, AI assistants) is established. Data literacy first: understanding what variables you have, how to describe their distributions, and how to communicate those descriptions. No inferential claims yet — learn to see before you learn to test.',
-        scene:`You've been given access to the JU Athletics performance database. Before you run a single test — who are these athletes, what was measured, and what does the distribution of training loads look like across the roster?`,
-        topics:['AI-assisted SQL querying','Variables & measurement scales','Central tendency & variability','Distributions and shape','Histograms, boxplots, scatter','Decision Cycle introduction'],
-        gate:'Competency 01 — descriptive analysis & data literacy under questioning',
-      },
-      {
-        tag:'STATS 02', weeks:'Wk 5–7', title:'Probability & Distributions',
-        sub:'The mathematical foundations',
-        body:'Before students can test a hypothesis, they need to understand what makes an observation unusual. This unit builds the probability scaffolding behind every inferential test: what distributions describe, how probability quantifies uncertainty, and why the normal distribution is the engine behind most of the tools they will use.',
-        scene:`An athlete's ACWR is 1.45. Is that unusual? Unusual compared to what? The answer depends entirely on what distribution you're comparing against — and understanding that comparison is the foundation of every statistical test you will run.`,
-        topics:['Probability basics','Normal, t, chi-square distributions','Binomial & Poisson','Z-scores & standardization','Connecting distributions to athletic data'],
-      },
-      {
-        tag:'STATS 03', weeks:'Wk 8–10', title:'Inference Foundations',
-        sub:'From data to conclusions',
-        body:`This unit bridges description and decision. Students learn the logic of statistical inference: sampling distributions, the CLT, confidence intervals, and hypothesis testing. JASP is introduced alongside Python. The distinction between statistical and practical significance is introduced here and recurs in every subsequent course.`,
-        scene:`You measured vertical jump for 25 athletes before and after a six-week plyometric program. The mean improved 2.1 cm. Is that real improvement or just noise? And even if it's statistically significant — does it actually matter to a coach?`,
-        topics:['Sampling distributions & CLT','Confidence intervals','Hypothesis testing & p-values','Type I / Type II errors','Effect sizes (Cohen\'s d)','Statistical vs practical significance'],
-        gate:'Competency 02 — probability, distributions, & inference framework under questioning',
-      },
-      {
-        tag:'STATS 04', weeks:'Wk 10–12', title:'Statistical Tests',
-        sub:'The analytical toolkit — one test per session',
-        body:`Each test gets a dedicated session. This is deliberate: rather than surveying tests in a blur, students encounter each one as a tool with a specific purpose, assumptions, and output. Every session follows the same structure: what question does this answer, when do you use it instead of the others, what does the output mean, and how do you report it?`,
-        scene:`Is there a significant difference in sprint times between athletes who completed the off-season program and those who didn't? Does vertical jump predict in-game performance? Each question demands a different test — and choosing the wrong one produces an answer to a question nobody asked.`,
-        topics:['t-tests (paired & independent)','ANOVA','Correlation','Linear & multiple regression','Chi-square','Test selection logic'],
-      },
-    ],
-    cycle:{
-      theorize: 'Before touching the data, commit to a model: what do you expect athletes in this program to look like, and what would surprise you?',
-      query:    'Identify the decision and frame the stakeholder question. Choose the test that fits.',
-      interpret:'Run the test; read output in context against your prior, not in isolation.',
-      decide:   'Translate the statistical output into a recommendation the Athletics Director can act on.',
-      justify:  'Defend test selection, assumptions, and the statistical-vs-practical significance call under questioning.',
-    },
-  },
-
-  {
-    id:'exsc-325',
-    code:'EXSC 325',
-    title:'Motor Control',
-    shortTitle:'Motor Control',
-    tagline:'Performance Science & Training Design',
-    tier:'found',
-    tierLabel:'Foundational',
-    role:'Performance Coach',
-    roleFull:'Performance Coach / Skill Acquisition Specialist',
-    coreQuestion:'What should we do about it?',
-    stakeholders:'Athletes and coaching staff who need training prescriptions.',
-    position:1,
-    architecture:'5 notebooks + capstone',
-    architectureType:'Notebooks',
-    capstone:{
-      name:'The Coaching Consultation',
-      brief:'A JU head coach commissions a motor control consultation for a struggling athlete. The student builds the analysis in Colab with Decision Cycle headers, produces a 1–2 page consultation with visualizations the coach can read directly, and defends the prescription live to the coach who has to implement it.',
-      deliverable:'Coaching Consultation + Live Defense',
-    },
-    meta:[
-      {label:'Professional Lens', value:'Performance Coach'},
-      {label:'Pipeline Slot',     value:'Foundation · Week 2'},
-      {label:'Method',            value:'Theory → Data → Rx'},
-      {label:'Assessment',        value:'2 Comps + Defense'},
-    ],
-    intro:`The analytical skills from HLSC 205 pivot: from "what does the data say?" to "what should we do about it?" Five notebooks build toward the Coaching Consultation — a motor control prescription for a specific athlete, grounded in both data and theory, defended live to the coach who has to implement it.`,
-    escalation:`Same database. Same Decision Cycle. The question shifts from description to prescription. A wrong answer here isn't an inaccurate report — it's a practice plan that wastes an athlete's season or breaks their body.`,
-    blocks:[
-      { tag:'MC 01', weeks:'Wk 1–2', title:'Athlete Profiling & Baseline Data', sub:'Who is this athlete?',
-        body:`Before a performance coach can prescribe anything, they need to know who they're working with. This notebook teaches students to build an athlete profile from the database — movement screening scores, proprioceptive baselines, feedback control characteristics, and the athlete's position within the team's roster.`,
-        scene:`You've been assigned a volleyball outside hitter. Her FMS score is 14, Y-Balance composite is 94%, and screening flagged a right-side asymmetry. Before you design anything — what does this profile tell you about her motor control system?`,
-        topics:['FMS & Y-Balance','Proprioception & feedback control','Database querying for profiles','Baseline assessment in context','Athlete profile synthesis']},
-      { tag:'MC 02', weeks:'Wk 3–5', title:'Tracking Skill Acquisition', sub:'How do athletes learn?',
-        body:`Athletes don't improve linearly. They plateau, regress, break through, and consolidate. Fitts & Posner's stages provide the classification scheme; power-law learning curves provide the mathematical shape; variability analysis reveals whether inconsistency is noise or productive exploration.`,
-        scene:`A basketball player's free-throw % has been flat at 68 for six weeks despite daily practice. Is she plateaued, stuck in the associative stage, or has the practice structure stopped challenging her motor system?`,
-        topics:['Fitts & Posner stages','Neural basis of learning','Learning curves & plateaus','Longitudinal tracking (Python)','Variability: noise vs exploration'],
-        gate:'Competency 01 — profiling & acquisition analysis'},
-      { tag:'MC 03', weeks:'Wk 5–7', title:'Practice Design & Training Load', sub:'How should we train?',
-        body:`Motor control theory becomes coaching prescription. Blocked practice looks productive but produces fragile skills. The Challenge Point Framework provides the optimization principle; ACWR provides the safety constraint.`,
-        scene:`A midfielder's ACWR is 1.35 and climbing. Her coach wants to add a new set-piece routine. Challenge Point says she's ready for complexity. Load says she's approaching the danger zone. What's the prescription — and what's the motor learning rationale?`,
-        topics:['Blocked vs random practice','Contextual interference','Challenge Point Framework','Training load & ACWR','Neural fatigue & recovery','Fitts\' Law tradeoffs']},
-      { tag:'MC 04', weeks:'Wk 7–9', title:'Feedback & Intervention Tracking', sub:'How do we guide improvement?',
-        body:`The most common coaching instinct — more feedback, more often, more specific — is wrong for most stages of learning. External attentional focus cues outperform internal cues. Faded feedback schedules outperform constant feedback. The guidance hypothesis explains why.`,
-        scene:`A pitching coach has been giving detailed mechanical feedback after every throw. Form looks great in practice but falls apart in games. The data shows a classic guidance dependency. How do you restructure the schedule without the coach feeling dismissed?`,
-        topics:['Internal vs external focus','Sensory integration','KR vs KP','Guidance hypothesis & faded feedback','Intervention design'],
-        gate:'Competency 02 — practice design & feedback intervention'},
-      { tag:'MC 05', weeks:'Wk 10–12', title:'Integrated Performance Monitoring', sub:'The whole athlete',
-        body:`A transfer problem might be caused by a practice structure issue, a feedback dependency, a load spike, or a stage mismatch — or some combination. Students query across the full database to build integrated assessments pulling from all four prior notebooks.`,
-        scene:`A sprinter's 200m times have regressed 0.3s in a month despite consistent training. Is it fatigue, a technique breakdown under pressure, a plateau, or loss of automaticity from too much conscious attention? The answer pulls from every notebook in this course.`,
-        topics:['Transfer & retention','Automaticity & dual-task','Performance under pressure','Multi-table synthesis','Performance–learning paradox']},
-    ],
-    cycle:{
-      theorize: 'Hold a model of the athlete\'s motor system before reading the data. What stage of learning, what control mode, what would surprise you?',
-      query:    'The head coach brings a struggling athlete. What is the motor-control question buried inside the complaint?',
-      interpret:'Read the athlete against theory — stage of learning, attentional focus, load, variability — before deciding the story.',
-      decide:   'Commit to a prescription: practice structure change, feedback schedule shift, or load intervention.',
-      justify:  'Defend the motor-learning rationale to a coach whose instincts may disagree.',
-    },
-  },
-
-  {
-    id:'exsc-442',
-    code:'EXSC 442',
-    title:'Advanced Statistics — Predictive Analytics',
-    shortTitle:'Predictive Analytics',
-    tagline:'Sport Science Predictive Analytics',
-    tier:'accel',
-    tierLabel:'Analytical Accelerator',
-    role:'Sport Performance Analyst',
-    roleFull:'Sport Performance Analyst / Analytics Director track',
-    coreQuestion:'What is likely to happen, and what should we build to anticipate it?',
-    stakeholders:'Operational leaders making forward-looking decisions.',
-    position:2,
-    architecture:'6 method blocks + capstone',
-    architectureType:'Method Blocks',
-    capstone:{
-      name:'The Sport Science Intelligence Brief',
-      brief:'A multi-method convergent recommendation. Students fit, evaluate, and compare models across methods, integrate the findings into a single brief, and defend the recommendation — and the model-selection call — under questioning.',
-      deliverable:'Intelligence Brief + Live Defense',
-    },
-    meta:[
-      {label:'Professional Lens', value:'Sport Performance Analyst'},
-      {label:'Pipeline Slot',     value:'Accelerator · Optional'},
-      {label:'Methods',           value:'6 method blocks'},
-      {label:'Capacity',          value:'Prediction + Classification'},
-    ],
-    intro:`The analytical power-up. HLSC 205 teaches students to describe and test. EXSC 442 teaches them to predict, classify, and build the analytical systems sport science operations actually run on. Not required for the pipeline — but students who take it arrive at 499 and 490 with a fundamentally different analytical capacity.`,
-    escalation:`The reasoning shifts from inference to prediction. Now the question isn't "did this change help?" but "given what we know, what will happen next?" The output is a model; the competency is knowing which model to trust and when.`,
-    blocks:[
-      {tag:'MB 01',weeks:'Block 1',title:'Logistic Regression',sub:'Probabilistic classification',
-        body:`The first predictive move: turning a clinical or operational question into a probability. Students fit, diagnose, and interpret logistic models on athlete-level data — and learn to read the output coefficient by coefficient, not in aggregate.`,
-        topics:['Odds & log-odds','Coefficient interpretation','Diagnostics & calibration','Threshold selection','Sport science applications']},
-      {tag:'MB 02',weeks:'Block 2',title:'Mixed-Effects Models',sub:'Nested athlete data',
-        body:`Athletes are measured repeatedly; sessions are nested in weeks, weeks in seasons. Fixed-effects models lie when this structure is ignored. Mixed models let students honor the hierarchy and extract the real signal.`,
-        topics:['Random intercepts & slopes','Within- vs between-athlete effects','Longitudinal data','Model comparison (AIC/BIC)']},
-      {tag:'MB 03',weeks:'Block 3',title:'KNN & Naive Bayes',sub:'Pattern-based classification',
-        body:`Simple, transparent classifiers that expose the bias/variance tradeoff without the black box. A good teaching tool before the ensemble methods — and sometimes the right production tool when interpretability is the non-negotiable.`,
-        topics:['Distance metrics','k-selection','Bayes theorem in practice','Baseline models','When simple beats complex']},
-      {tag:'MB 04',weeks:'Block 4',title:'Trees → Random Forest → XGBoost',sub:'The ensemble ladder',
-        body:`The accuracy leap — and the interpretability debt. Students climb the ensemble ladder and learn to read feature importances, SHAP values, and partial-dependence plots well enough to explain a gradient-boosted model to a coach who doesn't care about the math.`,
-        topics:['Decision trees','Bagging & random forests','Gradient boosting / XGBoost','Feature importance','SHAP & partial dependence']},
-      {tag:'MB 05',weeks:'Block 5',title:'Model Evaluation & Validation',sub:'Trust, earned',
-        body:`The hardest block. Cross-validation, confusion matrices, ROC/PR curves, calibration — and the operational question underneath all of them: is this model good enough to make decisions with? When should a director deploy, and when should they walk away?`,
-        topics:['k-fold & nested CV','Confusion matrix analytics','ROC / PR / AUC','Calibration','Deployment readiness']},
-      {tag:'MB 06',weeks:'Block 6',title:'Integration',sub:'Convergent recommendation',
-        body:`Multiple methods on the same question. When they agree, the confidence grows. When they disagree, the student owns the judgment call — and defends it.`,
-        topics:['Method triangulation','Disagreement analysis','Integrated brief structure','Executive-ready visualization']},
-    ],
-    cycle:{
-      theorize: 'Before fitting anything, articulate the data-generating process you believe is at work. What features should matter, and why?',
-      query:    'Define the prediction or classification task precisely — what is being predicted, for whom, and with what operational tolerance?',
-      interpret:'Fit, diagnose, and compare models. Read beyond accuracy: calibration, fairness across positions, and failure modes.',
-      decide:   'Recommend a single model (or a convergent call across methods) and an operational threshold.',
-      justify:  'Defend the model choice, the evaluation protocol, and the deployment readiness — against a skeptical performance analyst.',
-    },
-  },
-
-  {
-    id:'exsc-405',
-    code:'EXSC 405',
-    title:'Advanced Human Anatomy — Clinical Neuroanatomy',
-    shortTitle:'Neuroanatomy',
-    tagline:'Sports Medicine & Clinical Reasoning',
-    tier:'clin',
-    tierLabel:'Clinical',
-    role:'Athletic Trainer',
-    roleFull:'Athletic Trainer / Clinical Reasoner',
-    coreQuestion:'What\'s injured, why does it matter, and when can this athlete return?',
-    stakeholders:'Athletes, medical staff, and coaches making return-to-play decisions.',
-    position:3,
-    architecture:'4 units + capstone',
-    architectureType:'Units',
-    capstone:{
-      name:'The Clinical Case Brief',
-      brief:'A referring physician requests a neuroanatomical consultation on a case the student did not study in class. Trace the anatomy on the Anatomage table, produce annotated screenshots, write the 2-page brief, and defend the localization against alternative explanations live.',
-      deliverable:'Clinical Case Brief + Live Defense',
-    },
-    meta:[
-      {label:'Professional Lens', value:'Athletic Trainer'},
-      {label:'Instrument',        value:'Anatomage Table'},
-      {label:'Reasoning',         value:'Structure → Deficit'},
-      {label:'Pipeline Slot',     value:'Clinical Tier'},
-    ],
-    intro:`The highest-stakes reasoning in the foundational tier. Every case begins with an athlete and an injury mechanism. Students use JU's Anatomage virtual dissection table to trace pathways, localize lesions, and predict deficits from the anatomy — structure by structure. The method is the same Decision Cycle students have practiced across the pipeline, applied to the human nervous system under clinical pressure.`,
-    escalation:`In 205, a wrong answer is an inaccurate report. In 325, a flawed practice prescription. In 405, a wrong answer means a missed injury mechanism, an athlete sent back to play who shouldn't be, a sideline call that costs someone their season or their health.`,
-    blocks:[
-      {tag:'NA 01',weeks:'Wk 1–4',title:'Spinal Cord & Major Pathways',sub:'The anatomy gate',
-        body:`Students meet the Anatomage table and learn to think in pathways rather than parts. Every case follows a sports injury mechanism: the collision, the fall, the hyperextension, the stinger. The AI Tutor Notebook is introduced alongside the table from day one as a reasoning partner.`,
-        scene:`A gymnast lands short on vault and hyperextends her neck. Full strength in her legs, but she can't grip with either hand, with burning pain down both arms. On the Anatomage: where is the damage, and why are her hands affected but not her legs?`,
-        topics:['Anatomage orientation','Spinal cord organization','DCML & spinothalamic','Corticospinal pathways','Brown-Séquard, central cord','Peripheral nerve anatomy'],
-        gate:'Competency 01 — pathway tracing & syndrome prediction'},
-      {tag:'NA 02',weeks:'Wk 5–7',title:'Brainstem, Cranial Nerves & Cerebellum',sub:'Where pathways converge',
-        body:`The brainstem is a dense interchange where every major pathway passes through a small space alongside cranial nerve nuclei and vascular territories. A small lesion here can produce a complex, asymmetric clinical picture — requiring the student to reason through multiple pathways simultaneously.`,
-        scene:`A 22-year-old lacrosse player takes a hard check to the neck. He finishes the quarter but in the locker room reports difficulty swallowing, hoarse voice, dizziness, and numbness on the left face with pain/temp gone on the left face and right body. On the table — walk me through the damaged structures, tract by tract.`,
-        topics:['Medulla, pons, midbrain','CN I–XII','Brainstem vascular territories','Wallenberg syndrome','Cerebellum & ataxias']},
-      {tag:'NA 03',weeks:'Wk 8–11',title:'Deep Structures — Basal Ganglia & Thalamus',sub:'Circuits, not just structures',
-        body:`Students shift from linear pathway tracing to circuit reasoning. Basal ganglia disorders result from imbalances in circuit dynamics, not severed tracts. The thalamus is the relay station for nearly everything — and a lesion can mimic damage almost anywhere.`,
-        scene:`A swimmer cleared after a minor stroke reports excruciating burning pain across her right side — fires when the water hits her, when someone brushes past. No weakness, no numbness. On the table: which thalamic nucleus, and why does destroying a pain relay produce more pain?`,
-        topics:['Direct & indirect BG circuits','Parkinson\'s, Huntington\'s','Thalamic nuclei & syndromes','Dejerine-Roussy','Hypothalamus & limbic system'],
-        gate:'Competency 02 — localization & alternative-defense'},
-      {tag:'NA 04',weeks:'Wk 12',title:'Cerebral Cortex & Integration',sub:'The launch pad',
-        body:`The shortest unit by design. By Week 12 students have the reasoning chain, the pathway fluency, and the localization skill from Units 1–3. The cortex is where they extend those skills into new territory on their own — in preparation for the capstone case, which must be one they didn't study in class.`,
-        topics:['Cortical functional anatomy','MCA / ACA / PCA territories','Cortical stroke syndromes','Broca\'s & Wernicke\'s','Project case selection']},
-    ],
-    cycle:{
-      theorize: 'From the mechanism alone — before any imaging or detailed exam — what anatomy would you bet is involved, and what would surprise you?',
-      query:    'The athlete arrives with symptoms and a mechanism. What is the clinical question the trainer actually has to answer?',
-      interpret:'Localize the lesion. Trace every affected pathway on the Anatomage. Predict every deficit the anatomy would produce.',
-      decide:   'Commit to a localization and a return-to-play / referral call.',
-      justify:  'Defend the localization against the best alternative explanation, including the family-facing explanation.',
-    },
-  },
-
-  {
-    id:'hlsc-499',
-    code:'HLSC 499',
-    title:'Sport Science Senior Thesis',
-    shortTitle:'Senior Thesis',
-    tagline:'Independent Research & Athletics Partnership',
-    tier:'cap',
-    tierLabel:'Capstone',
-    role:'Applied Researcher',
-    roleFull:'Sport Scientist / Applied Researcher',
-    coreQuestion:'What does rigorous investigation reveal about a question our stakeholders actually care about?',
-    stakeholders:'JU Athletics coaching and training staff who posed the research question.',
-    position:4,
-    architecture:'8 milestones · 16 or 8 weeks',
-    architectureType:'Milestones',
-    capstone:{
-      name:'Argumentative Senior Thesis + Live Defense',
-      brief:'The thesis advances a clear, defensible claim supported by evidence and reasoning. Athletics-partnership students produce a dual deliverable: the academic thesis and a practitioner-facing executive summary delivered to the staff who posed the question.',
-      deliverable:'Thesis + Executive Summary + Live Defense',
-    },
-    meta:[
-      {label:'Professional Lens', value:'Applied Researcher'},
-      {label:'Formats',           value:'16-wk or 8-wk'},
-      {label:'Delivery',          value:'Online + Defense'},
-      {label:'Designations',      value:'W · S · R'},
-    ],
-    intro:`Every course before this one used simulated data. In HLSC 499, all three — athletes, coaches, stakes — become authentic. Students develop, refine, and defend an argumentative senior thesis. With the JU Athletics research partnership, that thesis is grounded in real institutional data answering a question a real stakeholder wants answered.`,
-    escalation:`The database schema and Decision Cycle are identical to every prior course. Only the data is real. This transition — from simulated to authentic — is the structural payoff of the entire pipeline.`,
-    blocks:[
-      {tag:'MS 01',weeks:'Milestone',title:'Thesis Question',sub:'Argumentative, not topical',
-        body:`The question must propose a position that can be supported or challenged with evidence. A screen-recorded explanation accompanies the submission: why does this question matter, who does the answer serve, what makes it defensible rather than merely interesting?`,
-        topics:['Argumentative framing','Stakeholder identification','Question-stress-testing','Screen-recorded reasoning']},
-      {tag:'MS 02',weeks:'Milestone',title:'Thesis Prospectus',sub:'Where weak projects are caught',
-        body:`The prospectus expands the question into a preliminary argument structure: the claim, the anticipated evidence, the method, and the strongest counterargument the student expects to confront. A prospectus that cannot name the counter-position is not ready to proceed.`,
-        topics:['Claim & evidence map','Method plan','Counter-position','Advisor sharpen-or-return']},
-      {tag:'MS 03',weeks:'Milestone',title:'Annotated Literature Review',sub:'Evidence, not summary',
-        body:`Each source entry must explain how the source supports, challenges, or qualifies the student's argument. NotebookLM serves as the primary workspace for organizing sources and tracking how the student's position evolves.`,
-        topics:['Source synthesis','Supporting vs qualifying evidence','NotebookLM workspace','Position evolution log']},
-      {tag:'MS 04',weeks:'Milestone',title:'Thesis Outline',sub:'The argumentative skeleton',
-        body:`The outline maps the argument's logical structure: the claim, the supporting arguments in sequence, the evidence for each, and the counterargument section. Outlines that lack a clear argumentative arc are sent back before drafting begins.`,
-        topics:['Claim sequencing','Evidence pairing','Counterargument placement']},
-      {tag:'MS 05',weeks:'Milestone',title:'Introduction Draft',sub:'Setting the stakes',
-        body:`Establishes the research question, its significance, and the thesis claim. For Athletics projects, the introduction names the stakeholder, the operational context, and why this question matters to the program.`,
-        topics:['Stakeholder framing','Significance argument','Thesis claim statement']},
-      {tag:'MS 06',weeks:'Milestone',title:'Arguments Draft',sub:'The substantive core',
-        body:`Each argument is presented with supporting evidence, connected back to the literature, and tested against counterarguments. Empirical Athletics projects include methodology, analysis (drawing on 205 and 442), and interpretation. This is the highest-weighted milestone — it contains the reasoning the defense will probe.`,
-        topics:['Argument-by-argument structure','Evidence integration','Counterargument engagement','Empirical methodology']},
-      {tag:'MS 07',weeks:'Milestone',title:'Conclusion Draft',sub:'What it means for practice',
-        body:`Synthesizes the argument, acknowledges limitations, and articulates what the findings mean for practice. For Athletics projects, the conclusion feeds directly into the executive summary — the 2–3 page practitioner document written in language a coach can act on.`,
-        topics:['Synthesis','Limitations','Practice implications','Executive summary seed']},
-      {tag:'MS 08',weeks:'Final',title:'Final Thesis + Live Defense',sub:'Own the reasoning',
-        body:`The defense is a live demonstration of reasoning. The written work supports evaluation but is not assessed independently of demonstrated understanding. Athletics students also deliver the executive summary directly to the staff who posed the question.`,
-        topics:['Live defense','Executive summary delivery','Dual-deliverable submission']},
-    ],
-    cycle:{
-      theorize: 'Before the literature review, before the analysis, articulate your model of the system the staff is asking about. What position are you taking?',
-      query:    'A real stakeholder question, owned independently. What does the Athletics staff actually need to know?',
-      interpret:'Real institutional data. Apply the 205/442 toolkit with stakes attached — methodology choices now affect a real program.',
-      decide:   'Commit to an argumentative claim. Name the strongest counterargument and hold position against it.',
-      justify:  'Defend the claim live. Deliver the executive summary to the coach who asked the question.',
-    },
-  },
-
-  {
-    id:'hlsc-490',
-    code:'HLSC 490',
-    title:'Sport Science Practicum',
-    shortTitle:'Practicum',
-    tagline:'Professional Placement & Applied Practice',
-    tier:'cap',
-    tierLabel:'Capstone',
-    role:'Practitioner',
-    roleFull:'Sport Science Practitioner',
-    coreQuestion:'How do I function competently in a real professional environment?',
-    stakeholders:'On-site mentor, embedded team, athletes served.',
-    position:5,
-    architecture:'4 placement models',
-    architectureType:'Placement Models',
-    capstone:{
-      name:'Competency Demonstration in a Placement',
-      brief:'Students are placed with JU Athletics or external partners as Sport Science Interns, applying the full Decision Cycle framework to real athletes, coaches, and operational pressure. Assessment is competency-based across five domains.',
-      deliverable:'Portfolio + Exit Presentation',
-    },
-    meta:[
-      {label:'Professional Lens', value:'Sport Science Practitioner'},
-      {label:'Prerequisites',     value:'205, 325, 405'},
-      {label:'Credits',           value:'1–3'},
-      {label:'Assessment',        value:'Competency-Based'},
-    ],
-    intro:`Every course before this one was preparation. 205 built the analytical engine. 325 turned data into coaching prescriptions. 405 connected anatomy to clinical reasoning. 499 proved students could design independent research. In 490 the preparation ends. Students are not observing, not shadowing — they are doing the work for real people making real decisions.`,
-    escalation:`There is no simulation left. Real athletes. Real coaches. Real stakes. Real operational pressure. The Decision Cycle becomes internalized professional practice — the way the student approaches every problem in a sport-science setting.`,
-    blocks:[
-      {tag:'MODEL A',weeks:'1–3 cr',title:'Single-Sport Embedded',sub:'Depth in one program',
-        body:`Student is assigned to one varsity sport for the semester as a Sport Science Intern. Practice and competition attendance, performance-data collection and entry, analytical queries for coaching staff, team-meeting presentations, and AT shadowing during injury assessments.`,
-        topics:['Deep sport-specific expertise','Direct coach reference','Longitudinal season arc','AT shadowing']},
-      {tag:'MODEL B',weeks:'3 cr',title:'Three-Lens Rotation',sub:'Breadth across departments',
-        body:`Student rotates through Analytics/Coaching, Strength & Conditioning, and Athletic Training — applying each foundational course's professional lens in sequence. The capstone is an integrated case study on 1–2 athletes seen across all three rotations — the multi-lens synthesis the pipeline was designed to build.`,
-        topics:['Analytics rotation (205 lens)','S&C rotation (325 lens)','Athletic training (405 lens)','Integrated case study']},
-      {tag:'MODEL C',weeks:'2–3 cr',title:'Project-Based',sub:'A real operational question',
-        body:`Athletics poses a real research or operational question. The student conducts the full investigation: proposal, data collection and analysis, written report, staff presentation, and recommendations document. Like 499 but with a tighter operational focus — the deliverable is a decision tool, not a paper.`,
-        topics:['Proposal & scoping','Operational analysis','Staff presentation','Decision tool delivery']},
-      {tag:'MODEL D',weeks:'2 cr',title:'Athlete Case Management',sub:'Longitudinal 3-lens dossier',
-        body:`Student is assigned 3–5 athletes to follow longitudinally for the semester. For each athlete they produce three deliverables through the three professional lenses: a performance dashboard (205), a motor control profile with recommendations (325), and an injury risk assessment (405).`,
-        topics:['Performance dashboard (205)','Motor control profile (325)','Injury risk assessment (405)','Weekly check-ins & progress notes']},
-    ],
-    cycle:{
-      theorize: 'Walk into the placement with a model of how this team, this program, this athlete operates. Update it daily. Defend it when challenged.',
-      query:    'The question comes from a coach or trainer under operational pressure. Translate it into something the data can answer this week.',
-      interpret:'Real performance records, real injury tracking — applied against the frameworks built in simulation.',
-      decide:   'Recommendations that affect what happens in practice tomorrow, not next semester.',
-      justify:  'Defend to the professional who will implement — or reject — the recommendation.',
-    },
-  },
-];
-
-const BIO = {
-  name:'Chris Robertson, PhD',
-  title:'Associate Professor · Neurophysiologist',
-  subtitle:'Founder, Sport Science Decision Lab',
-  blurb:`A practitioner-scholar building a single architectural principle into six courses: students should encounter the same data, the same reasoning framework, and the same professional role structure across every course in the sequence. The intent is transdisciplinary — students graduate as practitioners whose reasoning is shaped by all six courses at once, not as graduates who took them in sequence. Only the stakes change.`,
-  pedagogy:{
-    headline:'Water, not mountain.',
-    body:`The mountain professor fills students with knowledge from above. The water professor creates conditions, holds space, and lets competency emerge from the student's own engagement with the material. Drawn from Chapter Eight of the Tao Te Ching, this is the stance within each Decision Lab course — no traditional lectures, no exams, competency demonstrated live under questioning. Water is how each session is held. The Lab is the architecture across them.`,
-  },
-  stats:[
-    {label:'Years teaching & program building', value:'15+'},
-    {label:'Peer-reviewed publications',        value:'13'},
-    {label:'Students mentored',                 value:'200+'},
-    {label:'NFL / Jaguars partnership',         value:'$680K'},
-  ],
-  creds:[
-    {k:'PhD',     v:'Neuroscience & Human Performance · Indiana University'},
-    {k:'MABA',    v:'Applied Business Analytics · Jacksonville University'},
-    {k:'MBA',     v:'Jacksonville University (in progress)'},
-  ],
-  record:[
-    'Built the JU Kinesiology program from startup to the second-largest major on campus.',
-    'Architected and secured a $680K NFL / Jacksonville Jaguars performance-research partnership.',
-    'Mentored 200+ students across coursework, thesis, and practicum placements.',
-    '13 peer-reviewed publications in neurophysiology and applied sport science.',
-  ],
-  contact:{
-    email:'crobert17@ju.edu',
-    office:'AHSB 2145',
-    inst:'Jacksonville University · Health & Exercise Sciences',
-  },
-};
-
-Object.assign(window,{
-  DECISION_CYCLE, TIERS, COURSES, BIO,
-  OPERATING_PRINCIPLES, STATION_TRANSITIONS, PRACTITIONER_NETWORK, TRANSDISCIPLINARY,
-});
-
-})();
-
 // ======== src/shared.jsx ========
 (function(){
 // Shared UI primitives
@@ -1060,6 +588,515 @@ Object.assign(window, {
   BrandMark, Tag, SectionLabel,
   PipelineSpine, DecisionDiamond, TelemetryStrip,
   StatBlock, CtaRow, SiteFooter, TIER_COLORS,
+});
+
+})();
+
+// ======== src/data.jsx ========
+(function(){
+// Sport Science Decision Lab — content data
+
+const DECISION_CYCLE = [
+  {id:'theorize',  label:'THEORIZE',  prompt:'What is your mental model — and whose problem is it?',     desc:'Two axes the student must own before evidence comes in. First: a working model of how the system operates. Second: a model of the stakeholder — what they care about, what counts as a useful answer, what they will do with it. AI cannot author either. Delegate them and you inherit a position you cannot defend.', aiResist:true},
+  {id:'query',     label:'QUERY',     prompt:'What fits the question?',        desc:'Translate the model into a concrete question, the data needed, and the method that fits. The first phase where AI assistance becomes substantial.', aiResist:false},
+  {id:'interpret', label:'INTERPRET', prompt:'What does the output mean?',     desc:'Read the result against the mental model. AI translates output and surfaces limits — the student tests whether the result confirms or contradicts the prior.', aiResist:false},
+  {id:'decide',    label:'DECIDE',    prompt:'What is the recommendation?',    desc:'Move from understanding to action. Commit. Name the alternatives. State the trade-off explicitly. AI can weigh — only the student can choose.', aiResist:false},
+  {id:'justify',   label:'JUSTIFY',   prompt:'Why this, and what did it cost?',desc:'Defend the recommendation in language the stakeholder can act on, and hold ground when they push back. AI cannot defend live. This is where the practitioner lives.', aiResist:true},
+];
+
+// Operating principles — explicit, numbered, used in landing + brief.
+const OPERATING_PRINCIPLES = [
+  { n:'01', headline:'AI can assist. Only you can think.',
+    body:'Every course treats AI as a labor partner. Every course requires the student to own the reasoning at both ends of the cycle — the model coming in, and the defense going out.' },
+  { n:'02', headline:'The only variable is the stakes.',
+    body:'The database, the Decision Cycle, the role structure, and the reasoning demand are constants across all six courses. What changes is how real the consequences become.' },
+  { n:'03', headline:'Competency is demonstrated, not declared.',
+    body:'Every course ends in live demonstration under questioning. Written outputs support the defense. They do not replace it.' },
+  { n:'04', headline:'Stakeholder communication is the primary output.',
+    body:'The student\'s job is not to produce analysis. The job is to produce a decision recommendation a non-technical stakeholder can act on. This is the point of the entire pipeline.' },
+  { n:'05', headline:'Prepared, not planned.',
+    body:'Practitioners cannot script the situations they will face. What they carry in is a trained way of reading them. The Decision Cycle is the operational expression of preparedness, run as a cycle.' },
+];
+
+// Cognitive shifts between courses
+const STATION_TRANSITIONS = [
+  { from:'205', to:'325', fromLabel:'Statistics', toLabel:'Motor Control',
+    fromQ:'"What does the data say?"', toQ:'"What should we do about it?"',
+    note:'The analytical question becomes a coaching decision. Same data, new responsibility. The data didn\'t change. The authority did.' },
+  { from:'325', to:'442', fromLabel:'Motor Control', toLabel:'Predictive Analytics',
+    fromQ:'Descriptive & inferential reasoning', toQ:'Predictive & probabilistic reasoning',
+    note:'From explaining what happened to forecasting what will happen. Students stop consuming decision support and start building it.' },
+  { from:'442', to:'405', fromLabel:'Predictive Analytics', toLabel:'Neuroanatomy',
+    fromQ:'Optimization', toQ:'Risk management',
+    note:'The same athletes prepared for peak performance now present with injury mechanisms. Stakes shift from winning to not losing the athlete.' },
+  { from:'405', to:'499', fromLabel:'Neuroanatomy', toLabel:'Senior Thesis',
+    fromQ:'Simulated data, imagined stakeholders', toQ:'Real data, real stakeholders',
+    note:'The biggest transition in the pipeline. Database, stakeholders, and consequences all become authentic at the same time.' },
+  { from:'499', to:'490', fromLabel:'Senior Thesis', toLabel:'Practicum',
+    fromQ:'Structured research', toQ:'Operational practice',
+    note:'From answering one question well to functioning in an environment that produces many questions per day under professional supervision.' },
+];
+
+// Practitioner network — sharpens the Lab in real time
+const PRACTITIONER_NETWORK = [
+  { name:'Jack Burns & STA Soccer', role:'ECNL Boys academy · Coach Competency Framework',
+    contribution:'Shaped the Lab\'s session design vocabulary and justify-competency rubric. The phrase "prepared, not planned" entered through this collaboration.' },
+  { name:'Matthew Hawkey, PhD', role:'Clinical Assistant Professor · Sport Analytics',
+    contribution:'Reframed JUSTIFY as one of two phases AI cannot compress, and clarified that the Lab\'s outputs should be forward-looking decision tools, not retrospective dashboards.' },
+  { name:'Seth Partnow', role:'Author, The Midrange Theory · Former Director of Basketball Research, Milwaukee Bucks',
+    contribution:'Pressed on what the four-phase cycle was assuming but not naming. The conversation surfaced two preconditions students were carrying implicitly — a model of the system, and a model of the stakeholder. THEORIZE was promoted to a named first phase, defined on both axes, in April 2026.' },
+];
+
+// Transdisciplinary framing — multi → inter → trans
+const TRANSDISCIPLINARY = [
+  { mode:'Multidisciplinary', sub:'Subjects taught side by side',
+    body:'Students take statistics, motor control, and neuroanatomy. Each course owns its own database, its own vocabulary, its own assessment. Integration is left to the student — and rarely happens.' },
+  { mode:'Interdisciplinary', sub:'Subjects in conversation',
+    body:'Courses reference each other. A motor-control case might cite a statistical method. The connection is acknowledged, but the architecture stays separate — the student still translates across worlds in their own head.' },
+  { mode:'Transdisciplinary', sub:'A single practitioner identity',
+    body:'One database. One Decision Cycle. One progression of professional roles. The student does not graduate having taken six courses — they graduate as a practitioner whose reasoning is shaped by all six at once.', emphasis:true },
+];
+
+const TIERS = [
+  {id:'found',  label:'Foundational',           hint:'Simulated data, structured reasoning'},
+  {id:'accel',  label:'Analytical Accelerator', hint:'Predictive methods & machine learning'},
+  {id:'clin',   label:'Clinical',               hint:'Highest-stakes foundational reasoning'},
+  {id:'cap',    label:'Capstone',               hint:'Real data, real stakeholders, real stakes'},
+];
+
+const COURSES = [
+  {
+    id:'hlsc-205',
+    code:'HLSC 205',
+    title:'Statistics for Health & Exercise Science',
+    shortTitle:'Statistics',
+    tagline:'Sport Science Data Analytics',
+    tier:'found',
+    tierLabel:'Foundational',
+    role:'Data Analyst',
+    roleFull:'Sport Scientist / Data Analyst',
+    coreQuestion:'What does the data say?',
+    stakeholders:'Coaches and training staff asking for descriptive and inferential findings.',
+    position:0,
+    architecture:'4 units + capstone',
+    architectureType:'Units',
+    capstone:{
+      name:'The JU Athletics Scouting Report',
+      brief:'Commissioned by the Athletics Director. Pick a varsity program, query the database, select and defend the right test, and deliver a 1–2 page scouting report with presentation-quality visualizations. Defended live in the final exam block under stakeholder-style questioning.',
+      deliverable:'Scouting Report + Live Defense',
+    },
+    meta:[
+      {label:'Professional Lens', value:'Data Analyst'},
+      {label:'Tools',          value:'Excel · Python · JASP'},
+      {label:'Pipeline Slot',  value:'Foundation · Week 1'},
+      {label:'Assessment',     value:'2 Comps + Live Defense'},
+      {label:'AI Integration', value:'Day One'},
+    ],
+    intro:`This is where the Decision Lab begins. Students encounter the shared sport science database for the first time — learning to query athlete data, select and execute statistical tests, and visualize results for stakeholders. Every analytical task is framed through the Decision Cycle: students do not simply run tests, they must articulate why they chose a particular analysis, what it means in context, and what decision it supports. AI tools enter on day one as labor partners. Students own the reasoning. AI handles the execution. The boundary between the two is the competency being assessed.`,
+    escalation:`This is the entry point — the baseline every other course in the pipeline assumes. A student who can't query the database, describe it, and run the right test can't occupy any of the professional seats downstream.`,
+    blocks:[
+      {
+        tag:'STATS 01', weeks:'Wk 1–4', title:'Data Literacy & Descriptive Analysis',
+        sub:'Building the analytical foundation',
+        body:'Students meet the sport science database and learn to ask questions of it. The full tool chain (Excel, Python via Colab, AI assistants) is established. Data literacy first: understanding what variables you have, how to describe their distributions, and how to communicate those descriptions. No inferential claims yet — learn to see before you learn to test.',
+        scene:`You've been given access to the JU Athletics performance database. Before you run a single test — who are these athletes, what was measured, and what does the distribution of training loads look like across the roster?`,
+        topics:['AI-assisted SQL querying','Variables & measurement scales','Central tendency & variability','Distributions and shape','Histograms, boxplots, scatter','Decision Cycle introduction'],
+        gate:'Competency 01 — descriptive analysis & data literacy under questioning',
+      },
+      {
+        tag:'STATS 02', weeks:'Wk 5–7', title:'Probability & Distributions',
+        sub:'The mathematical foundations',
+        body:'Before students can test a hypothesis, they need to understand what makes an observation unusual. This unit builds the probability scaffolding behind every inferential test: what distributions describe, how probability quantifies uncertainty, and why the normal distribution is the engine behind most of the tools they will use.',
+        scene:`An athlete's ACWR is 1.45. Is that unusual? Unusual compared to what? The answer depends entirely on what distribution you're comparing against — and understanding that comparison is the foundation of every statistical test you will run.`,
+        topics:['Probability basics','Normal, t, chi-square distributions','Binomial & Poisson','Z-scores & standardization','Connecting distributions to athletic data'],
+      },
+      {
+        tag:'STATS 03', weeks:'Wk 8–10', title:'Inference Foundations',
+        sub:'From data to conclusions',
+        body:`This unit bridges description and decision. Students learn the logic of statistical inference: sampling distributions, the CLT, confidence intervals, and hypothesis testing. JASP is introduced alongside Python. The distinction between statistical and practical significance is introduced here and recurs in every subsequent course.`,
+        scene:`You measured vertical jump for 25 athletes before and after a six-week plyometric program. The mean improved 2.1 cm. Is that real improvement or just noise? And even if it's statistically significant — does it actually matter to a coach?`,
+        topics:['Sampling distributions & CLT','Confidence intervals','Hypothesis testing & p-values','Type I / Type II errors','Effect sizes (Cohen\'s d)','Statistical vs practical significance'],
+        gate:'Competency 02 — probability, distributions, & inference framework under questioning',
+      },
+      {
+        tag:'STATS 04', weeks:'Wk 10–12', title:'Statistical Tests',
+        sub:'The analytical toolkit — one test per session',
+        body:`Each test gets a dedicated session. This is deliberate: rather than surveying tests in a blur, students encounter each one as a tool with a specific purpose, assumptions, and output. Every session follows the same structure: what question does this answer, when do you use it instead of the others, what does the output mean, and how do you report it?`,
+        scene:`Is there a significant difference in sprint times between athletes who completed the off-season program and those who didn't? Does vertical jump predict in-game performance? Each question demands a different test — and choosing the wrong one produces an answer to a question nobody asked.`,
+        topics:['t-tests (paired & independent)','ANOVA','Correlation','Linear & multiple regression','Chi-square','Test selection logic'],
+      },
+    ],
+    cycle:{
+      theorize: 'Before touching the data, commit to a model: what do you expect athletes in this program to look like, and what would surprise you?',
+      query:    'Identify the decision and frame the stakeholder question. Choose the test that fits.',
+      interpret:'Run the test; read output in context against your prior, not in isolation.',
+      decide:   'Translate the statistical output into a recommendation the Athletics Director can act on.',
+      justify:  'Defend test selection, assumptions, and the statistical-vs-practical significance call under questioning.',
+    },
+  },
+
+  {
+    id:'exsc-325',
+    code:'EXSC 325',
+    title:'Motor Control',
+    shortTitle:'Motor Control',
+    tagline:'Performance Science & Training Design',
+    tier:'found',
+    tierLabel:'Foundational',
+    role:'Performance Coach',
+    roleFull:'Performance Coach / Skill Acquisition Specialist',
+    coreQuestion:'What should we do about it?',
+    stakeholders:'Athletes and coaching staff who need training prescriptions.',
+    position:1,
+    architecture:'5 notebooks + capstone',
+    architectureType:'Notebooks',
+    capstone:{
+      name:'The Coaching Consultation',
+      brief:'A JU head coach commissions a motor control consultation for a struggling athlete. The student builds the analysis in Colab with Decision Cycle headers, produces a 1–2 page consultation with visualizations the coach can read directly, and defends the prescription live to the coach who has to implement it.',
+      deliverable:'Coaching Consultation + Live Defense',
+    },
+    meta:[
+      {label:'Professional Lens', value:'Performance Coach'},
+      {label:'Pipeline Slot',     value:'Foundation · Week 2'},
+      {label:'Method',            value:'Theory → Data → Rx'},
+      {label:'Assessment',        value:'2 Comps + Defense'},
+    ],
+    intro:`The analytical skills from HLSC 205 pivot: from "what does the data say?" to "what should we do about it?" Five notebooks build toward the Coaching Consultation — a motor control prescription for a specific athlete, grounded in both data and theory, defended live to the coach who has to implement it.`,
+    escalation:`Same database. Same Decision Cycle. The question shifts from description to prescription. A wrong answer here isn't an inaccurate report — it's a practice plan that wastes an athlete's season or breaks their body.`,
+    blocks:[
+      { tag:'MC 01', weeks:'Wk 1–2', title:'Athlete Profiling & Baseline Data', sub:'Who is this athlete?',
+        body:`Before a performance coach can prescribe anything, they need to know who they're working with. This notebook teaches students to build an athlete profile from the database — movement screening scores, proprioceptive baselines, feedback control characteristics, and the athlete's position within the team's roster.`,
+        scene:`You've been assigned a volleyball outside hitter. Her FMS score is 14, Y-Balance composite is 94%, and screening flagged a right-side asymmetry. Before you design anything — what does this profile tell you about her motor control system?`,
+        topics:['FMS & Y-Balance','Proprioception & feedback control','Database querying for profiles','Baseline assessment in context','Athlete profile synthesis']},
+      { tag:'MC 02', weeks:'Wk 3–5', title:'Tracking Skill Acquisition', sub:'How do athletes learn?',
+        body:`Athletes don't improve linearly. They plateau, regress, break through, and consolidate. Fitts & Posner's stages provide the classification scheme; power-law learning curves provide the mathematical shape; variability analysis reveals whether inconsistency is noise or productive exploration.`,
+        scene:`A basketball player's free-throw % has been flat at 68 for six weeks despite daily practice. Is she plateaued, stuck in the associative stage, or has the practice structure stopped challenging her motor system?`,
+        topics:['Fitts & Posner stages','Neural basis of learning','Learning curves & plateaus','Longitudinal tracking (Python)','Variability: noise vs exploration'],
+        gate:'Competency 01 — profiling & acquisition analysis'},
+      { tag:'MC 03', weeks:'Wk 5–7', title:'Practice Design & Training Load', sub:'How should we train?',
+        body:`Motor control theory becomes coaching prescription. Blocked practice looks productive but produces fragile skills. The Challenge Point Framework provides the optimization principle; ACWR provides the safety constraint.`,
+        scene:`A midfielder's ACWR is 1.35 and climbing. Her coach wants to add a new set-piece routine. Challenge Point says she's ready for complexity. Load says she's approaching the danger zone. What's the prescription — and what's the motor learning rationale?`,
+        topics:['Blocked vs random practice','Contextual interference','Challenge Point Framework','Training load & ACWR','Neural fatigue & recovery','Fitts\' Law tradeoffs']},
+      { tag:'MC 04', weeks:'Wk 7–9', title:'Feedback & Intervention Tracking', sub:'How do we guide improvement?',
+        body:`The most common coaching instinct — more feedback, more often, more specific — is wrong for most stages of learning. External attentional focus cues outperform internal cues. Faded feedback schedules outperform constant feedback. The guidance hypothesis explains why.`,
+        scene:`A pitching coach has been giving detailed mechanical feedback after every throw. Form looks great in practice but falls apart in games. The data shows a classic guidance dependency. How do you restructure the schedule without the coach feeling dismissed?`,
+        topics:['Internal vs external focus','Sensory integration','KR vs KP','Guidance hypothesis & faded feedback','Intervention design'],
+        gate:'Competency 02 — practice design & feedback intervention'},
+      { tag:'MC 05', weeks:'Wk 10–12', title:'Integrated Performance Monitoring', sub:'The whole athlete',
+        body:`A transfer problem might be caused by a practice structure issue, a feedback dependency, a load spike, or a stage mismatch — or some combination. Students query across the full database to build integrated assessments pulling from all four prior notebooks.`,
+        scene:`A sprinter's 200m times have regressed 0.3s in a month despite consistent training. Is it fatigue, a technique breakdown under pressure, a plateau, or loss of automaticity from too much conscious attention? The answer pulls from every notebook in this course.`,
+        topics:['Transfer & retention','Automaticity & dual-task','Performance under pressure','Multi-table synthesis','Performance–learning paradox']},
+    ],
+    cycle:{
+      theorize: 'Hold a model of the athlete\'s motor system before reading the data. What stage of learning, what control mode, what would surprise you?',
+      query:    'The head coach brings a struggling athlete. What is the motor-control question buried inside the complaint?',
+      interpret:'Read the athlete against theory — stage of learning, attentional focus, load, variability — before deciding the story.',
+      decide:   'Commit to a prescription: practice structure change, feedback schedule shift, or load intervention.',
+      justify:  'Defend the motor-learning rationale to a coach whose instincts may disagree.',
+    },
+  },
+
+  {
+    id:'exsc-442',
+    code:'EXSC 442',
+    title:'Advanced Statistics — Predictive Analytics',
+    shortTitle:'Predictive Analytics',
+    tagline:'Sport Science Predictive Analytics',
+    tier:'accel',
+    tierLabel:'Analytical Accelerator',
+    role:'Sport Performance Analyst',
+    roleFull:'Sport Performance Analyst / Analytics Director track',
+    coreQuestion:'What is likely to happen, and what should we build to anticipate it?',
+    stakeholders:'Operational leaders making forward-looking decisions.',
+    position:2,
+    architecture:'6 method blocks + capstone',
+    architectureType:'Method Blocks',
+    capstone:{
+      name:'The Sport Science Intelligence Brief',
+      brief:'A multi-method convergent recommendation. Students fit, evaluate, and compare models across methods, integrate the findings into a single brief, and defend the recommendation — and the model-selection call — under questioning.',
+      deliverable:'Intelligence Brief + Live Defense',
+    },
+    meta:[
+      {label:'Professional Lens', value:'Sport Performance Analyst'},
+      {label:'Pipeline Slot',     value:'Accelerator · Optional'},
+      {label:'Methods',           value:'6 method blocks'},
+      {label:'Capacity',          value:'Prediction + Classification'},
+    ],
+    intro:`The analytical power-up. HLSC 205 teaches students to describe and test. EXSC 442 teaches them to predict, classify, and build the analytical systems sport science operations actually run on. Not required for the pipeline — but students who take it arrive at 499 and 490 with a fundamentally different analytical capacity.`,
+    escalation:`The reasoning shifts from inference to prediction. Now the question isn't "did this change help?" but "given what we know, what will happen next?" The output is a model; the competency is knowing which model to trust and when.`,
+    blocks:[
+      {tag:'MB 01',weeks:'Block 1',title:'Logistic Regression',sub:'Probabilistic classification',
+        body:`The first predictive move: turning a clinical or operational question into a probability. Students fit, diagnose, and interpret logistic models on athlete-level data — and learn to read the output coefficient by coefficient, not in aggregate.`,
+        topics:['Odds & log-odds','Coefficient interpretation','Diagnostics & calibration','Threshold selection','Sport science applications']},
+      {tag:'MB 02',weeks:'Block 2',title:'Mixed-Effects Models',sub:'Nested athlete data',
+        body:`Athletes are measured repeatedly; sessions are nested in weeks, weeks in seasons. Fixed-effects models lie when this structure is ignored. Mixed models let students honor the hierarchy and extract the real signal.`,
+        topics:['Random intercepts & slopes','Within- vs between-athlete effects','Longitudinal data','Model comparison (AIC/BIC)']},
+      {tag:'MB 03',weeks:'Block 3',title:'KNN & Naive Bayes',sub:'Pattern-based classification',
+        body:`Simple, transparent classifiers that expose the bias/variance tradeoff without the black box. A good teaching tool before the ensemble methods — and sometimes the right production tool when interpretability is the non-negotiable.`,
+        topics:['Distance metrics','k-selection','Bayes theorem in practice','Baseline models','When simple beats complex']},
+      {tag:'MB 04',weeks:'Block 4',title:'Trees → Random Forest → XGBoost',sub:'The ensemble ladder',
+        body:`The accuracy leap — and the interpretability debt. Students climb the ensemble ladder and learn to read feature importances, SHAP values, and partial-dependence plots well enough to explain a gradient-boosted model to a coach who doesn't care about the math.`,
+        topics:['Decision trees','Bagging & random forests','Gradient boosting / XGBoost','Feature importance','SHAP & partial dependence']},
+      {tag:'MB 05',weeks:'Block 5',title:'Model Evaluation & Validation',sub:'Trust, earned',
+        body:`The hardest block. Cross-validation, confusion matrices, ROC/PR curves, calibration — and the operational question underneath all of them: is this model good enough to make decisions with? When should a director deploy, and when should they walk away?`,
+        topics:['k-fold & nested CV','Confusion matrix analytics','ROC / PR / AUC','Calibration','Deployment readiness']},
+      {tag:'MB 06',weeks:'Block 6',title:'Integration',sub:'Convergent recommendation',
+        body:`Multiple methods on the same question. When they agree, the confidence grows. When they disagree, the student owns the judgment call — and defends it.`,
+        topics:['Method triangulation','Disagreement analysis','Integrated brief structure','Executive-ready visualization']},
+    ],
+    cycle:{
+      theorize: 'Before fitting anything, articulate the data-generating process you believe is at work. What features should matter, and why?',
+      query:    'Define the prediction or classification task precisely — what is being predicted, for whom, and with what operational tolerance?',
+      interpret:'Fit, diagnose, and compare models. Read beyond accuracy: calibration, fairness across positions, and failure modes.',
+      decide:   'Recommend a single model (or a convergent call across methods) and an operational threshold.',
+      justify:  'Defend the model choice, the evaluation protocol, and the deployment readiness — against a skeptical performance analyst.',
+    },
+  },
+
+  {
+    id:'exsc-405',
+    code:'EXSC 405',
+    title:'Advanced Human Anatomy — Clinical Neuroanatomy',
+    shortTitle:'Neuroanatomy',
+    tagline:'Sports Medicine & Clinical Reasoning',
+    tier:'clin',
+    tierLabel:'Clinical',
+    role:'Athletic Trainer',
+    roleFull:'Athletic Trainer / Clinical Reasoner',
+    coreQuestion:'What\'s injured, why does it matter, and when can this athlete return?',
+    stakeholders:'Athletes, medical staff, and coaches making return-to-play decisions.',
+    position:3,
+    architecture:'4 units + capstone',
+    architectureType:'Units',
+    capstone:{
+      name:'The Clinical Case Brief',
+      brief:'A referring physician requests a neuroanatomical consultation on a case the student did not study in class. Trace the anatomy on the Anatomage table, produce annotated screenshots, write the 2-page brief, and defend the localization against alternative explanations live.',
+      deliverable:'Clinical Case Brief + Live Defense',
+    },
+    meta:[
+      {label:'Professional Lens', value:'Athletic Trainer'},
+      {label:'Instrument',        value:'Anatomage Table'},
+      {label:'Reasoning',         value:'Structure → Deficit'},
+      {label:'Pipeline Slot',     value:'Clinical Tier'},
+    ],
+    intro:`The highest-stakes reasoning in the foundational tier. Every case begins with an athlete and an injury mechanism. Students use JU's Anatomage virtual dissection table to trace pathways, localize lesions, and predict deficits from the anatomy — structure by structure. The method is the same Decision Cycle students have practiced across the pipeline, applied to the human nervous system under clinical pressure.`,
+    escalation:`In 205, a wrong answer is an inaccurate report. In 325, a flawed practice prescription. In 405, a wrong answer means a missed injury mechanism, an athlete sent back to play who shouldn't be, a sideline call that costs someone their season or their health.`,
+    blocks:[
+      {tag:'NA 01',weeks:'Wk 1–4',title:'Spinal Cord & Major Pathways',sub:'The anatomy gate',
+        body:`Students meet the Anatomage table and learn to think in pathways rather than parts. Every case follows a sports injury mechanism: the collision, the fall, the hyperextension, the stinger. The AI Tutor Notebook is introduced alongside the table from day one as a reasoning partner.`,
+        scene:`A gymnast lands short on vault and hyperextends her neck. Full strength in her legs, but she can't grip with either hand, with burning pain down both arms. On the Anatomage: where is the damage, and why are her hands affected but not her legs?`,
+        topics:['Anatomage orientation','Spinal cord organization','DCML & spinothalamic','Corticospinal pathways','Brown-Séquard, central cord','Peripheral nerve anatomy'],
+        gate:'Competency 01 — pathway tracing & syndrome prediction'},
+      {tag:'NA 02',weeks:'Wk 5–7',title:'Brainstem, Cranial Nerves & Cerebellum',sub:'Where pathways converge',
+        body:`The brainstem is a dense interchange where every major pathway passes through a small space alongside cranial nerve nuclei and vascular territories. A small lesion here can produce a complex, asymmetric clinical picture — requiring the student to reason through multiple pathways simultaneously.`,
+        scene:`A 22-year-old lacrosse player takes a hard check to the neck. He finishes the quarter but in the locker room reports difficulty swallowing, hoarse voice, dizziness, and numbness on the left face with pain/temp gone on the left face and right body. On the table — walk me through the damaged structures, tract by tract.`,
+        topics:['Medulla, pons, midbrain','CN I–XII','Brainstem vascular territories','Wallenberg syndrome','Cerebellum & ataxias']},
+      {tag:'NA 03',weeks:'Wk 8–11',title:'Deep Structures — Basal Ganglia & Thalamus',sub:'Circuits, not just structures',
+        body:`Students shift from linear pathway tracing to circuit reasoning. Basal ganglia disorders result from imbalances in circuit dynamics, not severed tracts. The thalamus is the relay station for nearly everything — and a lesion can mimic damage almost anywhere.`,
+        scene:`A swimmer cleared after a minor stroke reports excruciating burning pain across her right side — fires when the water hits her, when someone brushes past. No weakness, no numbness. On the table: which thalamic nucleus, and why does destroying a pain relay produce more pain?`,
+        topics:['Direct & indirect BG circuits','Parkinson\'s, Huntington\'s','Thalamic nuclei & syndromes','Dejerine-Roussy','Hypothalamus & limbic system'],
+        gate:'Competency 02 — localization & alternative-defense'},
+      {tag:'NA 04',weeks:'Wk 12',title:'Cerebral Cortex & Integration',sub:'The launch pad',
+        body:`The shortest unit by design. By Week 12 students have the reasoning chain, the pathway fluency, and the localization skill from Units 1–3. The cortex is where they extend those skills into new territory on their own — in preparation for the capstone case, which must be one they didn't study in class.`,
+        topics:['Cortical functional anatomy','MCA / ACA / PCA territories','Cortical stroke syndromes','Broca\'s & Wernicke\'s','Project case selection']},
+    ],
+    cycle:{
+      theorize: 'From the mechanism alone — before any imaging or detailed exam — what anatomy would you bet is involved, and what would surprise you?',
+      query:    'The athlete arrives with symptoms and a mechanism. What is the clinical question the trainer actually has to answer?',
+      interpret:'Localize the lesion. Trace every affected pathway on the Anatomage. Predict every deficit the anatomy would produce.',
+      decide:   'Commit to a localization and a return-to-play / referral call.',
+      justify:  'Defend the localization against the best alternative explanation, including the family-facing explanation.',
+    },
+  },
+
+  {
+    id:'hlsc-499',
+    code:'HLSC 499',
+    title:'Sport Science Senior Thesis',
+    shortTitle:'Senior Thesis',
+    tagline:'Decision Lab Track · Empirical Capstone',
+    tier:'cap',
+    tierLabel:'Capstone',
+    role:'Applied Researcher',
+    roleFull:'Sport Scientist / Applied Researcher',
+    coreQuestion:'What does a complete Decision Cycle pass on authentic JU Athletics data reveal — and can you defend it to the person who collected it?',
+    stakeholders:'A JU Athletics data collector — athletic trainer, S&C coach, sport coach, or sport scientist — who shared the data and attends the live defense.',
+    position:4,
+    architecture:'7 milestones · 7-week half-term',
+    architectureType:'Milestones',
+    capstone:{
+      name:'Empirical Senior Thesis + Live Defense',
+      brief:'A complete Decision Cycle pass on authentic JU Athletics data, executed in partnership with the data collector who shared it. The thesis is a position built from data, supported through analysis, and defended live in front of both an academic audience and the data collector who will use the work.',
+      deliverable:'Empirical Thesis + Data Documentation + Live Defense with Data Collector',
+    },
+    meta:[
+      {label:'Professional Lens', value:'Applied Researcher'},
+      {label:'Format',            value:'7-week 1H · Async + Live Defense'},
+      {label:'Delivery',          value:'Online + Synchronous Defense'},
+      {label:'Designations',      value:'W · S · R'},
+    ],
+    intro:`HLSC 499 is the sixth and final station of the Decision Lab pipeline before professional placement. Students enter the Decision Lab Track through a summer pre-approval process and execute a complete Decision Cycle pass on authentic JU Athletics data, in partnership with the data collector who shared it. The thesis is empirical, not literature-based: a position built from data, supported through analysis, and defended live to both an academic audience and the practitioner who will use the work.`,
+    escalation:`Every course before this one used simulated data. In HLSC 499, all three — athletes, data collectors, stakes — become authentic. The Decision Cycle (Theorize → Query → Interpret → Decide → Justify) structures the seven-week term. The two AI-resistant ends, Theorize at the front and Justify at the back, carry the heaviest weight. The Live Defense is a competency gate: a student who does not pass it does not pass the course, regardless of weekly milestone scores.`,
+    tracks:[
+      {
+        name:'Decision Lab Track',
+        emphasis:'Empirical · Authentic Data',
+        note:'Pre-approval required. Partnership with a JU Athletics data collector. Live defense attended by the data collector.',
+        bullets:[
+          'Pre-approval through a summer Decision Lab Track application — methods, data access, and data-collector partner locked before Week 1.',
+          'Authentic JU Athletics data inherited from an athletic trainer, S&C coach, sport coach, or sport scientist who shared it.',
+          'The data collector is a named partner across the seven weeks — present at the Live Defense and named in the thesis acknowledgments.',
+          'Theorize works on two axes: build a model of the system that produced the numbers AND a model of the stakeholder who will receive the answer.',
+          'Capstone artifact: an Empirical Senior Thesis defended live against the person who collected the data.'
+        ]
+      },
+      {
+        name:'Argumentative Track',
+        emphasis:'Literature-based · Same Milestones',
+        note:'Alternative path. Develops and defends an argumentative thesis grounded in peer-reviewed literature. Same seven-week format, same milestones, same Decision Cycle scaffold.',
+        bullets:[
+          'Open to all students. No pre-approval, no data partnership — the path for students who did not enter the Decision Lab Track over the summer.',
+          'Same seven milestones, same weekly Kaltura cadence, same Decision Cycle scaffold (Theorize → Query → Interpret → Decide → Justify).',
+          'Material is the peer-reviewed literature in a chosen domain. Twelve-source minimum, at least eight published in the last ten years.',
+          'Theorize commits to a position the literature can plausibly support. Interpret reads evidence against that position rather than against a dataset.',
+          'Capstone artifact: an Argumentative Senior Thesis defended live against the literature, not a dataset.'
+        ]
+      },
+    ],
+    onboarding:{
+      name:'Getting Started · Water Pedagogy Prospectus',
+      body:`Approved students begin with a short prospectus that opens the mentorship. Rather than lecturing on the Decision Cycle, the document asks students to think through it themselves on four prompts — Theorize/Stakeholder, Theorize/System, Query, and Justify — naming the team they serve, the working model they bring to the data, the question they want answered, and why seven weeks of attention is worth spending on it. The conversation starts there.`,
+    },
+    blocks:[
+      {tag:'MS 01',weeks:'Week 1',title:'Theorize: Prospectus and Mental Models',sub:'Both axes, before the data',
+        body:`Articulate the working model on two axes. System: the athletic, physiological, or performance phenomenon at the center of the question — the training adaptation across a season, the injury-risk pattern in a population, the workload-to-performance relationship for a team. Stakeholder: the data collector, the team they support, and the decision they intend to make once the analysis is delivered. Both models are updated as evidence accumulates.`,
+        topics:['System model','Stakeholder model','Decision the data collector will make','Working assumptions named']},
+      {tag:'MS 02',weeks:'Week 2',title:'Query: Methods and Data Verification',sub:'Verify the data is what you think it is',
+        body:`Translate the thesis question into an analytical method appropriate to the data. Verify the dataset matches the documentation: variables, units, ranges, missingness. Name the methodological assumptions. AI may help draft queries and code — the verification is yours.`,
+        topics:['Method-to-question fit','Data verification','Assumption-naming','AI-assisted query drafting']},
+      {tag:'MS 03',weeks:'Week 3',title:'Query Continued: Literature and Methods Refinement',sub:'Twelve sources, methods locked',
+        body:`Refine the methodological approach against the peer-reviewed literature. Minimum threshold: twelve sources by this milestone, at least eight published in the last ten years. NotebookLM is the research notebook. Methods are locked at the end of this week.`,
+        topics:['Methodological literature','Twelve-source threshold','NotebookLM notebook','Methods locked']},
+      {tag:'MS 04',weeks:'Week 4',title:'Interpret: Analysis and Output',sub:'Read the output against the model',
+        body:`Run the analysis. Read the output against the working model you brought into Week 1. Name what the data is and is not telling you. Identify limitations honestly. The interpretation is recorded — speaking from understanding, not reading from a script.`,
+        topics:['Analysis execution','Output vs working model','Limitations','Honest interpretation']},
+      {tag:'MS 05',weeks:'Week 5',title:'Decide: Recommendation and Trade-offs',sub:'Name what your evidence supports',
+        body:`Recommend a position on the question the thesis addresses. Name the trade-offs of the choice. Show why the evidence supports this recommendation rather than the alternatives the data collector might otherwise pursue.`,
+        topics:['Position-taking','Trade-off articulation','Alternative recommendations considered','Evidence-to-recommendation link']},
+      {tag:'MS 06',weeks:'Week 6',title:'Integration: Full Draft',sub:'All five phases held together',
+        body:`Integrate the full Decision Cycle pass into a single draft. The seven-week format is intentionally compressed and the cycle does not flow linearly — querying changes what you theorize, interpreting changes what you decide. The integration draft is where prior phases get revisited with the benefit of what came later.`,
+        topics:['Full Decision Cycle pass','Non-linear revision','Cross-phase coherence']},
+      {tag:'MS 07',weeks:'Week 7',title:'Justify: Final Thesis + Live Defense',sub:'Hold ground under questioning',
+        body:`Submit the final thesis, then defend it live in a 30–45 minute synchronous defense scheduled with the instructor and the data collector. Format: 8–10 minutes presenting the full Decision Cycle pass, followed by 20–30 minutes of questions. Articulate the model started with, the analysis run, the recommendation made, and what would change your mind. Reading from a script is not a competency demonstration. The defense is a competency gate.`,
+        topics:['Live defense (30–45 min)','Data collector present','Competency gate','What would change your mind']},
+    ],
+    cadence:{
+      label:'Weekly Cadence',
+      note:'Each week: one Decision Cycle milestone, three Blackboard submissions, feedback within three working days.',
+      items:[
+        'Kaltura split-screen recording (screen + camera). 5–8 min for MS 01–06; 8–10 min for the Live Defense presentation. Primary graded artifact.',
+        'Written document supporting the recording.',
+        'Data documentation file: source, data collector, collection conditions, variables, cleaning/transformation, analytical decisions.',
+      ],
+      structure:'Every recording follows the same three parts: A) milestone-phase work · B) data/methods/analysis · C) AI and tool-use reflection — what was used, what was accepted, what was rejected, and why.',
+    },
+    cycle:{
+      theorize: 'AI-resistant. Two axes: a model of the system (the phenomenon in the JU Athletics environment) and a model of the stakeholder (the data collector and the decision they will make). Updated weekly as evidence accumulates.',
+      query:    'AI-assisted. Translate the question into methods, verify the data is what you think it is, name the assumptions. Twelve peer-reviewed sources by Week 3.',
+      interpret:'AI-assisted. Read the output against the working model. Name what the data is and is not telling you. Identify limitations honestly.',
+      decide:   'AI-assisted. Recommend a position. Name the trade-offs. Show why this recommendation and not the alternatives the data collector might otherwise pursue.',
+      justify:  'AI-resistant. Defend the reasoning live, in language the data collector and an academic audience can both follow. Hold ground under questioning. Articulate what would change your mind. Competency gate — no defense, no pass.',
+    },
+  },
+
+  {
+    id:'hlsc-490',
+    code:'HLSC 490',
+    title:'Sport Science Practicum',
+    shortTitle:'Practicum',
+    tagline:'Professional Placement & Applied Practice',
+    tier:'cap',
+    tierLabel:'Capstone',
+    role:'Practitioner',
+    roleFull:'Sport Science Practitioner',
+    coreQuestion:'How do I function competently in a real professional environment?',
+    stakeholders:'On-site mentor, embedded team, athletes served.',
+    position:5,
+    architecture:'4 placement models',
+    architectureType:'Placement Models',
+    capstone:{
+      name:'Competency Demonstration in a Placement',
+      brief:'Students are placed with JU Athletics or external partners as Sport Science Interns, applying the full Decision Cycle framework to real athletes, coaches, and operational pressure. Assessment is competency-based across five domains.',
+      deliverable:'Portfolio + Exit Presentation',
+    },
+    meta:[
+      {label:'Professional Lens', value:'Sport Science Practitioner'},
+      {label:'Prerequisites',     value:'205, 325, 405'},
+      {label:'Credits',           value:'1–3'},
+      {label:'Assessment',        value:'Competency-Based'},
+    ],
+    intro:`Every course before this one was preparation. 205 built the analytical engine. 325 turned data into coaching prescriptions. 405 connected anatomy to clinical reasoning. 499 proved students could design independent research. In 490 the preparation ends. Students are not observing, not shadowing — they are doing the work for real people making real decisions.`,
+    escalation:`There is no simulation left. Real athletes. Real coaches. Real stakes. Real operational pressure. The Decision Cycle becomes internalized professional practice — the way the student approaches every problem in a sport-science setting.`,
+    blocks:[
+      {tag:'MODEL A',weeks:'1–3 cr',title:'Single-Sport Embedded',sub:'Depth in one program',
+        body:`Student is assigned to one varsity sport for the semester as a Sport Science Intern. Practice and competition attendance, performance-data collection and entry, analytical queries for coaching staff, team-meeting presentations, and AT shadowing during injury assessments.`,
+        topics:['Deep sport-specific expertise','Direct coach reference','Longitudinal season arc','AT shadowing']},
+      {tag:'MODEL B',weeks:'3 cr',title:'Three-Lens Rotation',sub:'Breadth across departments',
+        body:`Student rotates through Analytics/Coaching, Strength & Conditioning, and Athletic Training — applying each foundational course's professional lens in sequence. The capstone is an integrated case study on 1–2 athletes seen across all three rotations — the multi-lens synthesis the pipeline was designed to build.`,
+        topics:['Analytics rotation (205 lens)','S&C rotation (325 lens)','Athletic training (405 lens)','Integrated case study']},
+      {tag:'MODEL C',weeks:'2–3 cr',title:'Project-Based',sub:'A real operational question',
+        body:`Athletics poses a real research or operational question. The student conducts the full investigation: proposal, data collection and analysis, written report, staff presentation, and recommendations document. Like 499 but with a tighter operational focus — the deliverable is a decision tool, not a paper.`,
+        topics:['Proposal & scoping','Operational analysis','Staff presentation','Decision tool delivery']},
+      {tag:'MODEL D',weeks:'2 cr',title:'Athlete Case Management',sub:'Longitudinal 3-lens dossier',
+        body:`Student is assigned 3–5 athletes to follow longitudinally for the semester. For each athlete they produce three deliverables through the three professional lenses: a performance dashboard (205), a motor control profile with recommendations (325), and an injury risk assessment (405).`,
+        topics:['Performance dashboard (205)','Motor control profile (325)','Injury risk assessment (405)','Weekly check-ins & progress notes']},
+    ],
+    cycle:{
+      theorize: 'Walk into the placement with a model of how this team, this program, this athlete operates. Update it daily. Defend it when challenged.',
+      query:    'The question comes from a coach or trainer under operational pressure. Translate it into something the data can answer this week.',
+      interpret:'Real performance records, real injury tracking — applied against the frameworks built in simulation.',
+      decide:   'Recommendations that affect what happens in practice tomorrow, not next semester.',
+      justify:  'Defend to the professional who will implement — or reject — the recommendation.',
+    },
+  },
+];
+
+const BIO = {
+  name:'Chris Robertson, PhD',
+  title:'Associate Professor · Neurophysiologist',
+  subtitle:'Founder, Sport Science Decision Lab',
+  blurb:`A practitioner-scholar building a single architectural principle into six courses: students should encounter the same data, the same reasoning framework, and the same professional role structure across every course in the sequence. The intent is transdisciplinary — students graduate as practitioners whose reasoning is shaped by all six courses at once, not as graduates who took them in sequence. Only the stakes change.`,
+  pedagogy:{
+    headline:'Water, not mountain.',
+    body:`The mountain professor fills students with knowledge from above. The water professor creates conditions, holds space, and lets competency emerge from the student's own engagement with the material. Drawn from Chapter Eight of the Tao Te Ching, this is the stance within each Decision Lab course — no traditional lectures, no exams, competency demonstrated live under questioning. Water is how each session is held. The Lab is the architecture across them.`,
+  },
+  stats:[
+    {label:'Years teaching & program building', value:'15+'},
+    {label:'Peer-reviewed publications',        value:'13'},
+    {label:'Students mentored',                 value:'200+'},
+    {label:'NFL / Jaguars partnership',         value:'$680K'},
+  ],
+  creds:[
+    {k:'PhD',     v:'Neuroscience & Human Performance · Indiana University'},
+    {k:'MABA',    v:'Applied Business Analytics · Jacksonville University'},
+    {k:'MBA',     v:'Jacksonville University (in progress)'},
+  ],
+  record:[
+    'Built the JU Kinesiology program from startup to the second-largest major on campus.',
+    'Architected and secured a $680K NFL / Jacksonville Jaguars performance-research partnership.',
+    'Mentored 200+ students across coursework, thesis, and practicum placements.',
+    '13 peer-reviewed publications in neurophysiology and applied sport science.',
+  ],
+  contact:{
+    email:'crobert17@ju.edu',
+    office:'AHSB 2145',
+    inst:'Jacksonville University · Health & Exercise Sciences',
+  },
+};
+
+Object.assign(window,{
+  DECISION_CYCLE, TIERS, COURSES, BIO,
+  OPERATING_PRINCIPLES, STATION_TRANSITIONS, PRACTITIONER_NETWORK, TRANSDISCIPLINARY,
 });
 
 })();
@@ -2960,11 +2997,183 @@ const CourseFooterNav = ({course, onNav}) => {
   );
 };
 
+const TracksSection = ({course}) => {
+  if (!course.tracks) return null;
+  const [active, setActive] = React.useState(0);
+  const t = course.tracks[active];
+  return (
+    <section style={{padding:'3rem 0', background:'#F3F1EA'}}>
+      <div className="wrap-narrow">
+        <SectionLabel>Two Tracks · Same Cycle, Different Material</SectionLabel>
+        <p style={{fontSize:'.95rem', lineHeight:1.6, color:'rgba(26,36,32,.7)', fontFamily:'Source Serif 4,serif', maxWidth:680, marginBottom:'1.5rem'}}>
+          Click a track to see how the seven-week Decision Cycle is executed in that path.
+        </p>
+
+        {/* Tab triggers */}
+        <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1rem'}} className="tk-grid">
+          {course.tracks.map((tr,i)=>{
+            const on = i === active;
+            const isPrimary = i === 0;
+            return (
+              <button
+                key={i}
+                type="button"
+                onClick={()=>setActive(i)}
+                style={{
+                  textAlign:'left', cursor:'pointer', font:'inherit',
+                  background: on ? (isPrimary ? '#0E3D33' : '#fff') : (isPrimary ? 'rgba(14,61,51,.08)' : 'rgba(255,255,255,.45)'),
+                  color: on ? (isPrimary ? '#F3F1EA' : '#1a2420') : (isPrimary ? '#0E3D33' : 'rgba(26,36,32,.7)'),
+                  border: on
+                    ? (isPrimary ? '1px solid #1B6B5A' : '1px solid #D4A84B')
+                    : '1px solid rgba(11,20,16,.12)',
+                  borderRadius:8,
+                  padding:'1.25rem 1.4rem 1.15rem',
+                  position:'relative',
+                  transition:'all .15s ease',
+                  outline:'none',
+                  boxShadow: on ? '0 6px 24px -12px rgba(0,0,0,.25)' : 'none',
+                }}
+                onMouseEnter={e=>{ if(!on){ e.currentTarget.style.background = isPrimary ? 'rgba(14,61,51,.14)' : 'rgba(255,255,255,.85)'; } }}
+                onMouseLeave={e=>{ if(!on){ e.currentTarget.style.background = isPrimary ? 'rgba(14,61,51,.08)' : 'rgba(255,255,255,.45)'; } }}
+              >
+                <div style={{
+                  display:'flex', alignItems:'center', justifyContent:'space-between',
+                  fontFamily:'JetBrains Mono,monospace', fontSize:'.68rem', letterSpacing:'.14em',
+                  color: on ? (isPrimary ? '#D4A84B' : '#8A6D20') : 'rgba(26,36,32,.55)',
+                  marginBottom:'.55rem',
+                }}>
+                  <span>{isPrimary ? '◆ PRIMARY' : '◇ ALTERNATIVE'}</span>
+                  <span style={{
+                    fontSize:'.62rem',
+                    padding:'.2rem .45rem',
+                    border:'1px solid currentColor',
+                    borderRadius:3, opacity: on ? 1 : .55,
+                  }}>{on ? 'VIEWING' : 'CLICK TO VIEW'}</span>
+                </div>
+                <h3 style={{fontFamily:'Source Serif 4,serif', fontSize:'1.35rem', fontWeight:500, marginBottom:'.25rem', letterSpacing:'-.01em'}}>{tr.name}</h3>
+                <div style={{fontFamily:'JetBrains Mono,monospace', fontSize:'.7rem', letterSpacing:'.06em', opacity:.75}}>{tr.emphasis}</div>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Tab panel */}
+        <div style={{
+          marginTop:'1.25rem',
+          background:'#fff',
+          border:'1px solid rgba(11,20,16,.1)',
+          borderLeft: active === 0 ? '4px solid #1B6B5A' : '4px solid #D4A84B',
+          borderRadius:8,
+          padding:'1.6rem 1.75rem 1.5rem',
+        }}>
+          <div style={{fontFamily:'JetBrains Mono,monospace', fontSize:'.7rem', letterSpacing:'.14em', color: active===0 ? '#1B6B5A' : '#8A6D20', marginBottom:'.5rem', fontWeight:700}}>
+            {active === 0 ? 'DECISION LAB TRACK — DETAIL' : 'ARGUMENTATIVE TRACK — DETAIL'}
+          </div>
+          <p style={{fontSize:'1rem', lineHeight:1.65, fontFamily:'Source Serif 4,serif', color:'#1a2420', marginBottom: t.bullets ? '1.1rem' : 0}}>
+            {t.note}
+          </p>
+          {t.bullets && (
+            <ul style={{listStyle:'none', padding:0, margin:0, display:'flex', flexDirection:'column', gap:'.6rem'}}>
+              {t.bullets.map((b,bi)=>(
+                <li key={bi} style={{
+                  display:'grid', gridTemplateColumns:'auto 1fr', gap:'.7rem',
+                  fontSize:'.92rem', lineHeight:1.55, color:'rgba(26,36,32,.88)',
+                  paddingBottom:'.55rem',
+                  borderBottom: bi < t.bullets.length-1 ? '1px solid rgba(11,20,16,.06)' : 'none',
+                }}>
+                  <span style={{
+                    width:18, height:18, borderRadius:'50%',
+                    background: active===0 ? 'rgba(27,107,90,.12)' : 'rgba(212,168,75,.18)',
+                    color: active===0 ? '#1B6B5A' : '#8A6D20',
+                    fontFamily:'JetBrains Mono,monospace', fontSize:'.6rem', fontWeight:700,
+                    display:'flex', alignItems:'center', justifyContent:'center',
+                    flexShrink:0, marginTop:'.15rem',
+                  }}>{bi+1}</span>
+                  <span style={{fontFamily:'Source Serif 4,serif'}}>{b}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+      <style>{`@media(max-width:720px){.tk-grid{grid-template-columns:1fr !important}}`}</style>
+    </section>
+  );
+};
+
+const OnboardingSection = ({course}) => {
+  if (!course.onboarding) return null;
+  return (
+    <section style={{padding:'3rem 0'}}>
+      <div className="wrap-narrow">
+        <SectionLabel>Before Week 1 · How the Mentorship Opens</SectionLabel>
+        <div style={{
+          background:'#fff', border:'1px solid rgba(11,20,16,.1)', borderRadius:8,
+          padding:'1.75rem 1.75rem 1.6rem', position:'relative', overflow:'hidden',
+        }}>
+          <div style={{
+            position:'absolute', top:0, left:0, bottom:0, width:4, background:'#D4A84B',
+          }}/>
+          <div style={{paddingLeft:'.7rem'}}>
+            <h3 style={{fontFamily:'Source Serif 4,serif', fontSize:'1.35rem', fontWeight:500, marginBottom:'.7rem', letterSpacing:'-.01em', color:'#0E3D33'}}>{course.onboarding.name}</h3>
+            <p style={{fontSize:'.98rem', lineHeight:1.7, fontFamily:'Source Serif 4,serif', color:'rgba(26,36,32,.88)', marginBottom:'1rem'}}>{course.onboarding.body}</p>
+            <div style={{display:'flex', gap:'.5rem', flexWrap:'wrap'}}>
+              {['Theorize · Stakeholder','Theorize · System','Query','Justify'].map(p=>(
+                <span key={p} style={{
+                  fontFamily:'JetBrains Mono,monospace', fontSize:'.7rem', letterSpacing:'.06em',
+                  padding:'.35rem .6rem', background:'rgba(212,168,75,.14)', border:'1px solid rgba(212,168,75,.35)',
+                  borderRadius:3, color:'#8A6D20',
+                }}>▸ {p}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CadenceSection = ({course}) => {
+  if (!course.cadence) return null;
+  const c = course.cadence;
+  return (
+    <section style={{padding:'3rem 0', background:'#F3F1EA'}}>
+      <div className="wrap-narrow">
+        <SectionLabel>{c.label}</SectionLabel>
+        <p style={{fontSize:'1rem', lineHeight:1.65, fontFamily:'Source Serif 4,serif', color:'rgba(26,36,32,.85)', marginBottom:'1.4rem', maxWidth:680}}>{c.note}</p>
+        <div style={{display:'flex', flexDirection:'column', gap:'.7rem', marginBottom:'1.5rem'}}>
+          {c.items.map((it,i)=>(
+            <div key={i} style={{
+              display:'grid', gridTemplateColumns:'auto 1fr', gap:'1rem', alignItems:'flex-start',
+              background:'#fff', border:'1px solid rgba(11,20,16,.08)', borderRadius:6, padding:'.95rem 1.1rem',
+            }}>
+              <div style={{
+                fontFamily:'JetBrains Mono,monospace', fontSize:'.7rem', fontWeight:700,
+                color:'#0E3D33', background:'rgba(14,61,51,.08)', padding:'.25rem .5rem', borderRadius:3,
+                minWidth:32, textAlign:'center',
+              }}>0{i+1}</div>
+              <div style={{fontSize:'.92rem', lineHeight:1.55, fontFamily:'Source Serif 4,serif', color:'#1a2420'}}>{it}</div>
+            </div>
+          ))}
+        </div>
+        <div style={{
+          padding:'1.1rem 1.2rem', background:'#0E3D33', color:'#F3F1EA', borderRadius:6,
+          fontSize:'.92rem', lineHeight:1.6, fontFamily:'Source Serif 4,serif',
+          borderLeft:'3px solid #D4A84B',
+        }}>{c.structure}</div>
+      </div>
+    </section>
+  );
+};
+
 const CoursePage = ({course, onNav}) => (
   <div>
     <CourseHero course={course} onNav={onNav}/>
     <EscalationBlock course={course}/>
+    <TracksSection course={course}/>
+    <OnboardingSection course={course}/>
     <Architecture course={course}/>
+    <CadenceSection course={course}/>
     <Capstone course={course}/>
     <CycleApplication course={course}/>
     <CourseFooterNav course={course} onNav={onNav}/>
@@ -3318,8 +3527,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
 })();
 
 
-
-</script>
-
-</body>
-</html>
