@@ -524,7 +524,19 @@ const COURSES = [
     capstone:{
       name:'Argumentative Senior Thesis (Recorded Defense)',
       brief:'A literature-grounded argumentative thesis: a defensible claim built from peer-reviewed evidence, structured against counterarguments, and explained on camera. Every milestone is a Kaltura split-screen recording (screen + camera) submitted in Blackboard. The recording is the primary graded artifact — written documents and the NotebookLM notebook support it but do not replace demonstrated reasoning.',
-      deliverable:'Argumentative Thesis (Prospectus \u2192 Lit Review \u2192 Outline \u2192 Intro \u2192 Arguments \u2192 Conclusion \u2192 Final Thesis) · 1000 pts total',
+      deliverable:'Two parallel tracks total · Pass-required live defense',
+      tracks:[
+        {
+          label:'Argumentative Track',
+          sub:'Default · Open to all',
+          steps:['Prospectus','Lit Review','Outline','Intro','Arguments','Conclusion','Final Thesis'],
+        },
+        {
+          label:'Decision Lab Track',
+          sub:'Approval-only · Mentored with JU Athletics',
+          steps:['Theorize','Query','Interpret','Decide','Justify (Live Defense)'],
+        },
+      ],
     },
     meta:[
       {label:'Professional Lens', value:'Applied Researcher'},
@@ -541,7 +553,7 @@ const COURSES = [
         note:'The default path for HLSC 499. Students develop an argumentative thesis grounded in peer-reviewed literature and defend it live against an academic audience. No application required — students enroll directly into the Argumentative Track each term.',
         bullets:[
           'Open to all enrolled students. The standard, default path through the senior thesis capstone.',
-          'Seven milestones in seven weeks (1000 pts): Prospectus \u2192 Literature Review \u2192 Outline \u2192 Introduction Draft \u2192 Arguments Draft \u2192 Conclusion Draft \u2192 Final Thesis recording.',
+          'Seven milestones in seven weeks: Prospectus \u2192 Literature Review \u2192 Outline \u2192 Introduction Draft \u2192 Arguments Draft \u2192 Conclusion Draft \u2192 Final Thesis recording.',
           'Material is the peer-reviewed literature in a chosen domain. NotebookLM is the research workspace.',
           'The Prospectus is the catch-point for weak projects — a prospectus that cannot name its counter-position is not ready to proceed.',
           'Capstone artifact: an Argumentative Senior Thesis with an 8\u201310 minute Kaltura recorded defense. Submitting the Final Thesis recording is a pass-required gate \u2014 no recording, no pass.'
@@ -557,7 +569,25 @@ const COURSES = [
           'The data collector is a named partner across the seven weeks — present at the Live Defense and named in the thesis acknowledgments.',
           'Decision Cycle scaffold (Theorize \u2192 Query \u2192 Interpret \u2192 Decide \u2192 Justify) replaces the argumentative milestone sequence. Theorize works on two axes: system and stakeholder.',
           'Capstone artifact: an Empirical Senior Thesis defended live against the person who collected the data.'
-        ]
+        ],
+        architecture:'5-phase Decision Cycle over 7 weeks',
+        blocks:[
+          {tag:'PHASE 01',weeks:'Week 1',title:'Theorize — System & Stakeholder',sub:'AI-resistant. Two axes, before any data is touched.',
+            body:`Commit to two working models before the data is opened: a model of the system (the phenomenon in the JU Athletics environment as you understand it) and a model of the stakeholder (the data collector, the decision they will make, and the cost of getting that decision wrong). The Kaltura recording names both models in your own language. A theorize that cannot name what the data collector will do differently based on the answer is returned for revision.`,
+            topics:['System model articulated','Stakeholder model articulated','Decision-at-stake named','Two-axis Kaltura recording']},
+          {tag:'PHASE 02',weeks:'Weeks 2–3',title:'Query — Methods & Data Verification',sub:'AI-assisted. Translate question into methods that fit the data.',
+            body:`Translate the working models into testable queries. Verify that the inherited dataset is what you think it is — measurement conditions, units, missingness, who collected what and when. Name the assumptions you are making about the data and document them. Twelve peer-reviewed sources support the chosen methods. The data collector co-signs the methods plan before analysis begins.`,
+            topics:['Methods plan (data-collector co-signed)','Data verification log','Assumptions named','Twelve-source methods scaffold']},
+          {tag:'PHASE 03',weeks:'Weeks 4–5',title:'Interpret — Read Output Against Model',sub:'AI-assisted. Highest-weighted phase — where models meet reality.',
+            body:`Run the analysis and read the output against the working models from Theorize. Name what the data is telling you and what it is not. Identify the limitations honestly — sample size, measurement error, confounders, and the gap between what you measured and what the stakeholder cares about. The substantive analytic core; the Live Defense will probe this phase most heavily.`,
+            topics:['Output read against models','Limitations named honestly','What the data is not telling you','Stakeholder-relevant interpretation']},
+          {tag:'PHASE 04',weeks:'Week 6',title:'Decide — Recommend a Position',sub:'AI-assisted. Trade-offs explicit.',
+            body:`Recommend a position the data collector can act on. Name the trade-offs the recommendation accepts and the alternatives the data collector might otherwise pursue. Show why this recommendation and not those alternatives, given the evidence. A recommendation that cannot name what it is choosing against is not ready for defense.`,
+            topics:['Position recommended','Trade-offs explicit','Alternatives named & ruled out','Actionable for the data collector']},
+          {tag:'PHASE 05',weeks:'Week 7',title:'Justify — Live Defense',sub:'AI-resistant. Pass-required gate.',
+            body:`Defend the reasoning live against the person who collected the data and an academic audience. Hold ground under questioning. Articulate what would change your mind. The Empirical Senior Thesis (.docx) and the 8–10 minute Final Defense recording are submitted together; the recording is the primary basis for the grade and is a pass-required gate. No defense, no pass.`,
+            topics:['Live defense against data collector','Hold ground under questioning','What would change your mind','8–10 min Final Defense recording','Pass-required gate']},
+        ],
       },
     ],
     onboarding:{
@@ -565,27 +595,27 @@ const COURSES = [
       body:`Most students enter HLSC 499 through the Argumentative Track \u2014 the primary, default path. A small number who applied over the summer and were pre-approved enter through the mentored Decision Lab Track, which substitutes authentic JU Athletics data and a Decision Cycle scaffold for the literature-based milestone sequence. Both tracks produce the same deliverable category (a senior thesis defended live) and are held to the same competency standard. The argumentative milestones below describe the primary path; the Decision Lab Track operates on the parallel scaffold shown above.`,
     },
     blocks:[
-      {tag:'MS 01',weeks:'Week 1 · 100 pts',title:'Thesis Prospectus',sub:'The catch-point for weak projects',
+      {tag:'MS 01',weeks:'Week 1',title:'Thesis Prospectus',sub:'The catch-point for weak projects',
         body:`Formulate an argumentative research question grounded in the peer-reviewed literature and expand it into a preliminary argument structure: the claim, the anticipated evidence, and the strongest counterargument you expect to confront. A prospectus that cannot name its counter-position is not ready to proceed and is returned for revision before drafting begins. The Kaltura recording articulates why the question matters, who the answer serves, and what makes the position defensible rather than merely interesting.`,
         topics:['Argumentative question framing','Claim articulation','Strongest counterargument named','Kaltura split-screen recording']},
-      {tag:'MS 02',weeks:'Week 2 · 150 pts',title:'Literature Review',sub:'Sources that argue, not summaries',
+      {tag:'MS 02',weeks:'Week 2',title:'Literature Review',sub:'Sources that argue, not summaries',
         body:`Synthesize peer-reviewed sources to support the thesis claim. Annotations are not summaries \u2014 each source entry explains how the source supports, challenges, or qualifies your argument. Minimum twelve peer-reviewed articles, with at least eight published within the last ten years. Trade publications, opinion pieces, websites, and AI-generated summaries do not qualify. NotebookLM is the research workspace; the recording walks through the strongest sources and explains how the literature shaped the claim.`,
         topics:['Twelve-source minimum (\u22658 recent)','Source-as-argument annotations','NotebookLM workspace','Position evolution']},
-      {tag:'MS 03',weeks:'Week 3 · 75 pts',title:'Thesis Outline',sub:'The argument\u2019s skeleton',
+      {tag:'MS 03',weeks:'Week 3',title:'Thesis Outline',sub:'The argument\u2019s skeleton',
         body:`Map the logical structure of the argument: the claim, the supporting arguments in sequence, the evidence for each, and the counterargument section. The outline is the skeleton the remaining milestones flesh out. Outlines lacking a clear argumentative arc are returned for revision before drafting proceeds.`,
         topics:['Argument sequence','Evidence-to-argument mapping','Counterargument section','Logical arc']},
-      {tag:'MS 04',weeks:'Week 4 · 125 pts',title:'Introduction Draft',sub:'Frame the question, name the stakes',
+      {tag:'MS 04',weeks:'Week 4',title:'Introduction Draft',sub:'Frame the question, name the stakes',
         body:`Establish the research question, its significance, and the thesis claim. Articulate why this question matters within the health and exercise sciences and what is at stake in answering it well. The recording demonstrates that you can explain the framing in your own language \u2014 not read it from the document.`,
         topics:['Question framing','Significance','Thesis claim stated','Speaking from understanding']},
-      {tag:'MS 05',weeks:'Week 5 · 175 pts',title:'Arguments Draft',sub:'The substantive core \u2014 highest-weighted milestone',
+      {tag:'MS 05',weeks:'Week 5',title:'Arguments Draft',sub:'The substantive core \u2014 highest-weighted milestone',
         body:`The substantive core of the thesis. Each argument is presented with supporting evidence, connected back to the literature, and tested against counterarguments. The reasoning here is what the Final Thesis recording will probe most heavily, and the rubric weights this milestone the highest of the six development drafts (175 of 1000 points).`,
         topics:['Arguments with evidence','Literature integration','Counterargument engagement','Highest-weighted draft']},
-      {tag:'MS 06',weeks:'Week 6 · 100 pts',title:'Conclusion Draft',sub:'Synthesis, limitations, implications',
+      {tag:'MS 06',weeks:'Week 6',title:'Conclusion Draft',sub:'Synthesis, limitations, implications',
         body:`Synthesize the argument, acknowledge limitations honestly, and articulate what the findings mean for practice. The recording rehearses the closing reasoning that will appear in the Final Thesis recording the following week.`,
         topics:['Argument synthesis','Limitations named','Practical implications','Closing reasoning rehearsed']},
-      {tag:'MS 07',weeks:'Week 7 · 275 pts',title:'Final Thesis',sub:'The pass-required gate',
+      {tag:'MS 07',weeks:'Week 7',title:'Final Thesis',sub:'The pass-required gate',
         body:`Submit the complete thesis with a 6th rubric criterion added for written coherence and APA presentation. The Final Thesis recording is 8\u201310 minutes (vs. 5\u20138 for milestones 1\u20136) and is the primary basis for the course grade \u2014 it carries 275 of 1000 points and is a pass-required gate. A student who fails to submit the Final Thesis recording cannot pass the course regardless of points earned on prior milestones. Reading from a script is not a competency demonstration.`,
-        topics:['Final thesis + 8\u201310 min recording','APA presentation rubric','Pass-required gate','275 of 1000 points']},
+        topics:['Final thesis + 8\u201310 min recording','APA presentation rubric','Pass-required gate','Highest-weighted milestone']},
     ],
     cadence:{
       label:'Weekly Cadence',
@@ -624,7 +654,19 @@ const COURSES = [
     capstone:{
       name:'Competency Demonstration in a Placement',
       brief:'Students are placed with JU Athletics or external partners as Sport Science Interns, applying the full Decision Cycle framework to real athletes, coaches, and operational pressure. Assessment is competency-based across five domains.',
-      deliverable:'Portfolio + Exit Presentation',
+      deliverable:'Competency portfolio across five domains + Exit Presentation',
+      tracks:[
+        {
+          label:'Placement Arc',
+          sub:'JU Athletics or external partner · 1–3 credits',
+          steps:['Match & Onboard','Define Brief','Embed in Operations','Mid-Cycle Audit','Exit Portfolio','Exit Presentation'],
+        },
+        {
+          label:'Five Competency Domains',
+          sub:'Assessed continuously across the placement',
+          steps:['Decision Cycle Fluency','Data Operations','Practitioner Communication','Athlete-Facing Judgment','Self-Audit & Reflection'],
+        },
+      ],
     },
     meta:[
       {label:'Professional Lens', value:'Sport Science Practitioner'},
@@ -1690,6 +1732,45 @@ const NetworkSection = () => {
   );
 };
 
+// ------ Capstone step pipeline (inline visualization for tracks) ------
+const CapstoneStepPipeline = ({tracks}) => (
+  <div style={{marginTop:'1rem', display:'flex', flexDirection:'column', gap:'.9rem'}}>
+    {tracks.map((tr,ti) => (
+      <div key={ti} style={{
+        background:'rgba(212,168,75,.06)',
+        border:'1px solid rgba(212,168,75,.28)',
+        borderLeft:'3px solid #D4A84B',
+        borderRadius:4, padding:'.75rem .9rem',
+      }}>
+        <div style={{display:'flex', alignItems:'baseline', gap:'.7rem', flexWrap:'wrap', marginBottom:'.6rem'}}>
+          <span style={{fontFamily:'JetBrains Mono,monospace', fontSize:'.66rem', letterSpacing:'.18em', color:'#8A6D20', fontWeight:700}}>
+            {tr.label.toUpperCase()}
+          </span>
+          <span style={{fontSize:'.74rem', color:'#374149', fontStyle:'italic'}}>{tr.sub}</span>
+        </div>
+        <div style={{display:'flex', flexWrap:'wrap', alignItems:'center', gap:'.35rem .45rem'}}>
+          {tr.steps.map((s,i) => (
+            <React.Fragment key={i}>
+              <span style={{
+                display:'inline-flex', alignItems:'center', gap:'.4rem',
+                background:'#fff', border:'1px solid rgba(212,168,75,.45)',
+                borderRadius:3, padding:'.3rem .55rem',
+                fontSize:'.72rem', color:'#1E2A21', lineHeight:1.1,
+              }}>
+                <span style={{fontFamily:'JetBrains Mono,monospace', fontSize:'.6rem', color:'#8A6D20', fontWeight:700}}>
+                  {String(i+1).padStart(2,'0')}
+                </span>
+                {s}
+              </span>
+              {i < tr.steps.length-1 && <span style={{color:'#D4A84B', fontWeight:600}}>→</span>}
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+);
+
 // ------ Course cards (tier-grouped) ------
 const TierBand = ({tier, courses, onNav, index}) => (
   <div style={{marginBottom:'3rem'}}>
@@ -1707,7 +1788,9 @@ const TierBand = ({tier, courses, onNav, index}) => (
       <span style={{marginLeft:'auto', fontSize:'.78rem', color:'rgba(243,241,234,.65)', fontStyle:'italic'}}>{tier.hint}</span>
     </div>
     <div style={{
-      display:'grid', gridTemplateColumns:`repeat(${Math.min(courses.length,2)},1fr)`, gap:'1px',
+      display:'grid',
+      gridTemplateColumns: tier.id==='cap' ? '1fr' : `repeat(${Math.min(courses.length,2)},1fr)`,
+      gap:'1px',
       background:'rgba(11,20,16,.1)', border:'1px solid rgba(11,20,16,.1)', borderTop:'none',
       borderRadius:'0 0 6px 6px', overflow:'hidden',
     }} className="tier-courses">
@@ -1742,6 +1825,7 @@ const TierBand = ({tier, courses, onNav, index}) => (
             <Tag tone="green">{c.architecture}</Tag>
             <Tag tone="gold">Capstone: {c.capstone.deliverable}</Tag>
           </div>
+          {c.capstone.tracks && <CapstoneStepPipeline tracks={c.capstone.tracks}/>}
         </div>
       ))}
     </div>
@@ -1934,7 +2018,7 @@ const EscalationBlock = ({course}) => {
 const Architecture = ({course}) => (
   <section style={{padding:'3rem 0'}}>
     <div className="wrap-narrow">
-      <SectionLabel>Learning Architecture — {course.architecture}</SectionLabel>
+      <SectionLabel>{course.tracks ? 'Argumentative Track · Milestone Architecture — ' : 'Learning Architecture — '}{course.architecture}</SectionLabel>
       <div style={{display:'flex', flexDirection:'column', gap:'1rem'}}>
         {course.blocks.map((b,i) => (
           <div key={i} style={{
@@ -2029,6 +2113,43 @@ const Capstone = ({course}) => (
           }}>
             ▸ {course.capstone.deliverable}
           </div>
+          {course.capstone.tracks && (
+            <div style={{marginTop:'1.25rem', display:'flex', flexDirection:'column', gap:'.9rem'}}>
+              {course.capstone.tracks.map((tr,ti) => (
+                <div key={ti} style={{
+                  background:'rgba(212,168,75,.08)',
+                  border:'1px solid rgba(212,168,75,.3)',
+                  borderLeft:'3px solid #D4A84B',
+                  borderRadius:4, padding:'.85rem 1rem',
+                }}>
+                  <div style={{display:'flex', alignItems:'baseline', gap:'.7rem', flexWrap:'wrap', marginBottom:'.65rem'}}>
+                    <span style={{fontFamily:'JetBrains Mono,monospace', fontSize:'.66rem', letterSpacing:'.18em', color:'#E8C77A', fontWeight:700}}>
+                      {tr.label.toUpperCase()}
+                    </span>
+                    <span style={{fontSize:'.76rem', color:'rgba(243,241,234,.7)', fontStyle:'italic'}}>{tr.sub}</span>
+                  </div>
+                  <div style={{display:'flex', flexWrap:'wrap', alignItems:'center', gap:'.35rem .45rem'}}>
+                    {tr.steps.map((s,i) => (
+                      <React.Fragment key={i}>
+                        <span style={{
+                          display:'inline-flex', alignItems:'center', gap:'.4rem',
+                          background:'rgba(243,241,234,.06)', border:'1px solid rgba(212,168,75,.4)',
+                          borderRadius:3, padding:'.3rem .55rem',
+                          fontSize:'.74rem', color:'#F3F1EA', lineHeight:1.1,
+                        }}>
+                          <span style={{fontFamily:'JetBrains Mono,monospace', fontSize:'.6rem', color:'#E8C77A', fontWeight:700}}>
+                            {String(i+1).padStart(2,'0')}
+                          </span>
+                          {s}
+                        </span>
+                        {i < tr.steps.length-1 && <span style={{color:'#D4A84B', fontWeight:600}}>→</span>}
+                      </React.Fragment>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -2210,6 +2331,45 @@ const TracksSection = ({course}) => {
             </ul>
           )}
         </div>
+
+        {t.blocks && (
+          <div style={{marginTop:'1.75rem'}}>
+            <div style={{
+              fontFamily:'JetBrains Mono,monospace', fontSize:'.7rem', letterSpacing:'.14em',
+              color: active===0 ? '#1B6B5A' : '#8A6D20', marginBottom:'.9rem', fontWeight:700,
+            }}>
+              {(t.architecture ? t.architecture.toUpperCase() : 'PHASE ARCHITECTURE')}
+            </div>
+            <div style={{display:'flex', flexDirection:'column', gap:'1rem'}}>
+              {t.blocks.map((b,i)=>(
+                <div key={i} style={{
+                  background:'#fff', border:'1px solid rgba(11,20,16,.1)', borderRadius:8,
+                  padding:'1.1rem 1.25rem 1rem',
+                  borderLeft: '3px solid ' + (active===0 ? '#1B6B5A' : '#D4A84B'),
+                }}>
+                  <div style={{display:'flex', alignItems:'baseline', gap:'.75rem', flexWrap:'wrap', marginBottom:'.5rem'}}>
+                    <span style={{fontFamily:'JetBrains Mono,monospace', fontSize:'.68rem', letterSpacing:'.12em', color: active===0 ? '#1B6B5A' : '#8A6D20', fontWeight:700}}>{b.tag}</span>
+                    {b.weeks && <span style={{fontFamily:'JetBrains Mono,monospace', fontSize:'.66rem', letterSpacing:'.08em', color:'rgba(26,36,32,.55)'}}>{b.weeks}</span>}
+                  </div>
+                  <h4 style={{fontFamily:'Source Serif 4,serif', fontSize:'1.15rem', fontWeight:500, color:'#0E3D33', marginBottom:'.25rem', letterSpacing:'-.005em'}}>{b.title}</h4>
+                  {b.sub && <div style={{fontFamily:'JetBrains Mono,monospace', fontSize:'.7rem', letterSpacing:'.06em', color:'rgba(26,36,32,.65)', marginBottom:'.6rem'}}>{b.sub}</div>}
+                  <p style={{fontSize:'.93rem', lineHeight:1.6, fontFamily:'Source Serif 4,serif', color:'rgba(26,36,32,.88)', marginBottom: b.topics ? '.75rem' : 0}}>{b.body}</p>
+                  {b.topics && (
+                    <div style={{display:'flex', flexWrap:'wrap', gap:'.4rem'}}>
+                      {b.topics.map((tp,ti)=>(
+                        <span key={ti} style={{
+                          fontFamily:'JetBrains Mono,monospace', fontSize:'.66rem', letterSpacing:'.04em',
+                          padding:'.3rem .55rem', background:'rgba(11,20,16,.045)', border:'1px solid rgba(11,20,16,.08)',
+                          borderRadius:3, color:'rgba(26,36,32,.7)',
+                        }}>{tp}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
       <style>{`@media(max-width:720px){.tk-grid{grid-template-columns:1fr !important}}`}</style>
     </section>
@@ -3526,157 +3686,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
 
 })();
 </script>
-<script type="text/babel">
-// ======== src/app.jsx ========
-(function(){
-// App shell — routing, nav, tweaks panel
-
-const { Landing, CoursePage, AboutPage, BriefPage, BrandMark, SiteFooter } = window;
-
-const ROUTES = new Set(['landing', 'about', 'brief', ...window.COURSES.map(c=>c.id)]);
-
-const parseHash = () => {
-  const h = (window.location.hash || '').replace(/^#\/?/, '');
-  if (!h) return 'landing';
-  return ROUTES.has(h) ? h : 'landing';
-};
-
-const TopBar = ({route, onNav}) => {
-  const courses = window.COURSES;
-  const active = route;
-  return (
-    <header className="topbar">
-      <div className="topbar-inner">
-        <div className="brand" onClick={()=>onNav('landing')}>
-          <BrandMark size={30}/>
-          <div className="brand-text">
-            Decision Lab
-            <small>Sport Science · JU</small>
-          </div>
-        </div>
-        <nav className="nav">
-          <button className={active==='landing'?'active':''} onClick={()=>onNav('landing')}>Overview</button>
-          <span className="sep"/>
-          {courses.map(c=>(
-            <button key={c.id}
-              className={(active===c.id?'active ':'') + 'nav-code'}
-              onClick={()=>onNav(c.id)}
-              title={`${c.code} · ${c.title}`}>
-              {c.code.split(' ')[1]}
-            </button>
-          ))}
-          <span className="sep"/>
-          <button className={active==='brief'?'active':''} onClick={()=>onNav('brief')}>The Brief</button>
-          <button className={active==='about'?'active':''} onClick={()=>onNav('about')}>About</button>
-        </nav>
-      </div>
-    </header>
-  );
-};
-
-const TweaksPanel = ({tweaks, setTweaks}) => {
-  if (!tweaks._show) return null;
-  const opts = [
-    {k:'accent',      label:'Accent',     values:['gold','teal','crimson']},
-    {k:'density',     label:'Density',    values:['comfortable','compact']},
-    {k:'heroTelemetry', label:'Telemetry', values:[true, false], display:{true:'on', false:'off'}},
-  ];
-  const set = (k,v) => {
-    const next = {...tweaks, [k]:v};
-    setTweaks(next);
-    const persisted = {...next};
-    delete persisted._show;
-    window.parent.postMessage({type:'__edit_mode_set_keys', edits: persisted}, '*');
-  };
-  return (
-    <div className="tweaks">
-      <div className="tweaks-title">◆ Tweaks</div>
-      {opts.map(o=>(
-        <div className="tweak-row" key={o.k}>
-          <label>{o.label}</label>
-          <div className="chips">
-            {o.values.map(v=>(
-              <button key={String(v)}
-                className={tweaks[o.k]===v?'on':''}
-                onClick={()=>set(o.k, v)}>
-                {o.display?o.display[v]:String(v)}
-              </button>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-const applyAccent = (accent) => {
-  const palettes = {
-    gold:    {gold:'#D4A84B', softer:'#E8C77A', deep:'#8A6D20'},
-    teal:    {gold:'#5BB8A3', softer:'#86D4C1', deep:'#1B6B5A'},
-    crimson: {gold:'#D06B5A', softer:'#E89A8C', deep:'#7A3527'},
-  };
-  const p = palettes[accent] || palettes.gold;
-  document.documentElement.style.setProperty('--gold', p.gold);
-  document.documentElement.style.setProperty('--gold-soft', p.softer);
-  document.documentElement.style.setProperty('--gold-deep', p.deep);
-};
-
-const App = () => {
-  const [route, setRoute] = React.useState(parseHash());
-  const [tweaks, setTweaks] = React.useState({...window.__SSDL_TWEAKS, _show:false});
-
-  // hash routing
-  React.useEffect(() => {
-    const handler = () => {
-      setRoute(parseHash());
-      window.scrollTo({top:0, behavior:'instant'});
-    };
-    window.addEventListener('hashchange', handler);
-    return () => window.removeEventListener('hashchange', handler);
-  }, []);
-
-  // apply accent
-  React.useEffect(() => { applyAccent(tweaks.accent); }, [tweaks.accent]);
-
-  // edit mode wiring
-  React.useEffect(() => {
-    const onMsg = (e) => {
-      const d = e.data || {};
-      if (d.type === '__activate_edit_mode') setTweaks(t => ({...t, _show:true}));
-      if (d.type === '__deactivate_edit_mode') setTweaks(t => ({...t, _show:false}));
-    };
-    window.addEventListener('message', onMsg);
-    window.parent.postMessage({type:'__edit_mode_available'}, '*');
-    return () => window.removeEventListener('message', onMsg);
-  }, []);
-
-  const nav = (id) => {
-    if (id === route) return;
-    window.location.hash = '/' + id;
-  };
-
-  let page;
-  if (route === 'landing') page = <Landing onNav={nav}/>;
-  else if (route === 'about') page = <AboutPage onNav={nav}/>;
-  else if (route === 'brief') page = <BriefPage onNav={nav}/>;
-  else {
-    const c = window.COURSES.find(x=>x.id===route);
-    page = c ? <CoursePage course={c} onNav={nav}/> : <Landing onNav={nav}/>;
-  }
-
-  return (
-    <div className="app" data-density={tweaks.density}>
-      <TopBar route={route} onNav={nav}/>
-      <main className="page in" key={route}>
-        {page}
-      </main>
-      <SiteFooter onNav={nav}/>
-      <TweaksPanel tweaks={tweaks} setTweaks={setTweaks}/>
-    </div>
-  );
-};
-
-ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
-
-})();
-
+</body>
+</html>
